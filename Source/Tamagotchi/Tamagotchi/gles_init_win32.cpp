@@ -15,12 +15,16 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_PAINT: {
 		ESContext *esContext = (ESContext*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
 
-		if (esContext && esContext->renderFunc)
+		if (esContext)
 		{
-			esContext->renderFunc(esContext);
-		}
+			if (esContext->renderFunc)
+			{
+				esContext->renderFunc(esContext);
+			}
 
-		ValidateRect(esContext->hWnd, NULL);
+			ValidateRect(esContext->hWnd, NULL);
+		}
+		
 		break;
 	}
 
@@ -103,14 +107,15 @@ bool ESContext::Init()
 
 void ESContext::MainLoop()
 {
-	MSG		msg = { 0 };
-	DWORD	lastTime = GetTickCount();
+	MSG			msg = { 0 };
+	ULONGLONG	lastTime = GetTickCount64();
 
 	while (!this->quit)
 	{
-		int		gotMsg = (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE));
-		DWORD	curTime = GetTickCount();
-		float	deltaTime = (float)(curTime - lastTime) / 1000.0f;
+		int			gotMsg		= (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE));
+		ULONGLONG	curTime		= GetTickCount64();
+		float		deltaTime	= (float)(curTime - lastTime) / 1000.0f;
+
 		lastTime = curTime;
 
 		if (gotMsg)
@@ -276,5 +281,5 @@ bool ESContext::CreateEGLContext()
 
 void ESContext::Print(std::string msg) const
 {
-	fprintf(stderr, "[ESConext]: %s", msg);
+	fprintf(stderr, "[ESConext]: %s", msg.c_str());
 }

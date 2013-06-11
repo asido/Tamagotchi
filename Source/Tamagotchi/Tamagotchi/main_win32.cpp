@@ -6,14 +6,14 @@ TamagotchiEngine *g_engine;
 
 void ESCALLBACK OnRender(ESContext *esContext)
 {
-	g_engine->OnRender();
+	g_engine->FrameRender();
 
 	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
 }
 
 void ESCALLBACK OnUpdate(ESContext *esContext, float deltaTime)
 {
-	g_engine->OnUpdate(deltaTime);
+	g_engine->FrameUpdate(deltaTime);
 }
 
 void ESCALLBACK OnKey(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY)
@@ -21,23 +21,25 @@ void ESCALLBACK OnKey(ESContext *esContext, unsigned char wParam, int cursorX, i
 	OutputDebugString(L"OnKey\n");
 }
 
-INT WINAPI wWinMain(HINSTANCE	hInstance,
-					HINSTANCE	hPrevInstance,
-					LPWSTR		lpCmdLine,
-					int			nCmdShow)
+INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,
+					_In_opt_	HINSTANCE	hPrevInstance,
+					_In_		LPWSTR		lpCmdLine,
+					_In_		int			nCmdShow)
 {
 	ESContext es(1136, 640, L"Tamagotchi");
 	es.Init();
 
 	g_engine = new TamagotchiEngine();
-	g_engine->Init(es.width, es.height);
 
-	es.renderFunc	= OnRender;
-	es.updateFunc	= OnUpdate;
-	es.keyFunc		= OnKey;
+	if (g_engine->Init(es.width, es.height))
+	{
+		es.renderFunc	= OnRender;
+		es.updateFunc	= OnUpdate;
+		es.keyFunc		= OnKey;
 
-	es.MainLoop();
-
+		es.MainLoop();
+	}
+	
 	delete g_engine;
 
 	return 0;

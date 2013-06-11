@@ -18,8 +18,8 @@ public:
 
 	bool Init(GLint width, GLint height);
 
-	void OnUpdate(float delta);
-	void OnRender();
+	void FrameUpdate(float delta);
+	void FrameRender();
 
 private:
 	GLuint LoadShader(GLenum type, const char *shaderSrc);

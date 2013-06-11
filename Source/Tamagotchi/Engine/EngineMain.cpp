@@ -71,12 +71,12 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 	return true;
 }
 
-void TamagotchiEngine::OnUpdate(float delta)
+void TamagotchiEngine::FrameUpdate(float delta)
 {
 
 }
 
-void TamagotchiEngine::OnRender()
+void TamagotchiEngine::FrameRender()
 {
 	GLfloat vVertices[] = {  0.0f,  0.5f, 0.0f, 
 							-0.5f, -0.5f, 0.0f,
