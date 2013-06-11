@@ -1,0 +1,239 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		705FB98717678001003924B8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705FB98617678001003924B8 /* OpenGLES.framework */; };
+		705FB98D17678236003924B8 /* EngineMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 705FB98217677F8C003924B8 /* EngineMain.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		705FB96917677F20003924B8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		705FB96B17677F20003924B8 /* libTamagotchiEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTamagotchiEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		705FB98217677F8C003924B8 /* EngineMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EngineMain.cpp; path = ../../../Engine/EngineMain.cpp; sourceTree = "<group>"; };
+		705FB98617678001003924B8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		705FB98C17678232003924B8 /* EngineMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EngineMain.h; path = ../../../Engine/EngineMain.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		705FB96817677F20003924B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705FB98717678001003924B8 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		705FB96217677F20003924B8 = {
+			isa = PBXGroup;
+			children = (
+				705FB97017677F20003924B8 /* TamagotchiEngine */,
+				705FB98817678010003924B8 /* Frameworks */,
+				705FB96C17677F20003924B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		705FB96C17677F20003924B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				705FB96B17677F20003924B8 /* libTamagotchiEngine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		705FB97017677F20003924B8 /* TamagotchiEngine */ = {
+			isa = PBXGroup;
+			children = (
+				705FB98217677F8C003924B8 /* EngineMain.cpp */,
+				705FB98C17678232003924B8 /* EngineMain.h */,
+			);
+			path = TamagotchiEngine;
+			sourceTree = "<group>";
+		};
+		705FB98817678010003924B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				705FB98617678001003924B8 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		705FB96A17677F20003924B8 /* TamagotchiEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 705FB97917677F20003924B8 /* Build configuration list for PBXNativeTarget "TamagotchiEngine" */;
+			buildPhases = (
+				705FB96717677F20003924B8 /* Sources */,
+				705FB96817677F20003924B8 /* Frameworks */,
+				705FB96917677F20003924B8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TamagotchiEngine;
+			productName = TamagotchiEngine;
+			productReference = 705FB96B17677F20003924B8 /* libTamagotchiEngine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		705FB96317677F20003924B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Asido;
+			};
+			buildConfigurationList = 705FB96617677F20003924B8 /* Build configuration list for PBXProject "TamagotchiEngine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 705FB96217677F20003924B8;
+			productRefGroup = 705FB96C17677F20003924B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				705FB96A17677F20003924B8 /* TamagotchiEngine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		705FB96717677F20003924B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				705FB98D17678236003924B8 /* EngineMain.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		705FB97717677F20003924B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		705FB97817677F20003924B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		705FB97A17677F20003924B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TamagotchiEngine.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		705FB97B17677F20003924B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TamagotchiEngine.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		705FB96617677F20003924B8 /* Build configuration list for PBXProject "TamagotchiEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				705FB97717677F20003924B8 /* Debug */,
+				705FB97817677F20003924B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		705FB97917677F20003924B8 /* Build configuration list for PBXNativeTarget "TamagotchiEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				705FB97A17677F20003924B8 /* Debug */,
+				705FB97B17677F20003924B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 705FB96317677F20003924B8 /* Project object */;
+}

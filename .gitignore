@@ -2,6 +2,10 @@
 Source/Lib/
 Source/Temp/
 
+########################
+# Visual Studio junk
+########################
+
 #OS junk files
 [Tt]humbs.db
 *.DS_Store
@@ -66,3 +70,23 @@ packages/
 
 #Test files
 *.testsettings
+
+
+########################
+# XCode junk
+########################
+
+.DS_Store
+*.swp
+*~.nib
+
+build/
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+
+*.mode1v3
+*.mode2v3
+
+xcuserdata

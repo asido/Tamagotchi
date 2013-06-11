@@ -6,15 +6,15 @@
 #include <GLES2/gl2ext.h>
 #include <GLES2/gl2platform.h>
 #elif defined __APPLE__
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
-#endif // __WIN32
+#import <OpenGLES/EAGL.h>
+#import <OpenGLES/ES2/gl.h>
+#endif
 
 class TamagotchiEngine
 {
 public:
-	TamagotchiEngine();
-	virtual ~TamagotchiEngine();
+	TamagotchiEngine() {}
+	virtual ~TamagotchiEngine() {}
 
 	bool Init(GLint width, GLint height);
 

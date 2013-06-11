@@ -6,6 +6,16 @@
 // Public
 //-----------------------------------------------------------------------------------------------------------
 
+TamagotchiEngine::TamagotchiEngine()
+{
+    
+}
+
+TamagotchiEngine::~TamagotchiEngine()
+{
+    
+}
+
 bool TamagotchiEngine::Init(GLint width, GLint height)
 {
 	this->width = width;
@@ -50,7 +60,7 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 
 	if (!linked)
 	{
-		OutputDebugString(L"Shader linking has failed.");
+		//OutputDebugString(L"Shader linking has failed.");
 		glDeleteProgram(programObject);
 		return false;
 	}
@@ -70,7 +80,7 @@ void TamagotchiEngine::OnRender()
 {
 	GLfloat vVertices[] = {  0.0f,  0.5f, 0.0f, 
 							-0.5f, -0.5f, 0.0f,
-							0.5f, -0.5f, 0.0f };
+							 0.5f, -0.5f, 0.0f };
 	glViewport(0, 0, this->width, this->height);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(this->shaderProgram);
@@ -107,7 +117,7 @@ GLuint TamagotchiEngine::LoadShader(GLenum type, const char *shaderSrc)
 		{
 			char *infoLog = (char*)malloc(sizeof(char) * infoLen);
 			glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
-			OutputDebugString(L"Failed to compile shader");
+			//OutputDebugString(L"Failed to compile shader");
 			free(infoLog);
 		}
 
