@@ -39,7 +39,14 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 
-	case WM_CHAR: {
+	case WM_KEYDOWN:
+	case WM_KEYUP:
+	case WM_CHAR:
+	case WM_MOUSEMOVE:
+	case WM_LBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_RBUTTONDOWN:
+	case WM_RBUTTONUP: {
 		POINT point;
 		ESContext *esContext = (ESContext*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
 
@@ -203,14 +210,13 @@ bool ESContext::CreateEGLContext()
 	EGLConfig	config;
 
 	EGLint eglAttributes[] = {
-		EGL_RED_SIZE, 8,
-		EGL_GREEN_SIZE, 8,
-		EGL_BLUE_SIZE, 8,
-		EGL_ALPHA_SIZE, 8,
-		EGL_DEPTH_SIZE, 8,
-		EGL_STENCIL_SIZE, 8,
-		EGL_SAMPLE_BUFFERS, 8,
-		EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+		EGL_RED_SIZE,		8,
+		EGL_GREEN_SIZE,		8,
+		EGL_BLUE_SIZE,		8,
+		EGL_ALPHA_SIZE,		8,
+		EGL_DEPTH_SIZE,		8,
+		EGL_STENCIL_SIZE,	8,
+		EGL_SAMPLE_BUFFERS, 1,
 		EGL_NONE
 	};
 	EGLint		contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2,
@@ -268,7 +274,7 @@ bool ESContext::CreateEGLContext()
 	return true;
 }
 
-void ESContext::Print(std::string msg)
+void ESContext::Print(std::string msg) const
 {
 	fprintf(stderr, "[ESConext]: %s", msg);
 }

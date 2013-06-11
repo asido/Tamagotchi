@@ -24,6 +24,11 @@ public:
 	EGLContext		eglContext;
 	EGLSurface		eglSurface;
 
+	// Window width
+	GLint	width;
+	// Window height
+	GLint	height;
+
 	// Callbacks
 	void (ESCALLBACK *renderFunc)(ESContext *esContext);
 	void (ESCALLBACK *keyFunc)(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY);
@@ -33,12 +38,7 @@ private:
 	bool InitWindow();
 	bool CreateEGLContext();
 
-	void Print(std::string msg);
-
-	// Window width
-	GLint	width;
-	// Window height
-	GLint	height;
+	void Print(std::string msg) const;
 
 	std::wstring	title;
 
