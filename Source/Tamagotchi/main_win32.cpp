@@ -17,5 +17,7 @@ INT WINAPI wWinMain(HINSTANCE	hInstance,
 	es.Init();
 	es.renderFunc = Render;
 
+	es.MainLoop();
+
 	return 0;
 }

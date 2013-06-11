@@ -14,6 +14,9 @@ public:
 	virtual ~ESContext();
 	bool Init();
 
+	void MainLoop();
+	void OnClose();
+
 	// Window handle
 	EGLNativeWindowType	hWnd;
 
@@ -39,7 +42,7 @@ private:
 
 	std::wstring	title;
 
-	void		*userData;
+	bool	quit;
 };
 
 #endif // __GLES_INIT_H__

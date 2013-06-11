@@ -24,9 +24,20 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 
-	case WM_DESTROY:
+	case WM_CLOSE: {
+		ESContext *esContext = (ESContext*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
+
+		if (esContext)
+		{
+			esContext->OnClose();
+		}
+		break;
+	}
+
+	case WM_DESTROY: {
 		PostQuitMessage(0);
 		break;
+	}
 
 	case WM_CHAR: {
 		POINT point;
@@ -49,12 +60,16 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 }
 //-----------------------------------------------------------------------------------------------------------
 
+//-----------------------------------------------------------------------------------------------------------
+// Public
+//-----------------------------------------------------------------------------------------------------------
 
 ESContext::ESContext(GLint width, GLint height, std::wstring title)
 {
 	this->width = width;
 	this->height = height;
 	this->title = title;
+	this->quit = false;
 }
 
 ESContext::~ESContext()
@@ -79,9 +94,54 @@ bool ESContext::Init()
 	return true;
 }
 
+void ESContext::MainLoop()
+{
+	MSG		msg = { 0 };
+	DWORD	lastTime = GetTickCount();
+
+	while (!this->quit)
+	{
+		int		gotMsg = (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE));
+		DWORD	curTime = GetTickCount();
+		float	deltaTime = (float)(curTime - lastTime) / 1000.0f;
+		lastTime = curTime;
+
+		if (gotMsg)
+		{
+			if (msg.message == WM_QUIT)
+			{
+				this->quit = true;
+			}
+			else
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+		}
+		else
+		{
+			SendMessage(this->hWnd, WM_PAINT, 0, 0);
+		}
+
+		if (this->updateFunc != NULL)
+		{
+			this->updateFunc(this, deltaTime);
+		}
+	}
+}
+
+void ESContext::OnClose()
+{
+	this->quit = true;
+}
+
+//-----------------------------------------------------------------------------------------------------------
+// Private
+//-----------------------------------------------------------------------------------------------------------
+
 bool ESContext::InitWindow()
 {
-	WNDCLASS	wndclass = {0};
+	WNDCLASS	wndclass = { 0 };
 	DWORD		style = 0;
 	RECT		windowRect;
 	HINSTANCE	hInstance = GetModuleHandle(NULL);
