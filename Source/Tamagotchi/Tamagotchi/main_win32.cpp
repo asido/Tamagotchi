@@ -26,6 +26,18 @@ INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,
 					_In_		LPWSTR		lpCmdLine,
 					_In_		int			nCmdShow)
 {
+	// Setup checks for memory leaks.
+	int tmpDbgFlag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+	
+	// Perform memory checks for each alloc/dealloc. This is VERY VERY SLOW and so use only when necessary.
+	//tmpDbgFlag |= _CRTDBG_CHECK_ALWAYS_DF;
+
+	// Check for leaks just before program exit.
+	tmpDbgFlag |= _CRTDBG_LEAK_CHECK_DF;
+
+	_CrtSetDbgFlag(tmpDbgFlag);
+
+
 	ESContext es(1136, 640, L"Tamagotchi");
 	es.Init();
 

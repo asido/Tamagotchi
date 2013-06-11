@@ -20,7 +20,6 @@
   <ItemGroup>
     <ClInclude Include="..\Engine\EngineMain.h" />
     <ClInclude Include="..\Engine\EngineStd.h" />
-    <ClInclude Include="..\Engine\targetver.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A5984C11-52F7-49E7-B3A7-63A7135484AA}</ProjectGuid>
