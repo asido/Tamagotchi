@@ -1,0 +1,28 @@
+#include "EngineStd.h"
+
+#include "XMLResource.h"
+
+void XMLResourceExtraData::ParseXML(char *rawBuffer)
+{
+	this->xmlDocument.Parse(rawBuffer);
+}
+
+XMLElement *XMLResourceExtraData::GetRoot()
+{
+	return this->xmlDocument.RootElement();
+}
+
+bool XMLResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, std::shared_ptr<ResourceHandle> handle)
+{
+	if (rawSize <= 0)
+	{
+		return false;
+	}
+
+	std::shared_ptr<XMLResourceExtraData> extraData = std::shared_ptr<XMLResourceExtraData>(TG_NEW XMLResourceExtraData());
+	extraData->ParseXML(rawBuffer);
+
+	handle->SetExtra(std::shared_ptr<XMLResourceExtraData>(extraData));
+
+	return true;
+}

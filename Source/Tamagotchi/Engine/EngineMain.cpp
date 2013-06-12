@@ -1,6 +1,7 @@
 #include "EngineStd.h"
 
 #include "EngineMain.h"
+#include "Renderer.h"
 
 //-----------------------------------------------------------------------------------------------------------
 // Public
@@ -8,12 +9,12 @@
 
 TamagotchiEngine::TamagotchiEngine()
 {
-    
+	this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer());
 }
 
 TamagotchiEngine::~TamagotchiEngine()
 {
-    
+
 }
 
 bool TamagotchiEngine::Init(GLint width, GLint height)

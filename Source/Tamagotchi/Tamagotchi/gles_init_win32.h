@@ -17,22 +17,16 @@ public:
 	void MainLoop();
 	void OnClose();
 
-	// Window handle
-	EGLNativeWindowType	hWnd;
-
-	EGLDisplay		eglDisplay;
-	EGLContext		eglContext;
-	EGLSurface		eglSurface;
-
-	// Window width
-	GLint	width;
-	// Window height
-	GLint	height;
-
 	// Callbacks
 	void (ESCALLBACK *renderFunc)(ESContext *esContext);
 	void (ESCALLBACK *keyFunc)(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY);
 	void (ESCALLBACK *updateFunc)(ESContext *esContext, float deltaTime);
+
+	EGLNativeWindowType GetHwnd() const { return this->hWnd; }
+	GLint				GetWidth() const { return this->width; }
+	GLint				GetHeight() const { return this->height; }
+	EGLDisplay			GetDisplay() const { return this->eglDisplay; }
+	EGLSurface			GetSurface() const { return this->eglSurface; }
 
 private:
 	bool InitWindow();
@@ -40,9 +34,21 @@ private:
 
 	void Print(std::string msg) const;
 
-	std::wstring	title;
+	// Window handle
+	EGLNativeWindowType	hWnd;
 
-	bool	quit;
+	EGLContext			eglContext;
+	EGLDisplay			eglDisplay;
+	EGLSurface			eglSurface;
+
+	// Window width
+	GLint				width;
+	// Window height
+	GLint				height;
+
+	std::wstring		title;
+
+	bool				quit;
 };
 
 #endif // __GLES_INIT_H__

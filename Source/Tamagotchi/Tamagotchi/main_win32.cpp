@@ -1,3 +1,5 @@
+#include "..\Engine\EngineStd.h"
+
 #include <windows.h>
 #include "gles_init_win32.h"
 #include "..\Engine\EngineMain.h"
@@ -8,7 +10,7 @@ void ESCALLBACK OnRender(ESContext *esContext)
 {
 	g_engine->FrameRender();
 
-	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
+	eglSwapBuffers(esContext->GetDisplay(), esContext->GetSurface());
 }
 
 void ESCALLBACK OnUpdate(ESContext *esContext, float deltaTime)
@@ -43,7 +45,7 @@ INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,
 
 	g_engine = new TamagotchiEngine();
 
-	if (g_engine->Init(es.width, es.height))
+	if (g_engine->Init(es.GetWidth(), es.GetHeight()))
 	{
 		es.renderFunc	= OnRender;
 		es.updateFunc	= OnUpdate;

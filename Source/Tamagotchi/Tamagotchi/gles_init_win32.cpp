@@ -22,7 +22,7 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				esContext->renderFunc(esContext);
 			}
 
-			ValidateRect(esContext->hWnd, NULL);
+			ValidateRect(esContext->GetHwnd(), NULL);
 		}
 		
 		break;

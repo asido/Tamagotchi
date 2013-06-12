@@ -9,6 +9,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\ResourceMgr">
+      <UniqueIdentifier>{f25b2e21-6a4e-4184-8116-876816af3df4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Engine\EngineStd.h">
@@ -17,12 +20,42 @@
     <ClInclude Include="..\Engine\EngineMain.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\StringUtilities.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Logger.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceMgr\XMLResource.h">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceMgr\ResourceMgr.h">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Renderer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\EngineStd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Engine\EngineMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\StringUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceMgr\XMLResource.cpp">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceMgr\ResourceMgr.cpp">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

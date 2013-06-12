@@ -10,6 +10,8 @@
 #include <OpenGLES/ES2/glext.h>
 #endif // __WIN32
 
+class IRenderer;
+
 class TamagotchiEngine
 {
 public:
@@ -21,6 +23,8 @@ public:
 	void FrameUpdate(float delta);
 	void FrameRender();
 
+	std::shared_ptr<IRenderer> GetRenderer() { return this->renderer; }
+
 private:
 	GLuint LoadShader(GLenum type, const char *shaderSrc);
 
@@ -28,6 +32,8 @@ private:
 	GLint height;
 
 	GLint shaderProgram;
+
+	std::shared_ptr<IRenderer> renderer;
 };
 
 #endif // __ENGINEMAIN_H__
