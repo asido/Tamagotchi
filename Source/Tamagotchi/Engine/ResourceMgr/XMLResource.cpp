@@ -1,6 +1,8 @@
-#include "EngineStd.h"
-
 #include "XMLResource.h"
+
+//-----------------------------------------------------------------------------------------------------------
+//  class XMLResourceExtraData
+//-----------------------------------------------------------------------------------------------------------
 
 void XMLResourceExtraData::ParseXML(char *rawBuffer)
 {
@@ -11,6 +13,11 @@ XMLElement *XMLResourceExtraData::GetRoot()
 {
 	return this->xmlDocument.RootElement();
 }
+
+
+//-----------------------------------------------------------------------------------------------------------
+//  class XMLResourceLoader
+//-----------------------------------------------------------------------------------------------------------
 
 bool XMLResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, std::shared_ptr<ResourceHandle> handle)
 {

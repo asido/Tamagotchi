@@ -1,5 +1,3 @@
-#include "EngineStd.h"
-
 #include "StringUtilities.h"
 
 // The following function was found on http://xoomer.virgilio.it/acantato/dev/wildcard/wildmatch.html,
@@ -19,7 +17,7 @@ new_segment:
 	if (*pat == '*')
 	{
 		star = true;
-
+		
 		do {
 			pat++;
 		} while (*pat == '*');

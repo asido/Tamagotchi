@@ -14,12 +14,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Engine\EngineStd.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Engine\EngineMain.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Engine\StringUtilities.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -35,14 +29,17 @@
     <ClInclude Include="..\Engine\Renderer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\common.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\TamagotchiEngine.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceMgr\ZipFile.h">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Engine\EngineStd.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Engine\EngineMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,6 +54,12 @@
     </ClCompile>
     <ClCompile Include="..\Engine\Renderer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\TamagotchiEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceMgr\ZipFile.cpp">
+      <Filter>Source Files\ResourceMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

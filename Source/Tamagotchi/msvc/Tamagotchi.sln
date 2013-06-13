@@ -8,7 +8,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tamagotchi", "Tamagotchi.vc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine.vcxproj", "{A5984C11-52F7-49E7-B3A7-63A7135484AA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineTests", "..\EngineTests\EngineTests.vcxproj", "{84E3E0D9-31DD-447D-A540-A3D99394DD3E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineTests", "EngineTests.vcxproj", "{160D053D-BC68-4F29-A678-343797567AF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +24,10 @@ Global
 		{A5984C11-52F7-49E7-B3A7-63A7135484AA}.Debug|Win32.Build.0 = Debug|Win32
 		{A5984C11-52F7-49E7-B3A7-63A7135484AA}.Release|Win32.ActiveCfg = Release|Win32
 		{A5984C11-52F7-49E7-B3A7-63A7135484AA}.Release|Win32.Build.0 = Release|Win32
-		{84E3E0D9-31DD-447D-A540-A3D99394DD3E}.Debug|Win32.ActiveCfg = Debug|Win32
-		{84E3E0D9-31DD-447D-A540-A3D99394DD3E}.Debug|Win32.Build.0 = Debug|Win32
-		{84E3E0D9-31DD-447D-A540-A3D99394DD3E}.Release|Win32.ActiveCfg = Release|Win32
-		{84E3E0D9-31DD-447D-A540-A3D99394DD3E}.Release|Win32.Build.0 = Release|Win32
+		{160D053D-BC68-4F29-A678-343797567AF8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{160D053D-BC68-4F29-A678-343797567AF8}.Debug|Win32.Build.0 = Debug|Win32
+		{160D053D-BC68-4F29-A678-343797567AF8}.Release|Win32.ActiveCfg = Release|Win32
+		{160D053D-BC68-4F29-A678-343797567AF8}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

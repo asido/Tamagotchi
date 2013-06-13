@@ -1,6 +1,6 @@
-#include "EngineStd.h"
-
 #include "ResourceMgr.h"
+#include "ZipFile.h"
+#include "XMLResource.h"
 #include "../StringUtilities.h"
 
 //-----------------------------------------------------------------------------------------------------------
@@ -42,14 +42,18 @@ ResourceMgr::~ResourceMgr()
 
 bool ResourceMgr::Init()
 {
-	TG_ASSERT(this->file);
+	if (!this->file)
+	{
+		return false;
+	}
 
 	if (!this->file->Open())
 	{
 		return false;
 	}
 
-	//RegisterLoader(std::shared_ptr<IResourceLoader>(T_NEW DefaultResourceLoader()));
+	// Register all resource loaders.
+	RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW XMLResourceLoader()));
 
 	return true;
 }

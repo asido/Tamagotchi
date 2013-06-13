@@ -1,8 +1,6 @@
-#include "..\Engine\EngineStd.h"
-
 #include <windows.h>
 #include "gles_init_win32.h"
-#include "..\Engine\EngineMain.h"
+#include "../Engine/TamagotchiEngine.h"
 
 TamagotchiEngine *g_engine;
 

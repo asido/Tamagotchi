@@ -1,5 +1,3 @@
-#include "EngineStd.h"
-
 #include "Renderer.h"
 
 void GLESRenderer::PreRender()
