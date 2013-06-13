@@ -1,6 +1,8 @@
 #include <cctype>
 
 #include "ZipFile.h"
+#include "StringUtilities.h"
+#include "Filesystem.h"
 
 #ifdef _WIN32
 #	define ZLIB_WINAPI
@@ -158,11 +160,12 @@ ZipFile::~ZipFile()
 bool ZipFile::Init(const std::string &resFileName)
 {
 	End();
-
-	fopen_s(&this->file, resFileName.c_str(), "rb");
+    
+    const std::string absoluteFilename = Filesystem::GetRootPath() + resFileName;
+	this->file = fopen(absoluteFilename.c_str(), "rb");
 	if (!this->file)
 	{
-		TG_ERROR("Can't open a file: %s", resFileName);
+		TG_ERROR("Can't open a file: %s", absoluteFilename);
 		return false;
 	}
 
@@ -227,10 +230,11 @@ bool ZipFile::Init(const std::string &resFileName)
 				}
 			}
 
-			char fileName[_MAX_PATH];
+			char fileName[PATH_MAX];
+            memset(fileName, 0, PATH_MAX);
 			memcpy(fileName, pfh, fh.fnameLen);
 			fileName[fh.fnameLen] = 0;
-			_strlwr_s(fileName, _MAX_PATH);
+            StringUtilities::ToLower(fileName);
 			std::string spath = fileName;
 			this->zipContentsMap[spath] = i;
 
@@ -264,7 +268,7 @@ std::string ZipFile::GetFilename(int i) const
 
 	if (i >= 0 && i < this->entryCnt)
 	{
-		char pszDest[_MAX_PATH];
+		char pszDest[PATH_MAX];
 		memcpy(pszDest, this->papDir[i]->GetName(), this->papDir[i]->fnameLen);
 		pszDest[this->papDir[i]->fnameLen] = '\0';
 		fileName = pszDest;

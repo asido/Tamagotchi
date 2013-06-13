@@ -3,6 +3,8 @@
 #include "ResourceMgr/ResourceMgr.h"
 #include "ResourceMgr/ZipFile.h"
 
+#include "TestMain.h"
+
 CPPUNIT_TEST_SUITE_REGISTRATION(ResourceMgrTest);
 
 void ResourceMgrTest::setUp()

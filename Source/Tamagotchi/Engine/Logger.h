@@ -3,8 +3,8 @@
 
 #include "common.h"
 
-#define TG_ASSERT(x)
-#define TG_ERROR(x)
-#define TG_WARNING(x)
+#define TG_ASSERT(x, ...)
+#define TG_ERROR(x, ...)
+#define TG_WARNING(x, ...)
 
 #endif

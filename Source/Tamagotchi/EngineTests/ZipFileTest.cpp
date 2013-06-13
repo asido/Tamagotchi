@@ -1,13 +1,14 @@
 #include <cppunit/config/SourcePrefix.h>
 #include "ZipFileTest.h"
 #include "ResourceMgr/ZipFile.h"
+#include "TestMain.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(ZipFileTest);
 
 void ZipFileTest::setUp()
 {
 	this->zipFile = new ZipFile();
-	CPPUNIT_ASSERT(this->zipFile->Init("ZipFileTest.zip"));
+    CPPUNIT_ASSERT(this->zipFile->Init("ZipFileTest.zip"));
 }
 
 void ZipFileTest::tearDown()

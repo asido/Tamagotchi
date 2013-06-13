@@ -52,3 +52,21 @@ test_match:
 
 	return true;
 }
+
+char* StringUtilities::ToLower(char *c)
+{
+    if (c == NULL)
+    {
+        return NULL;
+    }
+    
+    char *str = c;
+    
+    while (*str)
+    {
+        *str = std::tolower(*str);
+        ++str;
+    }
+    
+    return c;
+}

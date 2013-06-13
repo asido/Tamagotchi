@@ -5,7 +5,7 @@
 #include <cppunit/TestResultCollector.h>
 #include <cppunit/TestRunner.h>
 
-int main (int argc, char *argv[])
+const std::string TestMain()
 {
 	// Create the event manager and test controller.
 	CPPUNIT_NS::TestResult controller;
@@ -23,11 +23,11 @@ int main (int argc, char *argv[])
 	runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
 	runner.run(controller);
 
-	// Print test in a compiler compatible format.
-	CPPUNIT_NS::CompilerOutputter outputter(&result, CPPUNIT_NS::stdCOut());
+	// Grab the output.
+    std::stringbuf buffer;
+    std::ostream os(&buffer);
+	CPPUNIT_NS::CompilerOutputter outputter(&result, os);
 	outputter.write();
 
-	getchar();
-
-	return result.wasSuccessful() ? 0 : 1;
+	return buffer.str();
 }

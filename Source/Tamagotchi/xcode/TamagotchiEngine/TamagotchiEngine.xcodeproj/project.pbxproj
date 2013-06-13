@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		700FC3AC1769F7BA00D3DF9A /* ResourceMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700FC39C1769F79B00D3DF9A /* ResourceMgr.cpp */; };
+		700FC3AD1769F7BA00D3DF9A /* XMLResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700FC39E1769F79B00D3DF9A /* XMLResource.cpp */; };
+		700FC3AE1769F7BA00D3DF9A /* ZipFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700FC3A01769F79B00D3DF9A /* ZipFile.cpp */; };
+		700FC3AF1769F7BA00D3DF9A /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700FC3A41769F79B00D3DF9A /* Logger.cpp */; };
+		700FC3B01769F7BA00D3DF9A /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700FC3A61769F79B00D3DF9A /* Renderer.cpp */; };
+		700FC3B11769F7BA00D3DF9A /* StringUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700FC3A81769F79B00D3DF9A /* StringUtilities.cpp */; };
+		700FC3B21769F7BA00D3DF9A /* TamagotchiEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700FC3AA1769F79B00D3DF9A /* TamagotchiEngine.cpp */; };
 		705FB98717678001003924B8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705FB98617678001003924B8 /* OpenGLES.framework */; };
-		705FB98D17678236003924B8 /* EngineMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 705FB98217677F8C003924B8 /* EngineMain.cpp */; };
+		70DA97BB176A520200DFD277 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DA97BA176A520200DFD277 /* CoreFoundation.framework */; };
+		70DA97C4176A5E1000DFD277 /* Filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70DA97C1176A5DD100DFD277 /* Filesystem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +32,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		700FC39C1769F79B00D3DF9A /* ResourceMgr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceMgr.cpp; sourceTree = "<group>"; };
+		700FC39D1769F79B00D3DF9A /* ResourceMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResourceMgr.h; sourceTree = "<group>"; };
+		700FC39E1769F79B00D3DF9A /* XMLResource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XMLResource.cpp; sourceTree = "<group>"; };
+		700FC39F1769F79B00D3DF9A /* XMLResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMLResource.h; sourceTree = "<group>"; };
+		700FC3A01769F79B00D3DF9A /* ZipFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZipFile.cpp; sourceTree = "<group>"; };
+		700FC3A11769F79B00D3DF9A /* ZipFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZipFile.h; sourceTree = "<group>"; };
+		700FC3A21769F79B00D3DF9A /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = common.h; path = ../../../Engine/common.h; sourceTree = "<group>"; };
+		700FC3A31769F79B00D3DF9A /* EngineStd.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EngineStd.cpp; path = ../../../Engine/EngineStd.cpp; sourceTree = "<group>"; };
+		700FC3A41769F79B00D3DF9A /* Logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Logger.cpp; path = ../../../Engine/Logger.cpp; sourceTree = "<group>"; };
+		700FC3A51769F79B00D3DF9A /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logger.h; path = ../../../Engine/Logger.h; sourceTree = "<group>"; };
+		700FC3A61769F79B00D3DF9A /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Renderer.cpp; path = ../../../Engine/Renderer.cpp; sourceTree = "<group>"; };
+		700FC3A71769F79B00D3DF9A /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Renderer.h; path = ../../../Engine/Renderer.h; sourceTree = "<group>"; };
+		700FC3A81769F79B00D3DF9A /* StringUtilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StringUtilities.cpp; path = ../../../Engine/StringUtilities.cpp; sourceTree = "<group>"; };
+		700FC3A91769F79B00D3DF9A /* StringUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StringUtilities.h; path = ../../../Engine/StringUtilities.h; sourceTree = "<group>"; };
+		700FC3AA1769F79B00D3DF9A /* TamagotchiEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TamagotchiEngine.cpp; path = ../../../Engine/TamagotchiEngine.cpp; sourceTree = "<group>"; };
+		700FC3AB1769F79B00D3DF9A /* TamagotchiEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TamagotchiEngine.h; path = ../../../Engine/TamagotchiEngine.h; sourceTree = "<group>"; };
 		705FB96B17677F20003924B8 /* libTamagotchiEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTamagotchiEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		705FB98217677F8C003924B8 /* EngineMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EngineMain.cpp; path = ../../../Engine/EngineMain.cpp; sourceTree = "<group>"; };
 		705FB98617678001003924B8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		705FB98C17678232003924B8 /* EngineMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EngineMain.h; path = ../../../Engine/EngineMain.h; sourceTree = "<group>"; };
+		70DA97BA176A520200DFD277 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		70DA97BD176A5A1F00DFD277 /* Filesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filesystem.h; sourceTree = "<group>"; };
+		70DA97C1176A5DD100DFD277 /* Filesystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Filesystem.cpp; sourceTree = "<group>"; };
+		70DA97C3176A5DD100DFD277 /* Filesystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Filesystem.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70DA97BB176A520200DFD277 /* CoreFoundation.framework in Frameworks */,
 				705FB98717678001003924B8 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,6 +69,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		700FC39B1769F79B00D3DF9A /* ResourceMgr */ = {
+			isa = PBXGroup;
+			children = (
+				700FC39C1769F79B00D3DF9A /* ResourceMgr.cpp */,
+				700FC39D1769F79B00D3DF9A /* ResourceMgr.h */,
+				700FC39E1769F79B00D3DF9A /* XMLResource.cpp */,
+				700FC39F1769F79B00D3DF9A /* XMLResource.h */,
+				700FC3A01769F79B00D3DF9A /* ZipFile.cpp */,
+				700FC3A11769F79B00D3DF9A /* ZipFile.h */,
+				70DA97BD176A5A1F00DFD277 /* Filesystem.h */,
+			);
+			name = ResourceMgr;
+			path = ../../../Engine/ResourceMgr;
+			sourceTree = "<group>";
+		};
 		705FB96217677F20003924B8 = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +104,18 @@
 		705FB97017677F20003924B8 /* TamagotchiEngine */ = {
 			isa = PBXGroup;
 			children = (
-				705FB98217677F8C003924B8 /* EngineMain.cpp */,
-				705FB98C17678232003924B8 /* EngineMain.h */,
+				70DA97BF176A5DD000DFD277 /* arch */,
+				700FC39B1769F79B00D3DF9A /* ResourceMgr */,
+				700FC3A21769F79B00D3DF9A /* common.h */,
+				700FC3A31769F79B00D3DF9A /* EngineStd.cpp */,
+				700FC3A41769F79B00D3DF9A /* Logger.cpp */,
+				700FC3A51769F79B00D3DF9A /* Logger.h */,
+				700FC3A61769F79B00D3DF9A /* Renderer.cpp */,
+				700FC3A71769F79B00D3DF9A /* Renderer.h */,
+				700FC3A81769F79B00D3DF9A /* StringUtilities.cpp */,
+				700FC3A91769F79B00D3DF9A /* StringUtilities.h */,
+				700FC3AA1769F79B00D3DF9A /* TamagotchiEngine.cpp */,
+				700FC3AB1769F79B00D3DF9A /* TamagotchiEngine.h */,
 			);
 			path = TamagotchiEngine;
 			sourceTree = "<group>";
@@ -71,9 +123,36 @@
 		705FB98817678010003924B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70DA97BA176A520200DFD277 /* CoreFoundation.framework */,
 				705FB98617678001003924B8 /* OpenGLES.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70DA97BF176A5DD000DFD277 /* arch */ = {
+			isa = PBXGroup;
+			children = (
+				70DA97C0176A5DD100DFD277 /* mac */,
+				70DA97C2176A5DD100DFD277 /* win32 */,
+			);
+			name = arch;
+			path = ../../../Engine/arch;
+			sourceTree = "<group>";
+		};
+		70DA97C0176A5DD100DFD277 /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				70DA97C1176A5DD100DFD277 /* Filesystem.cpp */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
+		70DA97C2176A5DD100DFD277 /* win32 */ = {
+			isa = PBXGroup;
+			children = (
+				70DA97C3176A5DD100DFD277 /* Filesystem.cpp */,
+			);
+			path = win32;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +206,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				705FB98D17678236003924B8 /* EngineMain.cpp in Sources */,
+				70DA97C4176A5E1000DFD277 /* Filesystem.cpp in Sources */,
+				700FC3AC1769F7BA00D3DF9A /* ResourceMgr.cpp in Sources */,
+				700FC3AD1769F7BA00D3DF9A /* XMLResource.cpp in Sources */,
+				700FC3AE1769F7BA00D3DF9A /* ZipFile.cpp in Sources */,
+				700FC3AF1769F7BA00D3DF9A /* Logger.cpp in Sources */,
+				700FC3B01769F7BA00D3DF9A /* Renderer.cpp in Sources */,
+				700FC3B11769F7BA00D3DF9A /* StringUtilities.cpp in Sources */,
+				700FC3B21769F7BA00D3DF9A /* TamagotchiEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +279,20 @@
 				DSTROOT = /tmp/TamagotchiEngine.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				OTHER_LDFLAGS = "-ObjC";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../3rdParty/tinyxml2/include",
+					"$(SRCROOT)/../../../3rdParty/zlib/include",
+					"$(SRCROOT)/../../Engine/Platform/ios",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../3rdParty/tinyxml2",
+					"$(SRCROOT)/../../../3rdParty/zlib",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-ltinyxml2",
+				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -206,7 +305,20 @@
 				DSTROOT = /tmp/TamagotchiEngine.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				OTHER_LDFLAGS = "-ObjC";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../3rdParty/tinyxml2/include",
+					"$(SRCROOT)/../../../3rdParty/zlib/include",
+					"$(SRCROOT)/../../Engine/Platform/ios",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../3rdParty/tinyxml2",
+					"$(SRCROOT)/../../../3rdParty/zlib",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-ltinyxml2",
+				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -232,6 +344,7 @@
 				705FB97B17677F20003924B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

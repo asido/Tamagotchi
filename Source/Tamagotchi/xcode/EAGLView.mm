@@ -10,7 +10,7 @@
 #import <OpenGLES/EAGLDrawable.h>
 #import "EAGLView.h"
 
-#include "../Engine/EngineMain.h"
+#include "../Engine/TamagotchiEngine.h"
 
 @interface EAGLView()
 @property (strong, nonatomic) EAGLContext   *context;
@@ -110,7 +110,7 @@
 {
     [EAGLContext setCurrentContext:context];
     
-    tamagotchiEngine->OnRender();
+    tamagotchiEngine->FrameRender();
     
     glBindRenderbuffer(GL_RENDERBUFFER, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER];

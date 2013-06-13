@@ -20,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		700FC413176A1F0800D3DF9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 700FC40F176A1F0700D3DF9A /* TamagotchiEngineTest_iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 700FC3E6176A1F0600D3DF9A;
+			remoteInfo = TamagotchiEngineTest_iOS;
+		};
 		705FB98017677F21003924B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 705FB97C17677F20003924B8 /* TamagotchiEngine.xcodeproj */;
@@ -42,6 +49,7 @@
 		70064B1C176771F60034A71E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		70064B22176771F60034A71E /* Tamagotchi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tamagotchi-Info.plist"; sourceTree = "<group>"; };
 		70064B28176771F60034A71E /* Tamagotchi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tamagotchi-Prefix.pch"; sourceTree = "<group>"; };
+		700FC40F176A1F0700D3DF9A /* TamagotchiEngineTest_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TamagotchiEngineTest_iOS.xcodeproj; path = TamagotchiEngineTest_iOS/TamagotchiEngineTest_iOS.xcodeproj; sourceTree = "<group>"; };
 		705FB93C176772DC003924B8 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = SOURCE_ROOT; };
 		705FB93E1767734E003924B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		705FB94017677352003924B8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -73,6 +81,7 @@
 		70064B0E176771F60034A71E = {
 			isa = PBXGroup;
 			children = (
+				700FC40F176A1F0700D3DF9A /* TamagotchiEngineTest_iOS.xcodeproj */,
 				705FB97C17677F20003924B8 /* TamagotchiEngine.xcodeproj */,
 				70064B20176771F60034A71E /* Tamagotchi */,
 				70064B19176771F60034A71E /* Frameworks */,
@@ -121,6 +130,14 @@
 				70064B28176771F60034A71E /* Tamagotchi-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		700FC410176A1F0700D3DF9A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				700FC414176A1F0800D3DF9A /* TamagotchiEngineTest_iOS.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		705FB97D17677F20003924B8 /* Products */ = {
@@ -176,6 +193,10 @@
 					ProductGroup = 705FB97D17677F20003924B8 /* Products */;
 					ProjectRef = 705FB97C17677F20003924B8 /* TamagotchiEngine.xcodeproj */;
 				},
+				{
+					ProductGroup = 700FC410176A1F0700D3DF9A /* Products */;
+					ProjectRef = 700FC40F176A1F0700D3DF9A /* TamagotchiEngineTest_iOS.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -185,6 +206,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		700FC414176A1F0800D3DF9A /* TamagotchiEngineTest_iOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = TamagotchiEngineTest_iOS.app;
+			remoteRef = 700FC413176A1F0800D3DF9A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		705FB98117677F21003924B8 /* libTamagotchiEngine.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;

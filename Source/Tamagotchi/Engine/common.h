@@ -3,7 +3,6 @@
 
 // C includes
 #include <stdlib.h>
-#include <malloc.h>
 #include <memory.h>
 
 // C++ includes
