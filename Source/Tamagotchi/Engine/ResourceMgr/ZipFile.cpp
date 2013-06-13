@@ -1,4 +1,6 @@
 #include <cctype>
+#include <cstdio>
+#include <limits>
 
 #include "ZipFile.h"
 #include "StringUtilities.h"
@@ -221,7 +223,6 @@ bool ZipFile::Init(const std::string &resFileName)
 			pfh += sizeof(fh);
 
 			// Convert UNIX slashes to DOS backslashes.
-			// TODO: this should not be done on iOS.
 			for (int j = 0; j < fh.fnameLen; ++j)
 			{
 				if (pfh[j] == '/')

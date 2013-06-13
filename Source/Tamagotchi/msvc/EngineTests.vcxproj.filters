@@ -11,9 +11,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\EngineTests\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\EngineTests\ResourceMgrTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -21,6 +18,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\EngineTests\ZipFileTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EngineTests\TestMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EngineTests\main_win32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,6 +35,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\EngineTests\ResourceMgrTest.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EngineTests\TestMain.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

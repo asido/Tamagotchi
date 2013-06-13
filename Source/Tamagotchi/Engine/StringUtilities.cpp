@@ -1,3 +1,4 @@
+#include <cctype>
 #include "StringUtilities.h"
 
 // The following function was found on http://xoomer.virgilio.it/acantato/dev/wildcard/wildmatch.html,

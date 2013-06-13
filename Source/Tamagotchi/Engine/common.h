@@ -36,6 +36,10 @@
 #	define SAFE_DELETE_ARRAY(x)	if (x) delete[] x; x = NULL;
 #endif
 
+#ifdef _WIN32
+#	define PATH_MAX MAX_PATH
+#endif
+
 #define B_TO_KB(a)      ((a) / 1024.0f)
 #define B_TO_MB(a)      (B_TO_KB(a) / 1024.0f)
 #define B_TO_GB(a)      (B_TO_MB(a) / 1024.0f)

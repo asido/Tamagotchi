@@ -12,6 +12,12 @@
     <Filter Include="Source Files\ResourceMgr">
       <UniqueIdentifier>{f25b2e21-6a4e-4184-8116-876816af3df4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\arch">
+      <UniqueIdentifier>{9916d8fb-6d29-4f9a-8618-52a6f423bfe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\arch\win32">
+      <UniqueIdentifier>{cb590965-e4be-4700-883b-a6019723e9d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Engine\StringUtilities.h">
@@ -38,6 +44,9 @@
     <ClInclude Include="..\Engine\ResourceMgr\ZipFile.h">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\ResourceMgr\Filesystem.h">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -60,6 +69,9 @@
     </ClCompile>
     <ClCompile Include="..\Engine\ResourceMgr\ZipFile.cpp">
       <Filter>Source Files\ResourceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\arch\win32\Filesystem.cpp">
+      <Filter>Source Files\arch\win32</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
