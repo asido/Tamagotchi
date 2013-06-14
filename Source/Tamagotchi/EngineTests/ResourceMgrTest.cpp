@@ -2,7 +2,7 @@
 #include "ResourceMgrTest.h"
 #include "ResourceMgr/ResourceMgr.h"
 #include "ResourceMgr/ZipFile.h"
-
+#include "defines.h"
 #include "TestMain.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(ResourceMgrTest);
@@ -32,4 +32,8 @@ void ResourceMgrTest::GetHandleTest()
 	Resource r3("unexisting.file");
 	handle = this->resourceMgr->GetHandle(r3);
 	CPPUNIT_ASSERT(!handle);
+
+	Resource r4("1.png");
+	handle = this->resourceMgr->GetHandle(r4);
+	CPPUNIT_ASSERT(handle);
 }

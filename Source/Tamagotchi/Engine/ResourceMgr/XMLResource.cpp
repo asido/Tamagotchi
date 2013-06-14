@@ -1,4 +1,5 @@
 #include "XMLResource.h"
+#include "defines.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class XMLResourceExtraData

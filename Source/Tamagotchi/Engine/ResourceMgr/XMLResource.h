@@ -1,11 +1,13 @@
 #ifndef __XMLRESOURCE_H__
 #define __XMLRESOURCE_H__
 
-#include "../common.h"
-#include "ResourceMgr.h"
+#include <string>
+#include <memory>
 
-#include "tinyxml2.h"
+#include <tinyxml2.h>
 using namespace tinyxml2;
+
+#include "ResourceMgr.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class XMLResourceExtraData
@@ -32,7 +34,6 @@ class XMLResourceLoader : public IResourceLoader
 public:
 	virtual bool			UseRawFile() override { return false; }
 	virtual bool			DiscardRawBufferAfterLoad() override { return true; }
-	//virtual bool			AddNullZero() override { return true; }
 	virtual unsigned int	GetLoadedResourceSize(char *rawBuffer, unsigned int rawSize) override { return rawSize; }
 	virtual bool			LoadResource(char *rawBuffer, unsigned int rawSize, std::shared_ptr<ResourceHandle> handle) override;
 	virtual std::string		GetPattern() override { return "*.xml"; }

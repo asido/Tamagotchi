@@ -1,7 +1,10 @@
 #ifndef __RESOURCEMGR_H__
 #define __RESOURCEMGR_H__
 
-#include "../common.h"
+#include <memory>
+#include <string>
+#include <list>
+#include <map>
 
 class ResourceMgr;
 class ZipFile;

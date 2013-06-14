@@ -1,7 +1,7 @@
 #ifndef __STRINGUTILITIES_H__
 #define __STRINGUTILITIES_H__
 
-#include "common.h"
+#include <string>
 
 class StringUtilities
 {

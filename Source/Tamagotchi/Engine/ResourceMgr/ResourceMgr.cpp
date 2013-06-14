@@ -1,7 +1,10 @@
 #include "ResourceMgr.h"
 #include "ZipFile.h"
 #include "XMLResource.h"
-#include "../StringUtilities.h"
+#include "TextureResource.h"
+#include "StringUtilities.h"
+#include "defines.h"
+#include "Logger.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ResourceHandle
@@ -54,6 +57,7 @@ bool ResourceMgr::Init()
 
 	// Register all resource loaders.
 	RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW XMLResourceLoader()));
+	RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW TextureResourceLoader()));
 
 	return true;
 }

@@ -1,16 +1,9 @@
 #ifndef __TAMAGOTCHIENGINE_H__
 #define __TAMAGOTCHIENGINE_H__
 
-#ifdef _WIN32
-#include <GLES2/gl2.h>
-#include <GLES2/gl2ext.h>
-#include <GLES2/gl2platform.h>
-#elif defined __APPLE__
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
-#endif // __WIN32
-
-#include "common.h"
+#include <memory>
+#include "defines.h"
+#include "GLES.h"
 
 class IRenderer;
 

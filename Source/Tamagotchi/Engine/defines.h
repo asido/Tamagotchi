@@ -1,23 +1,7 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-// C includes
-#include <stdlib.h>
-#include <memory.h>
-
-// C++ includes
-#include <memory>
-#include <algorithm>
-#include <string>
-#include <list>
-#include <vector>
-#include <queue>
-#include <map>
-
-// Local project includes
-#include "Logger.h"
-
-#ifdef _WIN32
+#ifdef WIN32
 #	if defined(_DEBUG)
 #		define TG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
 #	else
@@ -25,7 +9,7 @@
 #	endif
 #else
 #	define TG_NEW new
-#endif // _WIN32
+#endif // WIN32
 
 
 #if !defined(SAFE_DELETE)
@@ -36,8 +20,8 @@
 #	define SAFE_DELETE_ARRAY(x)	if (x) delete[] x; x = NULL;
 #endif
 
-#ifdef _WIN32
-#	define PATH_MAX MAX_PATH
+#ifndef PATH_MAX
+#	define PATH_MAX 1024
 #endif
 
 #define B_TO_KB(a)      ((a) / 1024.0f)

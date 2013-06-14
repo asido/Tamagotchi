@@ -1,15 +1,17 @@
 #include <cctype>
 #include <cstdio>
+#include <string>
 #include <limits>
+#include <memory>
+#include <algorithm>
+
+#include <zlib.h>
 
 #include "ZipFile.h"
 #include "StringUtilities.h"
 #include "Filesystem.h"
-
-#ifdef _WIN32
-#	define ZLIB_WINAPI
-#endif
-#include "zlib.h"
+#include "defines.h"
+#include "Logger.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ResourceZipFile

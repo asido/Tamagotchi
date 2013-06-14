@@ -1,7 +1,8 @@
 #ifndef __ZIPFILE_H__
 #define __ZIPFILE_H__
 
-#include "../common.h"
+#include <string>
+#include <memory>
 #include "ResourceMgr.h"
 
 //-----------------------------------------------------------------------------------------------------------
