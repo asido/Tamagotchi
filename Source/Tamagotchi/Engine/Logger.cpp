@@ -283,7 +283,7 @@ void LogMgr::GetOutputBuffer(std::string &outputBuffer, const std::string &tag, 
 	}
 	if (lineNum != 0)
 	{
-		outputBuffer += "\nLine: ";
+		outputBuffer += ":";
 		char lineNumBuffer[11];
 		memset(lineNumBuffer, 0, sizeof(char));
 		outputBuffer += _itoa(lineNum, lineNumBuffer, 10);
