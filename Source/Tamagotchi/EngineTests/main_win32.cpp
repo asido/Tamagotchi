@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 	const std::string result = TestMain();
 	std::cout << result;
 
-	getchar();
+	(void)getchar();
 
 	return 0;
 }
