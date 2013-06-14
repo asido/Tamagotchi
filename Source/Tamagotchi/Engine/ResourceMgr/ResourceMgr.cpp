@@ -74,7 +74,7 @@ std::shared_ptr<ResourceHandle> ResourceMgr::GetHandle(const Resource &r)
 	if (!handle)
 	{
 		handle = Load(r);
-		TG_ASSERT(handle);
+		LogAssert(handle);
 	}
 	else
 	{
@@ -148,14 +148,14 @@ std::shared_ptr<ResourceHandle> ResourceMgr::Load(const Resource &r)
 
 	if (!loader)
 	{
-		TG_ERROR("loader for file '" + r.GetName() + "' not found");
+		LogError("loader for file '" + r.GetName() + "' not found");
 		return handle;
 	}
 
 	int rawSize = this->file->GetRawResourceSize(r);
 	if (rawSize < 0)
 	{
-		TG_ERROR("Resource not found: " + r.GetName());
+		LogError("Resource not found: " + r.GetName());
 		return handle;
 	}
 

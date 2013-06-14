@@ -5,7 +5,6 @@
 #include <memory>
 
 #include <tinyxml2.h>
-using namespace tinyxml2;
 
 #include "ResourceMgr.h"
 
@@ -16,12 +15,12 @@ using namespace tinyxml2;
 class XMLResourceExtraData : public IResourceExtraData
 {
 public:
-	virtual std::string ToString() override { return "XMLResourceExtraData"; }
-	void				ParseXML(char *rawBuffer);
-	XMLElement *		GetRoot();
+	virtual std::string		ToString() override { return "XMLResourceExtraData"; }
+	void					ParseXML(char *rawBuffer);
+	tinyxml2::XMLElement*	GetRoot();
 
 private:
-	XMLDocument xmlDocument;
+	tinyxml2::XMLDocument	xmlDocument;
 };
 
 

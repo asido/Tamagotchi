@@ -10,7 +10,7 @@ void XMLResourceExtraData::ParseXML(char *rawBuffer)
 	this->xmlDocument.Parse(rawBuffer);
 }
 
-XMLElement *XMLResourceExtraData::GetRoot()
+tinyxml2::XMLElement *XMLResourceExtraData::GetRoot()
 {
 	return this->xmlDocument.RootElement();
 }
@@ -29,7 +29,6 @@ bool XMLResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, std:
 
 	std::shared_ptr<XMLResourceExtraData> extraData = std::shared_ptr<XMLResourceExtraData>(TG_NEW XMLResourceExtraData());
 	extraData->ParseXML(rawBuffer);
-
 	handle->SetExtra(std::shared_ptr<XMLResourceExtraData>(extraData));
 
 	return true;

@@ -16,7 +16,7 @@
 			GLenum error = glGetError();			\
 			if (error != GL_NO_ERROR)				\
 			{										\
-				TG_ERROR("GL Error: 0x%X", error);	\
+				LogError("GL Error: 0x%X", error);	\
 			}										\
 		} while (0)
 #else

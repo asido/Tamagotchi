@@ -63,21 +63,21 @@ bool TextureResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, 
 	memcpy(signature, rawBuffer, PNG_SIGNATURE_LENGTH);
 	if (!png_check_sig(signature, PNG_SIGNATURE_LENGTH))
 	{
-		TG_ERROR("signature mismatch.");
+		LogError("signature mismatch.");
 		return false;
 	}
 
 	pngPtr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 	if (!pngPtr)
 	{
-		TG_ERROR("png_create_read_struct() has failed.");
+		LogError("png_create_read_struct() has failed.");
 		return false;
 	}
 
 	infoPtr = png_create_info_struct(pngPtr);
 	if (!infoPtr)
 	{
-		TG_ERROR("png_create_info_struct() has failed.");
+		LogError("png_create_info_struct() has failed.");
 		png_destroy_read_struct(&pngPtr, NULL, NULL);
 		return false;
 	}
@@ -93,7 +93,7 @@ bool TextureResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, 
 
 	if (setjmp(png_jmpbuf(pngPtr)))
 	{
-		TG_ERROR("Error reading png data.");
+		LogError("Error reading png data.");
 		png_destroy_read_struct(&pngPtr, &infoPtr, 0);
 		SAFE_DELETE_ARRAY(decompressedBuffer);
 		SAFE_DELETE_ARRAY(pngRowPointers);
@@ -118,12 +118,12 @@ bool TextureResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, 
 		break;
 
 	case PNG_COLOR_TYPE_PALETTE:
-		TG_ERROR("PNG_COLOR_TYPE_PALETTE is not supported.");
+		LogError("PNG_COLOR_TYPE_PALETTE is not supported.");
 		return false;
 		break;
 
 	case PNG_COLOR_TYPE_GRAY:
-		TG_ERROR("PNG_COLOR_TYPE_GRAY is not supported.");
+		LogError("PNG_COLOR_TYPE_GRAY is not supported.");
 		break;
 	}
 

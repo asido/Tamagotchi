@@ -26,7 +26,7 @@ ResourceZipFile::ResourceZipFile(const std::string resFileName)
 bool ResourceZipFile::Open()
 {
 	this->zipFile = std::shared_ptr<ZipFile>(TG_NEW ZipFile());
-	TG_ASSERT(this->zipFile);
+	LogAssert(this->zipFile);
 	return this->zipFile->Init(this->resFilename);
 }
 
@@ -169,7 +169,7 @@ bool ZipFile::Init(const std::string &resFileName)
 	this->file = fopen(absoluteFilename.c_str(), "rb");
 	if (!this->file)
 	{
-		TG_ERROR("Can't open a file: %s", absoluteFilename);
+		LogError("Can't open a file: %s", absoluteFilename);
 		return false;
 	}
 
@@ -184,7 +184,7 @@ bool ZipFile::Init(const std::string &resFileName)
 	// Check signature
 	if (dh.sig != TZipDirHeader::SIGNATURE)
 	{
-		TG_ERROR("dh.sig signature mismatch. Expected: 0x%X. Got: 0x%X", TZipDirHeader::SIGNATURE, dh.sig);
+		LogError("dh.sig signature mismatch. Expected: 0x%X. Got: 0x%X", TZipDirHeader::SIGNATURE, dh.sig);
 		return false;
 	}
 
@@ -195,7 +195,7 @@ bool ZipFile::Init(const std::string &resFileName)
 	this->dirData = TG_NEW char[dh.dirSize + (dh.nDirEntries * sizeof(*this->papDir))];
 	if (!this->dirData)
 	{
-		TG_ERROR("ZipFile::dirData == NULL");
+		LogError("ZipFile::dirData == NULL");
 		return false;
 	}
 	memset(this->dirData, 0, dh.dirSize + (dh.nDirEntries * sizeof(*this->papDir)));
@@ -217,7 +217,7 @@ bool ZipFile::Init(const std::string &resFileName)
 		// Check the directory entry integrity.
 		if (fh.sig != TZipDirFileHeader::SIGNATURE)
 		{
-			TG_ERROR("fh.sig signature mismatch. Expected: 0x%X. Got: 0x%X", TZipDirFileHeader::SIGNATURE, fh.sig);
+			LogError("fh.sig signature mismatch. Expected: 0x%X. Got: 0x%X", TZipDirFileHeader::SIGNATURE, fh.sig);
 			success = false;
 		}
 		else
@@ -296,7 +296,7 @@ bool ZipFile::ReadFile(int i, void *buf)
 {
 	if (buf == NULL || i < 0 || i >= this->entryCnt)
 	{
-		TG_WARNING("bad args.");
+		LogError("bad args.");
 		return false;
 	}
 
@@ -311,7 +311,7 @@ bool ZipFile::ReadFile(int i, void *buf)
 	fread(&h, sizeof(h), 1, this->file);
 	if (h.sig != TZipLocalHeader::SIGNATURE)
 	{
-		TG_ERROR("h.sig signature mismatch. Expected: 0x%X. Got: 0x%X", TZipLocalHeader::SIGNATURE, h.sig);
+		LogError("h.sig signature mismatch. Expected: 0x%X. Got: 0x%X", TZipLocalHeader::SIGNATURE, h.sig);
 		return false;
 	}
 
@@ -326,7 +326,7 @@ bool ZipFile::ReadFile(int i, void *buf)
 	}
 	else if (h.compression != Z_DEFLATED)
 	{
-		TG_ERROR("Unsupported ZIP compression: %d", h.compression);
+		LogError("Unsupported ZIP compression: %d", h.compression);
 		return false;
 	}
 
@@ -334,7 +334,7 @@ bool ZipFile::ReadFile(int i, void *buf)
 	char *pcData = TG_NEW char[h.cSize];
 	if (!pcData)
 	{
-		TG_ERROR("pcData == NULL");
+		LogError("pcData == NULL");
 		return false;
 	}
 
@@ -369,7 +369,7 @@ bool ZipFile::ReadFile(int i, void *buf)
 
 	if (err != Z_OK)
 	{
-		TG_ERROR("decompression has failed. Error: %d", err);
+		LogError("decompression has failed. Error: %d", err);
 		ret = false;
 	}
 
