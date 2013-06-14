@@ -6,8 +6,9 @@
 class StringUtilities
 {
 public:
-	static bool     WildcardMatch(const std::string &pattern, const std::string &string);
-    static char*    ToLower(char *c);
+	static bool			WildcardMatch(const std::string &pattern, const std::string &string);
+	static std::string &ToLower(std::string &str);
+	static std::string	Format(const std::string fmt, ...);
 };
 
 #endif // __STRINGUTILITIES_H__

@@ -233,13 +233,9 @@ bool ZipFile::Init(const std::string &resFileName)
 				}
 			}
 
-			char fileName[PATH_MAX];
-            memset(fileName, 0, PATH_MAX);
-			memcpy(fileName, pfh, fh.fnameLen);
-			fileName[fh.fnameLen] = 0;
-            StringUtilities::ToLower(fileName);
-			std::string spath = fileName;
-			this->zipContentsMap[spath] = i;
+			std::string path(pfh, fh.fnameLen);
+			StringUtilities::ToLower(path);
+			this->zipContentsMap[path] = i;
 
 			// Skip name, extra and comment fields.
 			pfh += fh.fnameLen + fh.extraLen + fh.cmntLen;
@@ -380,7 +376,7 @@ bool ZipFile::ReadFile(int i, void *buf)
 int ZipFile::Find(const std::string &path) const
 {
 	std::string lowerCase = path;
-	std::transform(lowerCase.begin(), lowerCase.end(), lowerCase.begin(), (int(*)(int)) std::tolower);
+	StringUtilities::ToLower(lowerCase);
 	ZipContentsMap::const_iterator it = this->zipContentsMap.find(lowerCase);
 	if (it == this->zipContentsMap.end())
 	{
