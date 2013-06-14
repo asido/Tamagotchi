@@ -70,10 +70,10 @@
     <ClCompile Include="..\Engine\ResourceMgr\ZipFile.cpp">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\arch\win32\Filesystem.cpp">
+    <ClCompile Include="..\Engine\ResourceMgr\TextureResource.cpp">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\ResourceMgr\TextureResource.cpp">
+    <ClCompile Include="..\Engine\ResourceMgr\Filesystem.cpp">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClCompile>
   </ItemGroup>

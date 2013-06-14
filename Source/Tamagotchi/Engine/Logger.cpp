@@ -24,7 +24,7 @@ static const unsigned char TAG_FLAGS_DEFAULT_INFO		= 0;
 #endif
 
 
-static LogMgr *g_logMgr = NULL;
+LogMgr *g_logMgr = NULL;
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ErrorMessenger
@@ -264,7 +264,7 @@ void LogMgr::GetOutputBuffer(std::string &outputBuffer, const std::string &tag, 
 {
 	if (!tag.empty())
 	{
-		outputBuffer = "[" + tag + "]" + message;
+		outputBuffer = "[" + tag + "] " + message;
 	}
 	else
 	{

@@ -1,5 +1,6 @@
 #include "TamagotchiEngine.h"
 #include "Renderer.h"
+#include "Logger.h"
 
 //-----------------------------------------------------------------------------------------------------------
 // Public
@@ -7,18 +8,22 @@
 
 TamagotchiEngine::TamagotchiEngine()
 {
-	this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer());
+	
 }
 
 TamagotchiEngine::~TamagotchiEngine()
 {
-
+	LogMgr::Destroy();
 }
 
 bool TamagotchiEngine::Init(GLint width, GLint height)
 {
+	LogMgr::Init();
+
 	this->width = width;
 	this->height = height;
+
+	this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer());
 
 	const char vShaderStr[] =  
 		"attribute vec4 vPosition;    \n"

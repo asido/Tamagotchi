@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Engine\arch\win32\Filesystem.cpp" />
+    <ClCompile Include="..\Engine\ResourceMgr\Filesystem.cpp" />
     <ClCompile Include="..\Engine\ResourceMgr\TextureResource.cpp" />
     <ClCompile Include="..\Engine\ResourceMgr\ZipFile.cpp" />
     <ClCompile Include="..\Engine\TamagotchiEngine.cpp" />

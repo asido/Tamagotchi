@@ -104,7 +104,7 @@ extern LogMgr *g_logMgr;
 #define LogInfo(str, ...)															\
 	do {																			\
 		const std::string s(str);													\
-		g_logMgr->Log("INFO", s, __FUNCTION__, __FILE__, __LINE__);					\
+		g_logMgr->Log("INFO", s, NULL, NULL, NULL);					\
 	} while (0)
 
 #endif
