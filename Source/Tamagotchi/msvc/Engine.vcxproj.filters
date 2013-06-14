@@ -9,7 +9,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\ResourceMgr">
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{b62bf2b8-9ad0-44d9-8110-56f28049351d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actors">
+      <UniqueIdentifier>{d3b00397-560a-4bdb-9548-44ba759e99bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResourceManager">
       <UniqueIdentifier>{f25b2e21-6a4e-4184-8116-876816af3df4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -20,32 +26,53 @@
     <ClInclude Include="..\Engine\Logger.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Engine\ResourceMgr\XMLResource.h">
-      <Filter>Source Files\ResourceMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Engine\Renderer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Engine\TamagotchiEngine.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Engine\ResourceMgr\ZipFile.h">
-      <Filter>Source Files\ResourceMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Engine\ResourceMgr\Filesystem.h">
-      <Filter>Source Files\ResourceMgr</Filter>
     </ClInclude>
     <ClInclude Include="..\Engine\defines.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Engine\GLES.h">
+    <ClInclude Include="..\Engine\GameLogic.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Engine\ResourceMgr\TextureResource.h">
-      <Filter>Source Files\ResourceMgr</Filter>
+    <ClInclude Include="..\Engine\GameView.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Engine\ResourceMgr\ResourceManager.h">
-      <Filter>Source Files\ResourceMgr</Filter>
+    <ClInclude Include="..\Engine\ResourceManager\Filesystem.h">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceManager\ResourceManager.h">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceManager\TextureResource.h">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceManager\XMLResource.h">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceManager\ZipFile.h">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\GLES.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\Renderer.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\Scene.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\SceneNode.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Actors\Actor.h">
+      <Filter>Source Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Actors\ActorComponent.h">
+      <Filter>Source Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Actors\ActorFactory.h">
+      <Filter>Source Files\Actors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -55,26 +82,47 @@
     <ClCompile Include="..\Engine\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\ResourceMgr\XMLResource.cpp">
-      <Filter>Source Files\ResourceMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Engine\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Engine\TamagotchiEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\ResourceMgr\ZipFile.cpp">
-      <Filter>Source Files\ResourceMgr</Filter>
+    <ClCompile Include="..\Engine\GameLogic.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\ResourceMgr\TextureResource.cpp">
-      <Filter>Source Files\ResourceMgr</Filter>
+    <ClCompile Include="..\Engine\GameView.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\ResourceMgr\Filesystem.cpp">
-      <Filter>Source Files\ResourceMgr</Filter>
+    <ClCompile Include="..\Engine\ResourceManager\Filesystem.cpp">
+      <Filter>Source Files\ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\ResourceMgr\ResourceManager.cpp">
-      <Filter>Source Files\ResourceMgr</Filter>
+    <ClCompile Include="..\Engine\ResourceManager\ResourceManager.cpp">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceManager\TextureResource.cpp">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceManager\XMLResource.cpp">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceManager\ZipFile.cpp">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Rendering\Renderer.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Rendering\Scene.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Rendering\SceneNode.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Actors\Actor.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Actors\ActorComponent.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Actors\ActorFactory.cpp">
+      <Filter>Source Files\Actors</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

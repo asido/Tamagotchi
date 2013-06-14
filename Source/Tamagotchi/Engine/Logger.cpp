@@ -208,11 +208,24 @@ ErrorDialogChoice LogMgr::Error(const std::string &errorMessage, bool isFatal, c
 
 #if defined(WIN32)
 	int result = MessageBoxA(NULL, buffer.c_str(), tag.c_str(), MB_ABORTRETRYIGNORE|MB_ICONERROR|MB_DEFBUTTON3);
+
 	switch (result) {
-	case IDIGNORE:		return ErrorDialogChoice::LOGMGR_ERROR_IGNORE;
-	case IDABORT:		return ErrorDialogChoice::LOGMGR_ERROR_ABORT;
-	case IDRETRY:		return ErrorDialogChoice::LOGMGR_ERROR_RETRY;
-	default:			return ErrorDialogChoice::LOGMGR_ERROR_RETRY;
+	case IDIGNORE:
+		return ErrorDialogChoice::LOGMGR_ERROR_IGNORE;
+		break;
+
+	case IDABORT:
+		__debugbreak();
+		return ErrorDialogChoice::LOGMGR_ERROR_ABORT;
+		break;
+
+	case IDRETRY:
+		return ErrorDialogChoice::LOGMGR_ERROR_RETRY;
+		break;
+
+	default:
+		return ErrorDialogChoice::LOGMGR_ERROR_RETRY;
+		break;
 	}
 #elif defined(__APPLE__)
 #	error implement me

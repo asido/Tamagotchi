@@ -1,6 +1,6 @@
 #include <cppunit/config/SourcePrefix.h>
 #include "ZipFileTest.h"
-#include "ResourceMgr/ZipFile.h"
+#include "ResourceManager/ZipFile.h"
 #include "TestMain.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(ZipFileTest);

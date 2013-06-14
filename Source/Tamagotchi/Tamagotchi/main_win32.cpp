@@ -42,7 +42,7 @@ INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,
 	ESContext es(1136, 640, L"Tamagotchi");
 	es.Init();
 
-	g_engine = new TamagotchiEngine();
+	g_engine = TG_NEW TamagotchiEngine();
 
 	if (g_engine->Init(es.GetWidth(), es.GetHeight()))
 	{

@@ -1,8 +1,8 @@
 #include <cppunit/config/SourcePrefix.h>
 #include "ResourceMgrTest.h"
-#include "ResourceMgr/ResourceManager.h"
-#include "ResourceMgr/ZipFile.h"
-#include "ResourceMgr/TextureResource.h"
+#include "ResourceManager/ResourceManager.h"
+#include "ResourceManager/ZipFile.h"
+#include "ResourceManager/TextureResource.h"
 #include "defines.h"
 #include "TestMain.h"
 

@@ -11,27 +11,41 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Engine\ResourceMgr\Filesystem.cpp" />
-    <ClCompile Include="..\Engine\ResourceMgr\TextureResource.cpp" />
-    <ClCompile Include="..\Engine\ResourceMgr\ZipFile.cpp" />
+    <ClCompile Include="..\Engine\Actors\Actor.cpp" />
+    <ClCompile Include="..\Engine\Actors\ActorComponent.cpp" />
+    <ClCompile Include="..\Engine\Actors\ActorFactory.cpp" />
+    <ClCompile Include="..\Engine\GameLogic.cpp" />
+    <ClCompile Include="..\Engine\GameView.cpp" />
+    <ClCompile Include="..\Engine\Rendering\Renderer.cpp" />
+    <ClCompile Include="..\Engine\Rendering\Scene.cpp" />
+    <ClCompile Include="..\Engine\Rendering\SceneNode.cpp" />
+    <ClCompile Include="..\Engine\ResourceManager\Filesystem.cpp" />
+    <ClCompile Include="..\Engine\ResourceManager\ResourceManager.cpp" />
+    <ClCompile Include="..\Engine\ResourceManager\TextureResource.cpp" />
+    <ClCompile Include="..\Engine\ResourceManager\XMLResource.cpp" />
+    <ClCompile Include="..\Engine\ResourceManager\ZipFile.cpp" />
     <ClCompile Include="..\Engine\TamagotchiEngine.cpp" />
-    <ClCompile Include="..\Engine\Renderer.cpp" />
     <ClCompile Include="..\Engine\Logger.cpp" />
-    <ClCompile Include="..\Engine\ResourceMgr\ResourceManager.cpp" />
-    <ClCompile Include="..\Engine\ResourceMgr\XMLResource.cpp" />
     <ClCompile Include="..\Engine\StringUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Engine\GLES.h" />
-    <ClInclude Include="..\Engine\ResourceMgr\Filesystem.h" />
-    <ClInclude Include="..\Engine\ResourceMgr\TextureResource.h" />
-    <ClInclude Include="..\Engine\ResourceMgr\ZipFile.h" />
+    <ClInclude Include="..\Engine\Actors\Actor.h" />
+    <ClInclude Include="..\Engine\Actors\ActorComponent.h" />
+    <ClInclude Include="..\Engine\Actors\ActorFactory.h" />
+    <ClInclude Include="..\Engine\GameLogic.h" />
+    <ClInclude Include="..\Engine\GameView.h" />
+    <ClInclude Include="..\Engine\Rendering\GLES.h" />
+    <ClInclude Include="..\Engine\Rendering\Renderer.h" />
+    <ClInclude Include="..\Engine\Rendering\Scene.h" />
+    <ClInclude Include="..\Engine\Rendering\SceneNode.h" />
+    <ClInclude Include="..\Engine\ResourceManager\Filesystem.h" />
+    <ClInclude Include="..\Engine\ResourceManager\ResourceManager.h" />
+    <ClInclude Include="..\Engine\ResourceManager\TextureResource.h" />
+    <ClInclude Include="..\Engine\ResourceManager\XMLResource.h" />
+    <ClInclude Include="..\Engine\ResourceManager\ZipFile.h" />
     <ClInclude Include="..\Engine\TamagotchiEngine.h" />
     <ClInclude Include="..\Engine\defines.h" />
-    <ClInclude Include="..\Engine\Renderer.h" />
     <ClInclude Include="..\Engine\Logger.h" />
-    <ClInclude Include="..\Engine\ResourceMgr\ResourceManager.h" />
-    <ClInclude Include="..\Engine\ResourceMgr\XMLResource.h" />
     <ClInclude Include="..\Engine\StringUtilities.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

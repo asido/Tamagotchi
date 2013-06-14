@@ -4,7 +4,7 @@
 #include <string>
 #include <png.h>
 #include "ResourceManager.h"
-#include "GLES.h"
+#include "Rendering/GLES.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class TextureResourceLoader

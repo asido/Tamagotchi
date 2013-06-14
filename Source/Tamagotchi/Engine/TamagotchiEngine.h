@@ -3,7 +3,7 @@
 
 #include <memory>
 #include "defines.h"
-#include "GLES.h"
+#include "Rendering/GLES.h"
 
 class ResourceManager;
 class IRenderer;

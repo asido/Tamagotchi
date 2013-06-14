@@ -1,7 +1,7 @@
 #include "TamagotchiEngine.h"
-#include "ResourceMgr/ResourceManager.h"
-#include "ResourceMgr/ZipFile.h"
-#include "Renderer.h"
+#include "ResourceManager/ResourceManager.h"
+#include "ResourceManager/ZipFile.h"
+#include "Rendering/Renderer.h"
 #include "Logger.h"
 
 //-----------------------------------------------------------------------------------------------------------
