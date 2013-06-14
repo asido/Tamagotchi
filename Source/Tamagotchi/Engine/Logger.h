@@ -6,6 +6,7 @@
 #include <list>
 
 #include "defines.h"
+#include "StringUtilities.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ErrorMessenger
@@ -84,27 +85,27 @@ extern LogMgr *g_logMgr;
 #define LogFatal(str, ...)															\
 	do {																			\
 		static ErrorMessenger *errorMessenger = TG_NEW ErrorMessenger;				\
-		const std::string s(str);													\
+		const std::string s = StringUtilities::Format(str, __VA_ARGS__);			\
 		errorMessenger->Show(s, true, __FUNCTION__, __FILE__, __LINE__);			\
 	} while (0)
 
 #define LogError(str, ...)															\
 	do {																			\
 		static ErrorMessenger *errorMessenger = TG_NEW ErrorMessenger;				\
-		const std::string s(str);													\
+		const std::string s = StringUtilities::Format(str, __VA_ARGS__);			\
 		errorMessenger->Show(s, false, __FUNCTION__, __FILE__, __LINE__);			\
 	} while (0)
 
 #define LogWarning(str, ...)														\
 	do {																			\
-		const std::string s(str);													\
+		const std::string s = StringUtilities::Format(str, __VA_ARGS__);			\
 		g_logMgr->Log("WARNING", s, __FUNCTION__, __FILE__, __LINE__);				\
 	} while (0)
 
 #define LogInfo(str, ...)															\
 	do {																			\
-		const std::string s(str);													\
-		g_logMgr->Log("INFO", s, NULL, NULL, NULL);					\
+		const std::string s = StringUtilities::Format(str, __VA_ARGS__);			\
+		g_logMgr->Log("INFO", s, NULL, NULL, NULL);									\
 	} while (0)
 
 #endif

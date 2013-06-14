@@ -38,7 +38,6 @@ INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,
 
 	_CrtSetDbgFlag(tmpDbgFlag);
 
-
 	ESContext es(1136, 640, L"Tamagotchi");
 	es.Init();
 

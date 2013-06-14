@@ -233,6 +233,7 @@ bool ZipFile::Init(const std::string &resFileName)
 				}
 			}
 
+			// pfh stores filenames terminated by '\n' and so we need to pass fnameLen in order to get rid of it.
 			std::string path(pfh, fh.fnameLen);
 			StringUtilities::ToLower(path);
 			this->zipContentsMap[path] = i;
