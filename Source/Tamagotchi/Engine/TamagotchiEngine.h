@@ -5,6 +5,7 @@
 #include "defines.h"
 #include "GLES.h"
 
+class ResourceManager;
 class IRenderer;
 
 class TamagotchiEngine
@@ -28,7 +29,8 @@ private:
 
 	GLint shaderProgram;
 
-	std::shared_ptr<IRenderer> renderer;
+	std::shared_ptr<ResourceManager>	resourceMgr;
+	std::shared_ptr<IRenderer>			renderer;
 };
 
 #endif // __TAMAGOTCHIENGINE_H__

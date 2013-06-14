@@ -80,7 +80,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile />
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\cppunit\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -100,7 +100,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\cppunit\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

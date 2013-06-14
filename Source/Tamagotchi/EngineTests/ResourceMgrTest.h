@@ -3,7 +3,7 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 
-class ResourceMgr;
+class ResourceManager;
 
 class ResourceMgrTest : public CPPUNIT_NS::TestFixture
 {
@@ -18,7 +18,7 @@ public:
 	void GetHandleTest();
 
 private:
-	ResourceMgr *resourceMgr;
+	ResourceManager *resourceMgr;
 };
 
 #endif // __RESOURCEMGRTEST_H__

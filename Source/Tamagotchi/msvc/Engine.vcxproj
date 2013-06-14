@@ -17,7 +17,7 @@
     <ClCompile Include="..\Engine\TamagotchiEngine.cpp" />
     <ClCompile Include="..\Engine\Renderer.cpp" />
     <ClCompile Include="..\Engine\Logger.cpp" />
-    <ClCompile Include="..\Engine\ResourceMgr\ResourceMgr.cpp" />
+    <ClCompile Include="..\Engine\ResourceMgr\ResourceManager.cpp" />
     <ClCompile Include="..\Engine\ResourceMgr\XMLResource.cpp" />
     <ClCompile Include="..\Engine\StringUtilities.cpp" />
   </ItemGroup>
@@ -30,7 +30,7 @@
     <ClInclude Include="..\Engine\defines.h" />
     <ClInclude Include="..\Engine\Renderer.h" />
     <ClInclude Include="..\Engine\Logger.h" />
-    <ClInclude Include="..\Engine\ResourceMgr\ResourceMgr.h" />
+    <ClInclude Include="..\Engine\ResourceMgr\ResourceManager.h" />
     <ClInclude Include="..\Engine\ResourceMgr\XMLResource.h" />
     <ClInclude Include="..\Engine\StringUtilities.h" />
   </ItemGroup>

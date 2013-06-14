@@ -1,4 +1,4 @@
-#include "ResourceMgr.h"
+#include "ResourceManager.h"
 #include "ZipFile.h"
 #include "XMLResource.h"
 #include "TextureResource.h"
@@ -10,7 +10,7 @@
 //  class ResourceHandle
 //-----------------------------------------------------------------------------------------------------------
 
-ResourceHandle::ResourceHandle(const Resource &resource, char *buffer, unsigned int size, ResourceMgr *resourceMgr)
+ResourceHandle::ResourceHandle(const Resource &resource, char *buffer, unsigned int size, ResourceManager *resourceMgr)
 	: resource(resource), buffer(buffer), size(size), resourceMgr(resourceMgr)
 {
 
@@ -22,20 +22,20 @@ ResourceHandle::~ResourceHandle()
 }
 
 //-----------------------------------------------------------------------------------------------------------
-//  class ResourceMgr
+//  class ResourceManager
 //-----------------------------------------------------------------------------------------------------------
 
 //-----------------------------------------------
 // Public
 //-----------------------------------------------
 
-ResourceMgr::ResourceMgr(unsigned int cacheSize, std::shared_ptr<IResourceFile> file)
+ResourceManager::ResourceManager(unsigned int cacheSize, std::shared_ptr<IResourceFile> file)
 	: allocatedSize(0), cacheSize(cacheSize), file(file)
 {
 
 }
 
-ResourceMgr::~ResourceMgr()
+ResourceManager::~ResourceManager()
 {
 	while (!this->lru.empty())
 	{
@@ -43,7 +43,7 @@ ResourceMgr::~ResourceMgr()
 	}
 }
 
-bool ResourceMgr::Init()
+bool ResourceManager::Init()
 {
 	if (!this->file)
 	{
@@ -62,12 +62,12 @@ bool ResourceMgr::Init()
 	return true;
 }
 
-void ResourceMgr::RegisterLoader(std::shared_ptr<IResourceLoader> loader)
+void ResourceManager::RegisterLoader(std::shared_ptr<IResourceLoader> loader)
 {
 	this->resourceLoaders.push_front(loader);
 }
 
-std::shared_ptr<ResourceHandle> ResourceMgr::GetHandle(const Resource &r)
+std::shared_ptr<ResourceHandle> ResourceManager::GetHandle(const Resource &r)
 {
 	std::shared_ptr<ResourceHandle> handle(Find(r));
 
@@ -88,7 +88,7 @@ std::shared_ptr<ResourceHandle> ResourceMgr::GetHandle(const Resource &r)
 // Private
 //-----------------------------------------------
 
-bool ResourceMgr::MakeRoom(unsigned int size)
+bool ResourceManager::MakeRoom(unsigned int size)
 {
 	if (size > this->cacheSize)
 	{
@@ -109,7 +109,7 @@ bool ResourceMgr::MakeRoom(unsigned int size)
 	return true;
 }
 
-char *ResourceMgr::Allocate(unsigned int size)
+char *ResourceManager::Allocate(unsigned int size)
 {
 	if (!MakeRoom(size))
 	{
@@ -124,13 +124,13 @@ char *ResourceMgr::Allocate(unsigned int size)
 	return mem;
 }
 
-void ResourceMgr::Free(std::shared_ptr<ResourceHandle> gonner)
+void ResourceManager::Free(std::shared_ptr<ResourceHandle> gonner)
 {
 	this->lru.remove(gonner);
 	this->resources.erase(gonner->resource.GetName());
 }
 
-std::shared_ptr<ResourceHandle> ResourceMgr::Load(const Resource &r)
+std::shared_ptr<ResourceHandle> ResourceManager::Load(const Resource &r)
 {
 	std::shared_ptr<IResourceLoader>	loader = NULL;
 	std::shared_ptr<ResourceHandle>		handle = NULL;
@@ -210,7 +210,7 @@ std::shared_ptr<ResourceHandle> ResourceMgr::Load(const Resource &r)
 	return handle;
 }
 
-std::shared_ptr<ResourceHandle> ResourceMgr::Find(const Resource &r)
+std::shared_ptr<ResourceHandle> ResourceManager::Find(const Resource &r)
 {
 	ResourceHandleMap::iterator it = this->resources.find(r.GetName());
 	if (it == this->resources.end())
@@ -220,13 +220,13 @@ std::shared_ptr<ResourceHandle> ResourceMgr::Find(const Resource &r)
 	return it->second;
 }
 
-void ResourceMgr::Update(std::shared_ptr<ResourceHandle> handle)
+void ResourceManager::Update(std::shared_ptr<ResourceHandle> handle)
 {
 	this->lru.remove(handle);
 	this->lru.push_front(handle);
 }
 
-void ResourceMgr::FreeOneResource()
+void ResourceManager::FreeOneResource()
 {
 	ResourceHandleList::iterator gonner = this->lru.end();
 	gonner--;
@@ -241,7 +241,7 @@ void ResourceMgr::FreeOneResource()
 	// can the memory be actually free again.
 }
 
-void ResourceMgr::MemoryHasBeenFreed(unsigned int size)
+void ResourceManager::MemoryHasBeenFreed(unsigned int size)
 {
 	this->allocatedSize -= size;
 }

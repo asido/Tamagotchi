@@ -3,7 +3,7 @@
 
 #include <string>
 #include <memory>
-#include "ResourceMgr.h"
+#include "ResourceManager.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ResourceZipFile

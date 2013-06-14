@@ -6,7 +6,7 @@
 #include <list>
 #include <map>
 
-class ResourceMgr;
+class ResourceManager;
 class ZipFile;
 
 //-----------------------------------------------------------------------------------------------------------
@@ -74,17 +74,17 @@ public:
 
 class ResourceHandle
 {
-	friend class ResourceMgr;
+	friend class ResourceManager;
 
 public:
-	ResourceHandle(const Resource &resource, char *buffer, unsigned int size, ResourceMgr *resourceMgr);
+	ResourceHandle(const Resource &resource, char *buffer, unsigned int size, ResourceManager *resourceMgr);
 	~ResourceHandle();
 
 	std::shared_ptr<IResourceExtraData> GetExtra() const { return this->extra; }
 	void SetExtra(std::shared_ptr<IResourceExtraData> extra) { this->extra = extra; }
 
 private:
-	ResourceMgr		*resourceMgr;
+	ResourceManager		*resourceMgr;
 	const Resource	resource;
 	char			*buffer;
 	unsigned int	size;
@@ -93,20 +93,20 @@ private:
 
 
 //-----------------------------------------------------------------------------------------------------------
-//  class ResourceMgr
+//  class ResourceManager
 //-----------------------------------------------------------------------------------------------------------
 
 typedef std::list< std::shared_ptr<ResourceHandle> >				ResourceHandleList;
 typedef std::map< std::string, std::shared_ptr<ResourceHandle> >	ResourceHandleMap;
 typedef std::list< std::shared_ptr<IResourceLoader> >				ResourceLoaders;
 
-class ResourceMgr
+class ResourceManager
 {
 	friend class ResourceHandle;
 
 public:
-	ResourceMgr(unsigned int cacheSize, std::shared_ptr<IResourceFile> file);
-	virtual ~ResourceMgr();
+	ResourceManager(unsigned int cacheSize, std::shared_ptr<IResourceFile> file);
+	virtual ~ResourceManager();
 
 	bool Init();
 	void RegisterLoader(std::shared_ptr<IResourceLoader> loader);

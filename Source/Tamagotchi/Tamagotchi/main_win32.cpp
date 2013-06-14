@@ -18,7 +18,8 @@ void ESCALLBACK OnUpdate(ESContext *esContext, float deltaTime)
 
 void ESCALLBACK OnKey(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY)
 {
-	OutputDebugString(L"OnKey\n");
+	// TODO: need to translate win32 input messages to input controller independent events
+	// which game engine can understand.
 }
 
 INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,

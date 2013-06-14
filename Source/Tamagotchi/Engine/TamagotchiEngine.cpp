@@ -1,4 +1,6 @@
 #include "TamagotchiEngine.h"
+#include "ResourceMgr/ResourceManager.h"
+#include "ResourceMgr/ZipFile.h"
 #include "Renderer.h"
 #include "Logger.h"
 
@@ -20,10 +22,29 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 {
 	LogMgr::Init();
 
+	// TODO: we should create TamagotchiOptions class which will parse the .xml config file
+	// and get all necessary information, like asset zip file name, ResourceManager cache size and such.
+	std::string assetFile = "Assets.zip";
+
+	std::shared_ptr<IResourceFile> resourceFile = std::shared_ptr<IResourceFile>(TG_NEW ResourceZipFile(assetFile));
+	this->resourceMgr = std::shared_ptr<ResourceManager>(TG_NEW ResourceManager(static_cast<unsigned int>(MB_TO_B(50.0f)), resourceFile));
+	if (!this->resourceMgr->Init())
+	{
+		LogError("ResourceMgr::Init() has failed.");
+		return false;
+	}
+
 	this->width = width;
 	this->height = height;
+	LogInfo("Using resolution: %dx%d", this->width, this->height);
 
 	this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer());
+
+
+	/*
+	 * All the following crap is just to render a test triangle.
+	 * It will go away once we have renderer ready to draw our objects.
+	 */
 
 	const char vShaderStr[] =  
 		"attribute vec4 vPosition;    \n"

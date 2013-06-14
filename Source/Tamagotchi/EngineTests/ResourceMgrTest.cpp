@@ -1,7 +1,8 @@
 #include <cppunit/config/SourcePrefix.h>
 #include "ResourceMgrTest.h"
-#include "ResourceMgr/ResourceMgr.h"
+#include "ResourceMgr/ResourceManager.h"
 #include "ResourceMgr/ZipFile.h"
+#include "ResourceMgr/TextureResource.h"
 #include "defines.h"
 #include "TestMain.h"
 
@@ -10,7 +11,7 @@ CPPUNIT_TEST_SUITE_REGISTRATION(ResourceMgrTest);
 void ResourceMgrTest::setUp()
 {
 	std::shared_ptr<IResourceFile> resourceFile = std::shared_ptr<IResourceFile>(new ResourceZipFile("ZipFileTest.zip"));
-	this->resourceMgr = new ResourceMgr(static_cast<unsigned int>(MB_TO_B(50)), resourceFile);
+	this->resourceMgr = new ResourceManager(static_cast<unsigned int>(MB_TO_B(50.0f)), resourceFile);
 	CPPUNIT_ASSERT(this->resourceMgr->Init());
 }
 
@@ -36,4 +37,6 @@ void ResourceMgrTest::GetHandleTest()
 	Resource r4("1.png");
 	handle = this->resourceMgr->GetHandle(r4);
 	CPPUNIT_ASSERT(handle);
+	std::shared_ptr<GLESTextureResourceExtraData> textureExtra = std::static_pointer_cast<GLESTextureResourceExtraData>(handle->GetExtra());
+	CPPUNIT_ASSERT(textureExtra->GetTexture() > 0);
 }

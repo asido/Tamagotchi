@@ -23,9 +23,6 @@
     <ClInclude Include="..\Engine\ResourceMgr\XMLResource.h">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClInclude>
-    <ClInclude Include="..\Engine\ResourceMgr\ResourceMgr.h">
-      <Filter>Source Files\ResourceMgr</Filter>
-    </ClInclude>
     <ClInclude Include="..\Engine\Renderer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -47,6 +44,9 @@
     <ClInclude Include="..\Engine\ResourceMgr\TextureResource.h">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\ResourceMgr\ResourceManager.h">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -56,9 +56,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Engine\ResourceMgr\XMLResource.cpp">
-      <Filter>Source Files\ResourceMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Engine\ResourceMgr\ResourceMgr.cpp">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\Engine\Renderer.cpp">
@@ -74,6 +71,9 @@
       <Filter>Source Files\ResourceMgr</Filter>
     </ClCompile>
     <ClCompile Include="..\Engine\ResourceMgr\Filesystem.cpp">
+      <Filter>Source Files\ResourceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceMgr\ResourceManager.cpp">
       <Filter>Source Files\ResourceMgr</Filter>
     </ClCompile>
   </ItemGroup>

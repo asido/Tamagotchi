@@ -271,11 +271,6 @@ void LogMgr::GetOutputBuffer(std::string &outputBuffer, const std::string &tag, 
 		outputBuffer = message;
 	}
 
-	if (funcName)
-	{
-		outputBuffer += "\nFunction: ";
-		outputBuffer += funcName;
-	}
 	if (sourceFile)
 	{
 		outputBuffer += "\n";
@@ -287,6 +282,12 @@ void LogMgr::GetOutputBuffer(std::string &outputBuffer, const std::string &tag, 
 		char lineNumBuffer[11];
 		memset(lineNumBuffer, 0, sizeof(char));
 		outputBuffer += _itoa(lineNum, lineNumBuffer, 10);
+	}
+	if (funcName)
+	{
+		outputBuffer += " (";
+		outputBuffer += funcName;
+		outputBuffer += ")";
 	}
 
 	outputBuffer += "\n";

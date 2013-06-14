@@ -3,7 +3,7 @@
 
 #include <string>
 #include <png.h>
-#include "ResourceMgr.h"
+#include "ResourceManager.h"
 #include "GLES.h"
 
 //-----------------------------------------------------------------------------------------------------------

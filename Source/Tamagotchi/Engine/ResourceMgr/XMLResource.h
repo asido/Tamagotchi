@@ -6,7 +6,7 @@
 
 #include <tinyxml2.h>
 
-#include "ResourceMgr.h"
+#include "ResourceManager.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class XMLResourceExtraData
