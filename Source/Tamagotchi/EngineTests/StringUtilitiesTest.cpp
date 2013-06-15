@@ -1,4 +1,5 @@
 #include <cppunit/config/SourcePrefix.h>
+#include <Eigen/Dense>
 #include "StringUtilitiesTest.h"
 #include "StringUtilities.h"
 
@@ -23,4 +24,12 @@ void StringUtilitiesTest::FormatTest()
 {
 	CPPUNIT_ASSERT(StringUtilities::Format("Test 1: 0x%X", 0x567a) == std::string("Test 1: 0x567A"));
 	CPPUNIT_ASSERT(StringUtilities::Format("%d %c Test 2 %d", 1, 0x41, 10) == std::string("1 A Test 2 10"));
+}
+
+void StringUtilitiesTest::HashTest()
+{
+	unsigned int expected = StringUtilities::Hash("abcdef");
+	CPPUNIT_ASSERT(StringUtilities::Hash("abcdef") == expected);
+	CPPUNIT_ASSERT(StringUtilities::Hash("ABCDEF") == expected);
+	CPPUNIT_ASSERT(StringUtilities::Hash("fedcba") != expected);
 }
