@@ -4,18 +4,22 @@
 #include "Rendering/Renderer.h"
 #include "Logger.h"
 
+TamagotchiEngine *g_engine = NULL;
+
 //-----------------------------------------------------------------------------------------------------------
 // Public
 //-----------------------------------------------------------------------------------------------------------
 
 TamagotchiEngine::TamagotchiEngine()
 {
-	
+	g_engine = this;
 }
 
 TamagotchiEngine::~TamagotchiEngine()
 {
 	LogMgr::Destroy();
+
+	g_engine = NULL;
 }
 
 bool TamagotchiEngine::Init(GLint width, GLint height)

@@ -18,7 +18,8 @@ ResourceHandle::ResourceHandle(const Resource &resource, char *buffer, unsigned 
 
 ResourceHandle::~ResourceHandle()
 {
-	// Report resourceMgr that buffer is freed
+	SAFE_DELETE_ARRAY(this->buffer);
+	this->resourceMgr->MemoryHasBeenFreed(this->size);
 }
 
 //-----------------------------------------------------------------------------------------------------------
@@ -183,7 +184,7 @@ std::shared_ptr<ResourceHandle> ResourceManager::Load(const Resource &r)
 
 		if (!rawBuffer || !buffer)
 		{
-			// TODO: Resource cache is out of memory. Print at least a log message.
+			LogError("Resource manager cache is out of memory.");
 			return handle;
 		}
 

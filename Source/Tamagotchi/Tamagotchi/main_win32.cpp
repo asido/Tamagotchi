@@ -2,18 +2,18 @@
 #include "gles_init_win32.h"
 #include "../Engine/TamagotchiEngine.h"
 
-TamagotchiEngine *g_engine;
+static TamagotchiEngine *engine;
 
 void ESCALLBACK OnRender(ESContext *esContext)
 {
-	g_engine->FrameRender();
+	engine->FrameRender();
 
 	eglSwapBuffers(esContext->GetDisplay(), esContext->GetSurface());
 }
 
 void ESCALLBACK OnUpdate(ESContext *esContext, float deltaTime)
 {
-	g_engine->FrameUpdate(deltaTime);
+	engine->FrameUpdate(deltaTime);
 }
 
 void ESCALLBACK OnKey(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY)
@@ -41,9 +41,9 @@ INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,
 	ESContext es(1136, 640, L"Tamagotchi");
 	es.Init();
 
-	g_engine = TG_NEW TamagotchiEngine();
+	engine = TG_NEW TamagotchiEngine();
 
-	if (g_engine->Init(es.GetWidth(), es.GetHeight()))
+	if (engine->Init(es.GetWidth(), es.GetHeight()))
 	{
 		es.renderFunc	= OnRender;
 		es.updateFunc	= OnUpdate;
@@ -52,7 +52,7 @@ INT WINAPI wWinMain(_In_		HINSTANCE	hInstance,
 		es.MainLoop();
 	}
 	
-	delete g_engine;
+	delete engine;
 
 	return 0;
 }

@@ -63,8 +63,7 @@ public:
 
 class IResourceExtraData
 {
-public:
-	virtual std::string ToString() = 0;
+
 };
 
 
@@ -80,11 +79,12 @@ public:
 	ResourceHandle(const Resource &resource, char *buffer, unsigned int size, ResourceManager *resourceMgr);
 	~ResourceHandle();
 
+	const Resource &					GetResource() const { return this->resource; }
 	std::shared_ptr<IResourceExtraData> GetExtra() const { return this->extra; }
-	void SetExtra(std::shared_ptr<IResourceExtraData> extra) { this->extra = extra; }
+	void								SetExtra(std::shared_ptr<IResourceExtraData> extra) { this->extra = extra; }
 
 private:
-	ResourceManager		*resourceMgr;
+	ResourceManager	*resourceMgr;
 	const Resource	resource;
 	char			*buffer;
 	unsigned int	size;

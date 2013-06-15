@@ -224,15 +224,6 @@ bool ZipFile::Init(const std::string &resFileName)
 		{
 			pfh += sizeof(fh);
 
-			// Convert UNIX slashes to DOS backslashes.
-			for (int j = 0; j < fh.fnameLen; ++j)
-			{
-				if (pfh[j] == '/')
-				{
-					pfh[j] = '\\';
-				}
-			}
-
 			// pfh stores filenames terminated by '\n' and so we need to pass fnameLen in order to get rid of it.
 			std::string path(pfh, fh.fnameLen);
 			StringUtilities::ToLower(path);

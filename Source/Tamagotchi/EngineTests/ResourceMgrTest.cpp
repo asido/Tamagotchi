@@ -3,6 +3,7 @@
 #include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/ZipFile.h"
 #include "ResourceManager/TextureResource.h"
+#include "ResourceManager/XMLResource.h"
 #include "defines.h"
 #include "TestMain.h"
 
@@ -39,4 +40,12 @@ void ResourceMgrTest::GetHandleTest()
 	CPPUNIT_ASSERT(handle);
 	std::shared_ptr<GLESTextureResourceExtraData> textureExtra = std::static_pointer_cast<GLESTextureResourceExtraData>(handle->GetExtra());
 	CPPUNIT_ASSERT(textureExtra->GetTexture() > 0);
+
+	Resource r5("TestFolder/TestFile.xml");
+	handle = this->resourceMgr->GetHandle(r5);
+	CPPUNIT_ASSERT(handle);
+	std::shared_ptr<XMLResourceExtraData> xmlExtra = std::static_pointer_cast<XMLResourceExtraData>(handle->GetExtra());
+	tinyxml2::XMLElement *root = xmlExtra->GetRoot();
+	CPPUNIT_ASSERT(root->Value() == std::string("TestElement"));
+	CPPUNIT_ASSERT(root->Attribute("testattribute") == std::string("testvalue"));
 }

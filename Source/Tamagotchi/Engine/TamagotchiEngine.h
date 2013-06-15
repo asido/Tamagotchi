@@ -19,7 +19,8 @@ public:
 	void FrameUpdate(float delta);
 	void FrameRender();
 
-	std::shared_ptr<IRenderer> GetRenderer() { return this->renderer; }
+	std::shared_ptr<ResourceManager>	GetResourceManager() const { return this->resourceMgr; }
+	std::shared_ptr<IRenderer>			GetRenderer() const { return this->renderer; }
 
 private:
 	GLuint LoadShader(GLenum type, const char *shaderSrc);
@@ -32,5 +33,7 @@ private:
 	std::shared_ptr<ResourceManager>	resourceMgr;
 	std::shared_ptr<IRenderer>			renderer;
 };
+
+extern TamagotchiEngine *g_engine;
 
 #endif // __TAMAGOTCHIENGINE_H__

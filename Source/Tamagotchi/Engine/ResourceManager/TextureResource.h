@@ -18,8 +18,6 @@ public:
 	GLESTextureResourceExtraData();
 	virtual ~GLESTextureResourceExtraData();
 
-	virtual std::string ToString() override { return "GLESTextureResourceExtraData"; }
-
 	GLuint			GetTexture() const { return this->texture; }
 
 private:

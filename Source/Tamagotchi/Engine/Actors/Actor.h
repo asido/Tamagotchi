@@ -3,10 +3,7 @@
 
 #include <map>
 #include <memory>
-#include <tinyxml2.h>
 #include "ActorComponent.h"
-
-class XMLElement;
 
 typedef unsigned int ActorId;
 typedef std::map< ComponentId, std::shared_ptr<ActorComponent> > ActorComponents;
@@ -16,10 +13,14 @@ const ActorId INVALID_ACTOR_ID = 0;
 class Actor
 {
 public:
-	bool Init(tinyxml2::XMLElement *data);
+	explicit Actor(ActorId id);
+	~Actor();
+
+	bool Init();
 	void PostInit();
-	void Destroy();
 	void Update(float delta);
+
+	bool AddComponent(std::shared_ptr<ActorComponent> component);
 
 	template <class ComponentType>
 	std::shared_ptr<ComponentType> GetComponent(ComponentId id)

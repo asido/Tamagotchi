@@ -1,13 +1,21 @@
 #include "XMLResource.h"
 #include "defines.h"
+#include "Logger.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class XMLResourceExtraData
 //-----------------------------------------------------------------------------------------------------------
 
-void XMLResourceExtraData::ParseXML(char *rawBuffer)
+bool XMLResourceExtraData::ParseXML(char *rawBuffer)
 {
-	this->xmlDocument.Parse(rawBuffer);
+	int result = this->xmlDocument.Parse(rawBuffer);
+
+	if (result != tinyxml2::XML_NO_ERROR)
+	{
+		LogError("Failed parsing XML file: %d", result);
+		return false;
+	}
+	return true;
 }
 
 tinyxml2::XMLElement *XMLResourceExtraData::GetRoot()
@@ -20,6 +28,12 @@ tinyxml2::XMLElement *XMLResourceExtraData::GetRoot()
 //  class XMLResourceLoader
 //-----------------------------------------------------------------------------------------------------------
 
+unsigned int XMLResourceLoader::GetLoadedResourceSize(char *rawBuffer, unsigned int rawSize)
+{
+	// Keep the resource cache from allocating memory for the XML file so that tinyxml2 can manage it on it's own.
+	return 0;
+}
+
 bool XMLResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, std::shared_ptr<ResourceHandle> handle)
 {
 	if (rawSize <= 0)
@@ -28,7 +42,11 @@ bool XMLResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, std:
 	}
 
 	std::shared_ptr<XMLResourceExtraData> extraData = std::shared_ptr<XMLResourceExtraData>(TG_NEW XMLResourceExtraData());
-	extraData->ParseXML(rawBuffer);
+	if (!extraData->ParseXML(rawBuffer))
+	{
+		LogError("Failed loadng XML resource: %s", handle->GetResource().GetName());
+		return false;
+	}
 	handle->SetExtra(std::shared_ptr<XMLResourceExtraData>(extraData));
 
 	return true;
