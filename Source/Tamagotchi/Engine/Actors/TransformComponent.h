@@ -17,22 +17,22 @@ using namespace Eigen;
 class TransformComponent : public ActorComponent
 {
 public:
-	EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-	TransformComponent();
+    TransformComponent();
 
-	virtual bool				Init(tinyxml2::XMLElement *data) override;
+    virtual bool                Init(tinyxml2::XMLElement *data) override;
 
-	virtual ComponentId			GetId() override;
-	virtual const std::string	GetName() const override { return "TransformComponent"; };
+    virtual ComponentId         GetId() override;
+    virtual const std::string   GetName() const override { return "TransformComponent"; };
 
-	Matrix4f	GetTransform() const;
-	void		SetTransform(const Matrix4f &newTransform);
-	Vector3f	GetPosition() const;
-	void		SetPosition(const Vector3f &newPosition);
+    Matrix4f                    GetTransform() const;
+    void                        SetTransform(const Matrix4f &newTransform);
+    Vector3f                    GetPosition() const;
+    void                        SetPosition(const Vector3f &newPosition);
 
 private:
-	Matrix4f	transform;
+    Matrix4f    transform;
 };
 
 #endif // __TRANSFORMCOMPONENT_H__

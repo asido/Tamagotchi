@@ -4,10 +4,10 @@
 
 int main(int argc, char *argv[])
 {
-	const std::string result = TestMain();
-	std::cout << result;
+    const std::string result = TestMain();
+    std::cout << result;
 
-	(void)getchar();
+    (void)getchar();
 
-	return 0;
+    return 0;
 }

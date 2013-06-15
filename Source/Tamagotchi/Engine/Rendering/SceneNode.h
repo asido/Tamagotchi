@@ -14,11 +14,11 @@ typedef std::vector< std::shared_ptr<SceneNode> > SceneNodeList;
 class SceneNode
 {
 public:
-	virtual void OnUpdate(float delta);
-	virtual void OnRender();
+    virtual void OnUpdate(float delta);
+    virtual void OnRender();
 
 private:
-	SceneNodeList childNodes;
+    SceneNodeList childNodes;
 };
 
 
@@ -29,7 +29,7 @@ private:
 class CameraSceneNode : public SceneNode
 {
 private:
-	std::shared_ptr<SceneNode> target;
+    std::shared_ptr<SceneNode> target;
 };
 
 #endif // __SCENENODE_H__

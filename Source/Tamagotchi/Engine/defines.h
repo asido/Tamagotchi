@@ -2,26 +2,26 @@
 #define __COMMON_H__
 
 #ifdef WIN32
-#	if defined(_DEBUG)
-#		define TG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#	else
-#		define TG_NEW new
-#	endif
+#    if defined(_DEBUG)
+#        define TG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#    else
+#        define TG_NEW new
+#    endif
 #else
-#	define TG_NEW new
+#    define TG_NEW new
 #endif // WIN32
 
 
 #if !defined(SAFE_DELETE)
-#	define SAFE_DELETE(x)	if (x) delete x; x = NULL;
+#    define SAFE_DELETE(x)          if (x) delete x; x = NULL;
 #endif
 
 #if !defined(SAFE_DELETE_ARRAY)
-#	define SAFE_DELETE_ARRAY(x)	if (x) delete[] x; x = NULL;
+#    define SAFE_DELETE_ARRAY(x)    if (x) delete[] x; x = NULL;
 #endif
 
 #ifndef PATH_MAX
-#	define PATH_MAX 1024
+#    define PATH_MAX 1024
 #endif
 
 #define B_TO_KB(a)      ((a) / 1024.0f)

@@ -11,27 +11,27 @@ class IRenderer;
 class TamagotchiEngine
 {
 public:
-	TamagotchiEngine();
-	virtual ~TamagotchiEngine();
+    TamagotchiEngine();
+    virtual ~TamagotchiEngine();
 
-	bool Init(GLint width, GLint height);
+    bool Init(GLint width, GLint height);
 
-	void FrameUpdate(float delta);
-	void FrameRender();
+    void FrameUpdate(float delta);
+    void FrameRender();
 
-	std::shared_ptr<ResourceManager>	GetResourceManager() const { return this->resourceMgr; }
-	std::shared_ptr<IRenderer>			GetRenderer() const { return this->renderer; }
+    std::shared_ptr<ResourceManager>    GetResourceManager() const { return this->resourceMgr; }
+    std::shared_ptr<IRenderer>          GetRenderer() const { return this->renderer; }
 
 private:
-	GLuint LoadShader(GLenum type, const char *shaderSrc);
+    GLuint LoadShader(GLenum type, const char *shaderSrc);
 
-	GLint width;
-	GLint height;
+    GLint width;
+    GLint height;
 
-	GLint shaderProgram;
+    GLint shaderProgram;
 
-	std::shared_ptr<ResourceManager>	resourceMgr;
-	std::shared_ptr<IRenderer>			renderer;
+    std::shared_ptr<ResourceManager>    resourceMgr;
+    std::shared_ptr<IRenderer>          renderer;
 };
 
 extern TamagotchiEngine *g_engine;

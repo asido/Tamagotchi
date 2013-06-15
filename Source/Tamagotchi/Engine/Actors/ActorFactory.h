@@ -17,18 +17,18 @@ using namespace Eigen;
 class ActorFactory
 {
 public:
-	ActorFactory();
+    ActorFactory();
 
-	std::shared_ptr<Actor>	CreateActor(const std::string &actorResource, tinyxml2::XMLElement *overrides, const Matrix4f *initialTransform);
-	void					ModifyActor(std::shared_ptr<Actor> actor, tinyxml2::XMLElement *overrides);
-
-private:
-	ActorId							GetNextActorId();
-	std::shared_ptr<ActorComponent>	CreateComponent(tinyxml2::XMLElement *data);
+    std::shared_ptr<Actor>          CreateActor(const std::string &actorResource, tinyxml2::XMLElement *overrides, const Matrix4f *initialTransform);
+    void                            ModifyActor(std::shared_ptr<Actor> actor, tinyxml2::XMLElement *overrides);
 
 private:
-	GenericObjectFactory<ActorComponent, ComponentId> componentFactory;
-	ActorId lastActorId;
+    ActorId                         GetNextActorId();
+    std::shared_ptr<ActorComponent> CreateComponent(tinyxml2::XMLElement *data);
+
+private:
+    GenericObjectFactory<ActorComponent, ComponentId> componentFactory;
+    ActorId lastActorId;
 };
 
 #endif // __ACTORFACTORY_H__

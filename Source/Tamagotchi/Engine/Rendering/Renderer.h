@@ -8,8 +8,8 @@
 class IRenderer
 {
 public:
-	virtual void PreRender() = 0;
-	virtual void PostRender() = 0;
+    virtual void PreRender() = 0;
+    virtual void PostRender() = 0;
 };
 
 
@@ -20,8 +20,8 @@ public:
 class GLESRenderer : public IRenderer
 {
 public:
-	virtual void PreRender() override;
-	virtual void PostRender() override;
+    virtual void PreRender() override;
+    virtual void PostRender() override;
 };
 
 #endif // __Renderer_H__

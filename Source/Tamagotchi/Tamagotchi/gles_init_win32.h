@@ -5,50 +5,50 @@
 #include <egl/egl.h>
 #include <string>
 
-#define ESCALLBACK	__cdecl
+#define ESCALLBACK    __cdecl
 
 class ESContext
 {
 public:
-	ESContext(GLint width, GLint height, std::wstring title);
-	virtual ~ESContext();
-	bool Init();
+    ESContext(GLint width, GLint height, std::wstring title);
+    virtual ~ESContext();
+    bool Init();
 
-	void MainLoop();
-	void OnClose();
+    void MainLoop();
+    void OnClose();
 
-	// Callbacks
-	void (ESCALLBACK *renderFunc)(ESContext *esContext);
-	void (ESCALLBACK *keyFunc)(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY);
-	void (ESCALLBACK *updateFunc)(ESContext *esContext, float deltaTime);
+    // Callbacks
+    void (ESCALLBACK *renderFunc)(ESContext *esContext);
+    void (ESCALLBACK *keyFunc)(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY);
+    void (ESCALLBACK *updateFunc)(ESContext *esContext, float deltaTime);
 
-	EGLNativeWindowType GetHwnd() const { return this->hWnd; }
-	GLint				GetWidth() const { return this->width; }
-	GLint				GetHeight() const { return this->height; }
-	EGLDisplay			GetDisplay() const { return this->eglDisplay; }
-	EGLSurface			GetSurface() const { return this->eglSurface; }
+    EGLNativeWindowType GetHwnd() const { return this->hWnd; }
+    GLint               GetWidth() const { return this->width; }
+    GLint               GetHeight() const { return this->height; }
+    EGLDisplay          GetDisplay() const { return this->eglDisplay; }
+    EGLSurface          GetSurface() const { return this->eglSurface; }
 
 private:
-	bool InitWindow();
-	bool CreateEGLContext();
+    bool InitWindow();
+    bool CreateEGLContext();
 
-	void Print(std::string msg) const;
+    void Print(std::string msg) const;
 
-	// Window handle
-	EGLNativeWindowType	hWnd;
+    // Window handle
+    EGLNativeWindowType hWnd;
 
-	EGLContext			eglContext;
-	EGLDisplay			eglDisplay;
-	EGLSurface			eglSurface;
+    EGLContext          eglContext;
+    EGLDisplay          eglDisplay;
+    EGLSurface          eglSurface;
 
-	// Window width
-	GLint				width;
-	// Window height
-	GLint				height;
+    // Window width
+    GLint               width;
+    // Window height
+    GLint               height;
 
-	std::wstring		title;
+    std::wstring        title;
 
-	bool				quit;
+    bool                quit;
 };
 
 #endif // __GLES_INIT_H__

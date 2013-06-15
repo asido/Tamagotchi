@@ -18,17 +18,17 @@ typedef std::map< ActorId, std::shared_ptr<SceneNode> > SceneActorMap;
 class Scene
 {
 public:
-	Scene(std::shared_ptr<IRenderer> renderer);
+    Scene(std::shared_ptr<IRenderer> renderer);
 
-	virtual void OnUpdate(float delta);
-	virtual void OnRender();
+    virtual void OnUpdate(float delta);
+    virtual void OnRender();
 
 private:
-	std::shared_ptr<SceneNode>			rootNode;
-	std::shared_ptr<CameraSceneNode>	cameraNode;
-	SceneActorMap						actorMap;
+    std::shared_ptr<SceneNode>          rootNode;
+    std::shared_ptr<CameraSceneNode>    cameraNode;
+    SceneActorMap                       actorMap;
 
-	std::shared_ptr<IRenderer>			renderer;
+    std::shared_ptr<IRenderer>          renderer;
 };
 
 #endif // __SCENE_H__

@@ -13,35 +13,35 @@ const ActorId INVALID_ACTOR_ID = 0;
 class Actor
 {
 public:
-	explicit Actor(ActorId id);
-	~Actor();
+    explicit Actor(ActorId id);
+    ~Actor();
 
-	bool Init();
-	void PostInit();
-	void Update(float delta);
+    bool Init();
+    void PostInit();
+    void Update(float delta);
 
-	bool AddComponent(std::shared_ptr<ActorComponent> component);
+    bool AddComponent(std::shared_ptr<ActorComponent> component);
 
-	template <class ComponentType>
-	std::shared_ptr<ComponentType> GetComponent(ComponentId id)
-	{
-		ActorComponents::iterator it = this->components.find(id);
+    template <class ComponentType>
+    std::shared_ptr<ComponentType> GetComponent(ComponentId id)
+    {
+        ActorComponents::iterator it = this->components.find(id);
 
-		if (it != this->components.end())
-		{
-			return std::shared_ptr<ComponentType>(it->second);
-		}
-		else
-		{
-			return std::shared_ptr<ComponentType>();
-		}
-	}
+        if (it != this->components.end())
+        {
+            return std::shared_ptr<ComponentType>(it->second);
+        }
+        else
+        {
+            return std::shared_ptr<ComponentType>();
+        }
+    }
 
-	ActorId GetId() const { return this->id; }
+    ActorId GetId() const { return this->id; }
 
 private:
-	ActorId			id;
-	ActorComponents	components;
+    ActorId            id;
+    ActorComponents    components;
 };
 
 #endif // __ACTOR_H__

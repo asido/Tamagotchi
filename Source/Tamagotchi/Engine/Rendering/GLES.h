@@ -11,16 +11,16 @@
 #endif // WIN32
 
 #if defined DEBUG || defined _DEBUG
-#	define GL_CHECK_ERROR()							\
-	do {											\
-			GLenum error = glGetError();			\
-			if (error != GL_NO_ERROR)				\
-			{										\
-				LogError("GL Error: 0x%X", error);	\
-			}										\
-		} while (0)
+#    define GL_CHECK_ERROR()                        \
+    do {                                            \
+            GLenum error = glGetError();            \
+            if (error != GL_NO_ERROR)               \
+            {                                       \
+                LogError("GL Error: 0x%X", error);  \
+            }                                       \
+        } while (0)
 #else
-#	define GL_CHECK_ERROR()
+#    define GL_CHECK_ERROR()
 #endif // DEBUG
 
 #endif // __GLES_H__
