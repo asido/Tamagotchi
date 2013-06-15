@@ -1,8 +1,11 @@
 #ifndef __OBJECTFACTORY_H__
 #define __OBJECTFACTORY_H__
 
+#include <map>
+#include "defines.h"
+
 template <class BaseType, class SubType>
-BaseType *GenericObjectCreationFunction() { return new SubType; }
+BaseType *GenericObjectCreationFunction() { return TG_NEW SubType; }
 
 template <class BaseClass, class IdType>
 class GenericObjectFactory

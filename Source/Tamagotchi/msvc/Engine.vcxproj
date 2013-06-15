@@ -34,6 +34,7 @@
     <ClInclude Include="..\Engine\Actors\ActorFactory.h" />
     <ClInclude Include="..\Engine\GameLogic.h" />
     <ClInclude Include="..\Engine\GameView.h" />
+    <ClInclude Include="..\Engine\ObjectFactory.h" />
     <ClInclude Include="..\Engine\Rendering\GLES.h" />
     <ClInclude Include="..\Engine\Rendering\Renderer.h" />
     <ClInclude Include="..\Engine\Rendering\Scene.h" />

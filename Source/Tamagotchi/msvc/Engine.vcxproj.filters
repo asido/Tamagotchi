@@ -74,6 +74,9 @@
     <ClInclude Include="..\Engine\Actors\ActorFactory.h">
       <Filter>Source Files\Actors</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\ObjectFactory.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
