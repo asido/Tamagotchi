@@ -121,9 +121,6 @@
     <ClCompile Include="..\Engine\Actors\Actor.cpp">
       <Filter>Source Files\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="..\Engine\Actors\ActorComponent.cpp">
-      <Filter>Source Files\Actors</Filter>
-    </ClCompile>
     <ClCompile Include="..\Engine\Actors\ActorFactory.cpp">
       <Filter>Source Files\Actors</Filter>
     </ClCompile>

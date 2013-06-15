@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\Actors\Actor.cpp" />
-    <ClCompile Include="..\Engine\Actors\ActorComponent.cpp" />
     <ClCompile Include="..\Engine\Actors\ActorFactory.cpp" />
     <ClCompile Include="..\Engine\GameLogic.cpp" />
     <ClCompile Include="..\Engine\GameView.cpp" />
