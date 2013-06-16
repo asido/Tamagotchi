@@ -64,6 +64,8 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string &actorResourc
     if (initialTransform)
     {
         std::shared_ptr<TransformComponent> transformComponent = actor->GetComponent<TransformComponent>(TransformComponent::GetIdStatic());
+        LogAssert(transformComponent);
+        transformComponent->SetTransform(*initialTransform);
     }
 
     actor->PostInit();

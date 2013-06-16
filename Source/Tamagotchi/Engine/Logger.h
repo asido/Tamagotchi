@@ -47,7 +47,7 @@ private:
     ~LogMgr();
     
 public:
-    static bool Init(const std::string *logConfigFilename = NULL);
+    static bool Init(const std::string *logConfigFilename=NULL);
     static void Destroy();
 
     void Log(const std::string &tag, const std::string &message, const char *funcName, const char *sourceFile, unsigned int lineNum);
