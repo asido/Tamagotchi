@@ -3,6 +3,7 @@
 #include "Logger.h"
 #include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/XMLResource.h"
+#include "TransformComponent.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ActorFactory
@@ -59,7 +60,11 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string &actorResourc
         ModifyActor(actor, overrides);
     }
 
-
+    // Set initial actor position.
+    if (initialTransform)
+    {
+        std::shared_ptr<TransformComponent> transformComponent = actor->GetComponent<TransformComponent>(TransformComponent::GetIdStatic());
+    }
 
     actor->PostInit();
 

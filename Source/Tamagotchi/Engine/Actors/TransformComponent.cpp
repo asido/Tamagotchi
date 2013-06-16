@@ -1,6 +1,19 @@
 #include "TransformComponent.h"
 #include "StringUtilities.h"
 
+const std::string TransformComponent::name("TransformComponent");
+
+ComponentId TransformComponent::GetIdStatic()
+{
+    static ComponentId id = INVALID_COMPONENT_ID;
+
+    if (id == INVALID_COMPONENT_ID)
+    {
+        id = StringUtilities::Hash(name);
+    }
+    return id;
+}
+
 TransformComponent::TransformComponent()
     : transform(Matrix4f::Identity())
 {
@@ -12,15 +25,14 @@ bool TransformComponent::Init(tinyxml2::XMLElement *data)
     return false;
 }
 
-ComponentId TransformComponent::GetId()
+ComponentId TransformComponent::GetId() const
 {
-    static ComponentId id = NULL;
+    return GetIdStatic();
+}
 
-    if (!id)
-    {
-        id = StringUtilities::Hash(this->GetName());
-    }
-    return id;
+const std::string TransformComponent::GetName() const
+{
+    return name;
 }
 
 Matrix4f TransformComponent::GetTransform() const

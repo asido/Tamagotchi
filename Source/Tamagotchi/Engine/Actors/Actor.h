@@ -29,7 +29,7 @@ public:
 
         if (it != this->components.end())
         {
-            return std::shared_ptr<ComponentType>(it->second);
+            return std::static_pointer_cast<ComponentType>(it->second);
         }
         else
         {
