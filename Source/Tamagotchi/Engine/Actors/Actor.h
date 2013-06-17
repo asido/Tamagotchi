@@ -18,7 +18,8 @@ public:
 
     bool Init();
     void PostInit();
-    void Update(float delta);
+
+    void OnUpdate(float delta);
 
     bool AddComponent(std::shared_ptr<ActorComponent> component);
 

@@ -4,6 +4,7 @@
 #include <memory>
 #include <map>
 #include <list>
+
 #include "Actors/Actor.h"
 
 class GameView;
@@ -25,7 +26,7 @@ public:
     virtual void                    RemoveGameView(std::shared_ptr<GameView> gameView);
 
     virtual std::shared_ptr<Actor>  GetActor(ActorId actorId);
-    virtual std::shared_ptr<Actor>  CreateActor(const std::string &actorResource, XMLElement *override /*, const Mat4x4 initialTransform=NULL*/);
+    virtual std::shared_ptr<Actor>  CreateActor(const std::string &actorResource, tinyxml2::XMLElement *override, const Eigen::Matrix4f *initialTransform);
     virtual void                    DestroyActor(ActorId actorId);
 
     virtual void                    OnUpdate(float delta);

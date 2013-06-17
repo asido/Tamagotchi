@@ -29,7 +29,7 @@ void Actor::PostInit()
     }
 }
 
-void Actor::Update(float delta)
+void Actor::OnUpdate(float delta)
 {
     for (ActorComponents::iterator it = this->components.begin(); it != this->components.end(); ++it)
     {
