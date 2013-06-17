@@ -17,9 +17,15 @@
     <ClCompile Include="..\Tamagotchi\main_win32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Tamagotchi\TamagotchiGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Tamagotchi\gles_init_win32.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Tamagotchi\TamagotchiGame.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -46,6 +46,21 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 
     this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer());
 
+    this->gameLogic = CreateGameLogic();
+    if (!this->gameLogic)
+    {
+        LogError("Failure creating game logic.");
+        return false;
+    }
+    if (!this->gameLogic->Init())
+    {
+        LogError("GameLogic::Init() has failed.");
+        return false;
+    }
+
+    this->gameLogic->AddGameView(this->CreateFirstView());
+
+
 
     /*
      * All the following crap is just to render a test triangle.
@@ -104,11 +119,18 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 
 void TamagotchiEngine::FrameUpdate(float delta)
 {
-
+    this->gameLogic->OnUpdate(delta);
 }
 
 void TamagotchiEngine::FrameRender()
 {
+    for (GameViewList::iterator it = this->gameLogic->gameViews.begin(); it != this->gameLogic->gameViews.end(); ++it)
+    {
+        std::shared_ptr<GameView> gameView = *it;
+        gameView->OnRender();
+    }
+
+
     GLfloat vVertices[] = {  0.0f,  0.5f, 0.0f, 
                             -0.5f, -0.5f, 0.0f,
                              0.5f, -0.5f, 0.0f };

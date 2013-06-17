@@ -13,9 +13,11 @@
   <ItemGroup>
     <ClCompile Include="..\Tamagotchi\gles_init_win32.cpp" />
     <ClCompile Include="..\Tamagotchi\main_win32.cpp" />
+    <ClCompile Include="..\Tamagotchi\TamagotchiGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Tamagotchi\gles_init_win32.h" />
+    <ClInclude Include="..\Tamagotchi\TamagotchiGame.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2ED058BC-7A8F-46B5-9B25-1CFE55D66122}</ProjectGuid>
@@ -69,7 +71,7 @@
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -90,7 +92,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
     </ClCompile>
     <Link>

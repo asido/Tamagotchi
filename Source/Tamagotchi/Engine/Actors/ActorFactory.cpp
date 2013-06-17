@@ -88,7 +88,7 @@ ActorId ActorFactory::GetNextActorId()
     return this->lastActorId;
 }
 
-std::shared_ptr<ActorComponent>    CreateComponent(tinyxml2::XMLElement *data)
+std::shared_ptr<ActorComponent> ActorFactory::CreateComponent(tinyxml2::XMLElement *data)
 {
     return std::shared_ptr<ActorComponent>();
 }
