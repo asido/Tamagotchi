@@ -29,9 +29,9 @@ static const unsigned char TAG_FLAGS_DEFAULT_INFO       = 0;
 //-----------------------------------------------------------------------------------------------------------
 
 ErrorMessenger::ErrorMessenger()
+    : enabled(true)
 {
     LogMgr::Instance().AddErrorMessenger(this);
-    this->enabled = true;
 }
 
 void ErrorMessenger::Show(const std::string &errorMessage, bool isFatal, const char *funcName, const char *sourceFile, unsigned int lineNum)

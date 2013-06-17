@@ -12,6 +12,8 @@ TamagotchiEngine *g_engine = NULL;
 //-----------------------------------------------------------------------------------------------------------
 
 TamagotchiEngine::TamagotchiEngine()
+    : width(0), height(0),
+      shaderProgram(0)
 {
     g_engine = this;
 }

@@ -22,7 +22,7 @@ public:
 
 private:
     std::shared_ptr<ZipFile>    zipFile;
-    std::string                    resFilename;
+    std::string                 resFilename;
 };
 
 

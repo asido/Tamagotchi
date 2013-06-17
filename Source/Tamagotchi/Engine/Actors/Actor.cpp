@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 Actor::Actor(ActorId id)
-    : id(id)
+    : id(id), components()
 {
     LogInfo("Actor created: %d", this->id);
 }
