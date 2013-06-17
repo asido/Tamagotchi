@@ -23,25 +23,25 @@ void ResourceMgrTest::tearDown()
 
 void ResourceMgrTest::GetHandleTest()
 {
-    Resource r1("test.txt");
+    const Resource r1("test.txt");
     std::shared_ptr<ResourceHandle> handle = this->resourceMgr->GetHandle(r1);
     CPPUNIT_ASSERT(!handle); // We don't have .txt loader.
 
-    Resource r2("stdafx.xml");
+    const Resource r2("stdafx.xml");
     handle = this->resourceMgr->GetHandle(r2);
     CPPUNIT_ASSERT(handle);
 
-    Resource r3("unexisting.file");
+    const Resource r3("unexisting.file");
     handle = this->resourceMgr->GetHandle(r3);
     CPPUNIT_ASSERT(!handle);
 
-    Resource r4("1.png");
+    const Resource r4("1.png");
     handle = this->resourceMgr->GetHandle(r4);
     CPPUNIT_ASSERT(handle);
     std::shared_ptr<GLESTextureResourceExtraData> textureExtra = std::static_pointer_cast<GLESTextureResourceExtraData>(handle->GetExtra());
     CPPUNIT_ASSERT(textureExtra->GetTexture() > 0);
 
-    Resource r5("TestFolder/TestFile.xml");
+    const Resource r5("TestFolder/TestFile.xml");
     handle = this->resourceMgr->GetHandle(r5);
     CPPUNIT_ASSERT(handle);
     std::shared_ptr<XMLResourceExtraData> xmlExtra = std::static_pointer_cast<XMLResourceExtraData>(handle->GetExtra());

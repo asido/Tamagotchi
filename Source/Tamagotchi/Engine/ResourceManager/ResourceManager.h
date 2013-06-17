@@ -17,7 +17,7 @@ class Resource
 {
 public:
     Resource(const std::string &name) : name(name) {};
-    const std::string &GetName() const { return this->name; }
+    const std::string& GetName() const { return this->name; }
 
 private:
     std::string name;

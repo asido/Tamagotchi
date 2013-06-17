@@ -47,8 +47,9 @@ private:
     ~LogMgr();
     
 public:
+    static LogMgr& Instance();
+
     static bool Init(const std::string *logConfigFilename=NULL);
-    static void Destroy();
 
     void Log(const std::string &tag, const std::string &message, const char *funcName, const char *sourceFile, unsigned int lineNum);
 
@@ -65,9 +66,6 @@ private:
     TagMap                tags;
     ErrorMessangerList    errorMessengers;
 };
-
-extern LogMgr *g_logMgr;
-
 
 //-----------------------------------------------------------------------------------------------------------
 //  Log defines. Use these instead of classes above directly.
@@ -99,13 +97,13 @@ extern LogMgr *g_logMgr;
 #define LogWarning(str, ...)                                                        \
     do {                                                                            \
         const std::string s = StringUtilities::Format(str, __VA_ARGS__);            \
-        g_logMgr->Log("WARNING", s, __FUNCTION__, __FILE__, __LINE__);              \
+        LogMgr::Instance().Log("WARNING", s, __FUNCTION__, __FILE__, __LINE__);              \
     } while (0)
 
 #define LogInfo(str, ...)                                                           \
     do {                                                                            \
         const std::string s = StringUtilities::Format(str, __VA_ARGS__);            \
-        g_logMgr->Log("INFO", s, NULL, NULL, NULL);                                 \
+        LogMgr::Instance().Log("INFO", s, NULL, NULL, NULL);                                 \
     } while (0)
 
 #endif

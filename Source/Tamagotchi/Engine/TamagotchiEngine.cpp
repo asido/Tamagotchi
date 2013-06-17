@@ -1,3 +1,4 @@
+#include <cassert>
 #include "TamagotchiEngine.h"
 #include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/ZipFile.h"
@@ -17,14 +18,13 @@ TamagotchiEngine::TamagotchiEngine()
 
 TamagotchiEngine::~TamagotchiEngine()
 {
-    LogMgr::Destroy();
-
     g_engine = NULL;
 }
 
 bool TamagotchiEngine::Init(GLint width, GLint height)
 {
-    LogMgr::Init();
+    // If logger can't be initialised, just crash here right away.
+    assert(LogMgr::Init());
 
     // TODO: we should create TamagotchiOptions class which will parse the .xml config file
     // and get all necessary information, like asset zip file name, ResourceManager cache size and such.

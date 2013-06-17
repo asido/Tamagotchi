@@ -75,7 +75,10 @@ std::shared_ptr<ResourceHandle> ResourceManager::GetHandle(const Resource &r)
     if (!handle)
     {
         handle = Load(r);
-        LogAssert(handle);
+        if (!handle)
+        {
+            LogWarning("ResourceHandle for file %s couldn't be loaded.", r.GetName());
+        }
     }
     else
     {
@@ -149,14 +152,14 @@ std::shared_ptr<ResourceHandle> ResourceManager::Load(const Resource &r)
 
     if (!loader)
     {
-        LogError("loader for file '" + r.GetName() + "' not found");
+        LogWarning("loader for file '" + r.GetName() + "' not found");
         return handle;
     }
 
     int rawSize = this->file->GetRawResourceSize(r);
     if (rawSize < 0)
     {
-        LogError("Resource not found: " + r.GetName());
+        LogWarning("Resource not found: " + r.GetName());
         return handle;
     }
 

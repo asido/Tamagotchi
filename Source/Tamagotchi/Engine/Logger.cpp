@@ -24,33 +24,21 @@ static const unsigned char TAG_FLAGS_DEFAULT_INFO       = 0;
 #endif
 
 
-LogMgr *g_logMgr = NULL;
-
 //-----------------------------------------------------------------------------------------------------------
 //  class ErrorMessenger
 //-----------------------------------------------------------------------------------------------------------
 
 ErrorMessenger::ErrorMessenger()
 {
-    if (!g_logMgr)
-    {
-        return;
-    }
-
-    g_logMgr->AddErrorMessenger(this);
+    LogMgr::Instance().AddErrorMessenger(this);
     this->enabled = true;
 }
 
 void ErrorMessenger::Show(const std::string &errorMessage, bool isFatal, const char *funcName, const char *sourceFile, unsigned int lineNum)
 {
-    if (!g_logMgr)
-    {
-        return;
-    }
-
     if (this->enabled)
     {
-        if (g_logMgr->Error(errorMessage, isFatal, funcName, sourceFile, lineNum) == ErrorDialogChoice::LOGMGR_ERROR_IGNORE)
+        if (LogMgr::Instance().Error(errorMessage, isFatal, funcName, sourceFile, lineNum) == ErrorDialogChoice::LOGMGR_ERROR_IGNORE)
         {
             this->enabled = false;
         }
@@ -86,13 +74,14 @@ LogMgr::~LogMgr()
 // Static
 //-----------------------------------------------
 
+LogMgr& LogMgr::Instance()
+{
+    static LogMgr instance;
+    return instance;
+}
+
 bool LogMgr::Init(const std::string *logConfigFilename)
 {
-    // Rely here on simple assert since no logging can be handled anyway.
-    assert(!g_logMgr);
-
-    g_logMgr = TG_NEW LogMgr();
-
     if (logConfigFilename)
     {
         tinyxml2::XMLDocument xmlDocument;
@@ -124,17 +113,11 @@ bool LogMgr::Init(const std::string *logConfigFilename)
                 flags |= TAG_FLAG_WRITE_TO_LOG_FILE;
             }
 
-            g_logMgr->SetTagFlags(tag, flags);
+            LogMgr::Instance().SetTagFlags(tag, flags);
         }
     }
 
     return true;
-}
-
-void LogMgr::Destroy()
-{
-    SAFE_DELETE(g_logMgr);
-    g_logMgr = NULL;
 }
 
 //-----------------------------------------------
