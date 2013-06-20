@@ -77,7 +77,7 @@ std::shared_ptr<ResourceHandle> ResourceManager::GetHandle(const Resource &r)
         handle = Load(r);
         if (!handle)
         {
-            LogWarning("ResourceHandle for file %s couldn't be loaded.", r.GetName());
+            LogWarning("ResourceHandle for file %s couldn't be loaded.", r.GetName().c_str());
         }
     }
     else

@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <sstream>
+#include <iostream>
 
 #if defined(WIN32)
 #include <windows.h>
@@ -212,7 +213,9 @@ ErrorDialogChoice LogMgr::Error(const std::string &errorMessage, bool isFatal, c
         break;
     }
 #elif defined(__APPLE__)
-#    error implement me
+    std::cout << buffer;
+    //__builtin_trap();
+    return ErrorDialogChoice::LOGMGR_ERROR_RETRY;
 #else
 #    error implement me
 #endif
@@ -234,7 +237,7 @@ void LogMgr::OutputFinalBufferToLogs(const std::string &finalBuffer, unsigned ch
 #if defined(WIN32)
         OutputDebugStringA(finalBuffer.c_str());
 #elif defined(__APPLE__)
-#    error implement me
+        std::cout << finalBuffer;
 #else
 #    error implement me
 #endif

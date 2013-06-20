@@ -169,7 +169,7 @@ bool ZipFile::Init(const std::string &resFileName)
     this->file = fopen(absoluteFilename.c_str(), "rb");
     if (!this->file)
     {
-        LogError("Can't open a file: %s", absoluteFilename);
+        LogError("Can't open a file: %s", absoluteFilename.c_str());
         return false;
     }
 

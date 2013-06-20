@@ -28,14 +28,14 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string &actorResourc
     tinyxml2::XMLElement *root = xmlExtra->GetRoot();
     if (!root)
     {
-        LogError("Creating actor from resource has failed: %s", actorResource);
+        LogError("Creating actor from resource has failed: %s", actorResource.c_str());
         return std::shared_ptr<Actor>();
     }
 
     std::shared_ptr<Actor> actor(TG_NEW Actor(this->GetNextActorId()));
     if (!actor->Init())
     {
-        LogError("Failed to initialize actor: %s", actorResource);
+        LogError("Failed to initialize actor: %s", actorResource.c_str());
         return std::shared_ptr<Actor>();
     }
 

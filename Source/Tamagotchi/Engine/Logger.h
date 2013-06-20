@@ -67,6 +67,7 @@ private:
     ErrorMessangerList    errorMessengers;
 };
 
+
 //-----------------------------------------------------------------------------------------------------------
 //  Log defines. Use these instead of classes above directly.
 //-----------------------------------------------------------------------------------------------------------
@@ -83,27 +84,27 @@ private:
 #define LogFatal(str, ...)                                                          \
     do {                                                                            \
         static ErrorMessenger *errorMessenger = TG_NEW ErrorMessenger;              \
-        const std::string s = StringUtilities::Format(str, __VA_ARGS__);            \
+        const std::string s = StringUtilities::Format(str, ##__VA_ARGS__);            \
         errorMessenger->Show(s, true, __FUNCTION__, __FILE__, __LINE__);            \
     } while (0)
 
 #define LogError(str, ...)                                                          \
     do {                                                                            \
         static ErrorMessenger *errorMessenger = TG_NEW ErrorMessenger;              \
-        const std::string s = StringUtilities::Format(str, __VA_ARGS__);            \
+        const std::string s = StringUtilities::Format(str, ##__VA_ARGS__);            \
         errorMessenger->Show(s, false, __FUNCTION__, __FILE__, __LINE__);           \
     } while (0)
 
 #define LogWarning(str, ...)                                                        \
     do {                                                                            \
-        const std::string s = StringUtilities::Format(str, __VA_ARGS__);            \
-        LogMgr::Instance().Log("WARNING", s, __FUNCTION__, __FILE__, __LINE__);              \
+        const std::string s = StringUtilities::Format(str, ##__VA_ARGS__);            \
+        LogMgr::Instance().Log("WARNING", s, __FUNCTION__, __FILE__, __LINE__);     \
     } while (0)
 
 #define LogInfo(str, ...)                                                           \
     do {                                                                            \
-        const std::string s = StringUtilities::Format(str, __VA_ARGS__);            \
-        LogMgr::Instance().Log("INFO", s, NULL, NULL, NULL);                                 \
+        const std::string s = StringUtilities::Format(str, ##__VA_ARGS__);            \
+        LogMgr::Instance().Log("INFO", s, NULL, NULL, NULL);                        \
     } while (0)
 
 #endif

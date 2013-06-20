@@ -30,7 +30,7 @@ ComponentId TransformComponent::GetId() const
     return GetIdStatic();
 }
 
-const std::string TransformComponent::GetName() const
+const std::string& TransformComponent::GetName() const
 {
     return name;
 }

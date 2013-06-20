@@ -44,7 +44,7 @@ bool XMLResourceLoader::LoadResource(char *rawBuffer, unsigned int rawSize, std:
     std::shared_ptr<XMLResourceExtraData> extraData = std::shared_ptr<XMLResourceExtraData>(TG_NEW XMLResourceExtraData());
     if (!extraData->ParseXML(rawBuffer))
     {
-        LogError("Failed loadng XML resource: %s", handle->GetResource().GetName());
+        LogError("Failed loadng XML resource: %s", handle->GetResource().GetName().c_str());
         return false;
     }
     handle->SetExtra(std::shared_ptr<XMLResourceExtraData>(extraData));

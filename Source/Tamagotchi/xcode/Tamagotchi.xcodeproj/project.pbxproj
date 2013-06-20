@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		70064B1B176771F60034A71E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70064B1A176771F60034A71E /* UIKit.framework */; };
 		70064B1D176771F60034A71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70064B1C176771F60034A71E /* Foundation.framework */; };
+		700FC5971772BB3800023A89 /* Assets.zip in Resources */ = {isa = PBXBuildFile; fileRef = 7060804E1772BAF300D0D419 /* Assets.zip */; };
 		705FB93D176772DC003924B8 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705FB93C176772DC003924B8 /* MainWindow.xib */; };
 		705FB93F1767734E003924B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705FB93E1767734E003924B8 /* QuartzCore.framework */; };
 		705FB94117677352003924B8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705FB94017677352003924B8 /* OpenGLES.framework */; };
@@ -17,6 +18,7 @@
 		705FB94D176776B7003924B8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705FB94C176776B7003924B8 /* Default-568h@2x.png */; };
 		705FB9501767771F003924B8 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 705FB94F1767771F003924B8 /* EAGLView.mm */; };
 		705FB992176787F9003924B8 /* libTamagotchiEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 705FB98117677F21003924B8 /* libTamagotchiEngine.a */; };
+		706080451772A71500D0D419 /* TamagotchiGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 706080421772A62000D0D419 /* TamagotchiGame.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,9 @@
 		705FB94E1767771F003924B8 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = SOURCE_ROOT; };
 		705FB94F1767771F003924B8 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = SOURCE_ROOT; };
 		705FB97C17677F20003924B8 /* TamagotchiEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TamagotchiEngine.xcodeproj; path = TamagotchiEngine/TamagotchiEngine.xcodeproj; sourceTree = "<group>"; };
+		706080421772A62000D0D419 /* TamagotchiGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TamagotchiGame.cpp; path = ../Tamagotchi/TamagotchiGame.cpp; sourceTree = SOURCE_ROOT; };
+		706080431772A62000D0D419 /* TamagotchiGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TamagotchiGame.h; path = ../Tamagotchi/TamagotchiGame.h; sourceTree = SOURCE_ROOT; };
+		7060804E1772BAF300D0D419 /* Assets.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Assets.zip; path = ../../../Game/Assets.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +88,7 @@
 			children = (
 				700FC40F176A1F0700D3DF9A /* TamagotchiEngineTest_iOS.xcodeproj */,
 				705FB97C17677F20003924B8 /* TamagotchiEngine.xcodeproj */,
+				706080501772BB0600D0D419 /* Assets */,
 				70064B20176771F60034A71E /* Tamagotchi */,
 				70064B19176771F60034A71E /* Frameworks */,
 				70064B18176771F60034A71E /* Products */,
@@ -111,6 +117,8 @@
 		70064B20176771F60034A71E /* Tamagotchi */ = {
 			isa = PBXGroup;
 			children = (
+				706080421772A62000D0D419 /* TamagotchiGame.cpp */,
+				706080431772A62000D0D419 /* TamagotchiGame.h */,
 				705FB93C176772DC003924B8 /* MainWindow.xib */,
 				705FB94E1767771F003924B8 /* EAGLView.h */,
 				705FB94F1767771F003924B8 /* EAGLView.mm */,
@@ -146,6 +154,14 @@
 				705FB98117677F21003924B8 /* libTamagotchiEngine.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		706080501772BB0600D0D419 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7060804E1772BAF300D0D419 /* Assets.zip */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700FC5971772BB3800023A89 /* Assets.zip in Resources */,
 				705FB93D176772DC003924B8 /* MainWindow.xib in Resources */,
 				705FB94D176776B7003924B8 /* Default-568h@2x.png in Resources */,
 			);
@@ -239,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706080451772A71500D0D419 /* TamagotchiGame.cpp in Sources */,
 				705FB94917677605003924B8 /* TamagotchiAppDelegate.m in Sources */,
 				705FB946176775D6003924B8 /* main.m in Sources */,
 				705FB9501767771F003924B8 /* EAGLView.mm in Sources */,
@@ -259,7 +277,7 @@
 		70064B32176771F60034A71E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -281,17 +299,23 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../3rdParty/tinyxml2/include/",
+					"$(SRCROOT)/../../3rdParty/eigen-3.1.3/include/",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../Engine/ $(SRCROOT)/../Tamagotchi/";
 			};
 			name = Debug;
 		};
 		70064B33176771F60034A71E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -306,10 +330,16 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../3rdParty/tinyxml2/include/",
+					"$(SRCROOT)/../../3rdParty/eigen-3.1.3/include/",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../Engine/ $(SRCROOT)/../Tamagotchi/";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -326,6 +356,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../Engine/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -342,6 +373,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../Engine/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

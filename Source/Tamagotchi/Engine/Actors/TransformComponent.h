@@ -25,7 +25,7 @@ public:
 
     virtual bool                Init(tinyxml2::XMLElement *data) override;
     virtual ComponentId         GetId() const override;
-    virtual const std::string   GetName() const override;
+    virtual const std::string&  GetName() const override;
 
     Matrix4f                    GetTransform() const;
     void                        SetTransform(const Matrix4f &newTransform);

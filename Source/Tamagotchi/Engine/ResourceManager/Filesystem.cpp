@@ -15,14 +15,14 @@ std::string Filesystem::GetRootPath()
     CFBundleRef mainBundle = CFBundleGetMainBundle();
     if (!mainBundle)
     {
-        TG_ERROR("mainBundle == NULL");
+        LogError("mainBundle == NULL");
         return "";
     }
     
     CFURLRef pathUrl = CFBundleCopyResourcesDirectoryURL(mainBundle);
     if (!pathUrl)
     {
-        TG_ERROR("pathUrl == NULL");
+        LogError("pathUrl == NULL");
         return "";
     }
     
@@ -30,7 +30,7 @@ std::string Filesystem::GetRootPath()
     memset(buf, 0, PATH_MAX);
     CFURLGetFileSystemRepresentation(pathUrl, true, reinterpret_cast<UInt8*>(buf), PATH_MAX);
     
-    std::string path(buf);
+    path = std::string(buf);
     path.append("/");
 #else
 #    error implement me

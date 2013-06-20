@@ -17,7 +17,8 @@ void StringUtilitiesTest::WildcardMatchTest()
 
 void StringUtilitiesTest::ToLowerTest()
 {
-    CPPUNIT_ASSERT(StringUtilities::ToLower(std::string("ABCdefGHIj")) == "abcdefghij");
+    std::string str("ABCdefGHIj");
+    CPPUNIT_ASSERT(StringUtilities::ToLower(str) == std::string("abcdefghij"));
 }
 
 void StringUtilitiesTest::FormatTest()

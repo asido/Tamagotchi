@@ -31,7 +31,7 @@ public:
     virtual void                Update(float delta) {}
 
     virtual ComponentId         GetId() const = 0;
-    virtual const std::string   GetName() const = 0;
+    virtual const std::string&  GetName() const = 0;
 
 private:
     void                        SetOwner(std::weak_ptr<Actor> owner) { this->owner = owner; }
@@ -40,7 +40,7 @@ private:
         std::shared_ptr<Actor> o = this->owner.lock();
         if (!o)
         {
-            LogWarning("%s::owner == NULL", this->GetName());
+            LogWarning("%s::owner == NULL", this->GetName().c_str());
         }
         return o;
     }

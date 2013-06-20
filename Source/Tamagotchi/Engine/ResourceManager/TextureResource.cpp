@@ -1,3 +1,5 @@
+#include <streambuf>
+#include <istream>
 #include "TextureResource.h"
 #include "defines.h"
 #include "Logger.h"

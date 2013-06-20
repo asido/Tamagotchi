@@ -10,7 +10,7 @@
 #import <OpenGLES/EAGLDrawable.h>
 #import "EAGLView.h"
 
-#include "../Engine/TamagotchiEngine.h"
+#import "TamagotchiGame.h"
 
 @interface EAGLView()
 @property (strong, nonatomic) EAGLContext   *context;
@@ -22,7 +22,7 @@
 
 @implementation EAGLView
 {
-    TamagotchiEngine *tamagotchiEngine;
+    Tamagotchi *game;
 }
 
 @synthesize renderInterval;
@@ -58,7 +58,7 @@
         
         renderInterval = 1.0f / 60.0f;
 
-        tamagotchiEngine = new TamagotchiEngine();
+        game = TG_NEW Tamagotchi();
     }
 
     return self;
@@ -69,8 +69,7 @@
     [EAGLContext setCurrentContext:context];
     [self destroyFramebuffer];
     [self createFramebuffer];
-    tamagotchiEngine->Init(backingWidth, backingHeight);
-    [self renderView];
+    game->Init(backingWidth, backingHeight);
 }
 
 - (void)dealloc
@@ -110,7 +109,7 @@
 {
     [EAGLContext setCurrentContext:context];
     
-    tamagotchiEngine->FrameRender();
+    game->FrameRender();
     
     glBindRenderbuffer(GL_RENDERBUFFER, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER];
