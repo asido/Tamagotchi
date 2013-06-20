@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <sstream>
 
 #if defined(WIN32)
 #include <windows.h>
@@ -250,7 +251,7 @@ bool LogMgr::WriteToLogFile(const std::string &data)
         return false;
     }
 
-    fprintf(file, data.c_str());
+    fprintf(file, "%s", data.c_str());
     fclose(file);
 
     return true;
@@ -275,9 +276,9 @@ void LogMgr::GetOutputBuffer(std::string &outputBuffer, const std::string &tag, 
     if (lineNum != 0)
     {
         outputBuffer += ":";
-        char lineNumBuffer[11];
-        memset(lineNumBuffer, 0, sizeof(char));
-        outputBuffer += _itoa(lineNum, lineNumBuffer, 10);
+        std::stringstream ss;
+        ss << lineNum;
+        outputBuffer += ss.str();
     }
     if (funcName)
     {
