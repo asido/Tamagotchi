@@ -4,6 +4,7 @@
 #include "ResourceManager/ZipFile.h"
 #include "Rendering/Renderer.h"
 #include "Logger.h"
+#include "Clock.h"
 
 TamagotchiEngine *g_engine = NULL;
 
@@ -27,6 +28,12 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 {
     // If logger can't be initialised, just crash here right away.
     assert(LogMgr::Init());
+
+    if (!Clock::Init())
+    {
+        LogError("Clock::Init() has failed.");
+        return false;
+    }
 
     // TODO: we should create TamagotchiOptions class which will parse the .xml config file
     // and get all necessary information, like asset zip file name, ResourceManager cache size and such.

@@ -1,5 +1,5 @@
 #include "GameLogic.h"
-#include "GameView.h"
+#include "UI/GameView.h"
 #include "Actors/ActorFactory.h"
 #include "defines.h"
 

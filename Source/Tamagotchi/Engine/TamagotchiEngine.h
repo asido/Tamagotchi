@@ -5,7 +5,7 @@
 #include "defines.h"
 #include "Rendering/GLES.h"
 #include "GameLogic.h"
-#include "GameView.h"
+#include "UI/GameView.h"
 
 class ResourceManager;
 class IRenderer;

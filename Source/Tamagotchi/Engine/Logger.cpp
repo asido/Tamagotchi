@@ -10,6 +10,7 @@
 #include <tinyxml2.h>
 
 #include "Logger.h"
+#include "Clock.h"
 
 static const char *ERRORLOG_FILENAME = "error.log";
 
@@ -245,16 +246,19 @@ void LogMgr::OutputFinalBufferToLogs(const std::string &finalBuffer, unsigned ch
 
 bool LogMgr::WriteToLogFile(const std::string &data)
 {
-    // TODO: is this function thread safe?
+    this->mutexFile.Lock();
 
     FILE *file = fopen(ERRORLOG_FILENAME, "a+");
     if (!file)
     {
+        this->mutexFile.Unlock();
         return false;
     }
 
     fprintf(file, "%s", data.c_str());
     fclose(file);
+
+    this->mutexFile.Unlock();
 
     return true;
 }
@@ -266,7 +270,8 @@ void LogMgr::GetOutputBuffer(std::string &outputBuffer, const std::string &tag, 
 
     time(&currentTime);
     ptm = localtime(&currentTime);
-    outputBuffer = StringUtilities::Format("<%02d:%02d:%02d.%003d> ", ptm->tm_hour, ptm->tm_min, ptm->tm_sec, clock());
+    int millis = ((int)((float)clock() / CLOCKS_PER_SEC * 1000.0f)) % 1000;
+    outputBuffer = StringUtilities::Format("<%02d:%02d:%02d.%03d> ", ptm->tm_hour, ptm->tm_min, ptm->tm_sec, millis);
 
     if (!tag.empty())
     {

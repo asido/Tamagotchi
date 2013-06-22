@@ -18,6 +18,12 @@
     <Filter Include="Source Files\ResourceManager">
       <UniqueIdentifier>{f25b2e21-6a4e-4184-8116-876816af3df4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{d4efa60e-7b10-4407-b971-6a8089522a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threading">
+      <UniqueIdentifier>{6ae061fc-22a5-467b-9181-3a30f2539709}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Engine\StringUtilities.h">
@@ -33,9 +39,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Engine\GameLogic.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Engine\GameView.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Engine\ResourceManager\Filesystem.h">
@@ -80,6 +83,18 @@
     <ClInclude Include="..\Engine\Actors\TransformComponent.h">
       <Filter>Source Files\Actors</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\UI\GameView.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\UI\ScreenElement.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Threading\Mutex.h">
+      <Filter>Source Files\Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Clock.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -92,9 +107,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Engine\GameLogic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Engine\GameView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Engine\ResourceManager\Filesystem.cpp">
@@ -129,6 +141,18 @@
     </ClCompile>
     <ClCompile Include="..\Engine\Actors\TransformComponent.cpp">
       <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\UI\GameView.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\UI\ScreenElement.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Threading\Mutex.cpp">
+      <Filter>Source Files\Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Clock.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

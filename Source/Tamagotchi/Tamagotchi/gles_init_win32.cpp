@@ -102,13 +102,14 @@ bool ESContext::Init()
         return false;
     }
 
+
     return true;
 }
 
 void ESContext::MainLoop()
 {
-    MSG            msg = { 0 };
-    ULONGLONG    lastTime = GetTickCount64();
+    MSG         msg = { 0 };
+    ULONGLONG   lastTime = GetTickCount64();
 
     while (!this->quit)
     {

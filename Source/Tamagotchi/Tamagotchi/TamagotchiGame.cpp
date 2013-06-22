@@ -12,5 +12,5 @@ std::shared_ptr<GameLogic> Tamagotchi::CreateGameLogic()
 std::shared_ptr<GameView> Tamagotchi::CreateFirstView()
 {
     // TODO: this should return main menu or intro view.
-    return std::shared_ptr<GameView>(TG_NEW GameView);
+    return std::shared_ptr<GameView>(TG_NEW GameView(this->GetRenderer()));
 }

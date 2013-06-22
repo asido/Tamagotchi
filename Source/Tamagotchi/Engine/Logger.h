@@ -66,8 +66,10 @@ private:
 private:
     TagMap              tags;
     ErrorMessangerList  errorMessengers;
+
     Mutex               mutexTags;
     Mutex               mutexMessenger;
+    Mutex               mutexFile;
 };
 
 
