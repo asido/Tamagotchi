@@ -7,6 +7,7 @@
 
 #include "defines.h"
 #include "StringUtilities.h"
+#include "Threading/Mutex.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ErrorMessenger
@@ -63,8 +64,10 @@ private:
     void GetOutputBuffer(std::string &outputBuffer, const std::string &tag, const std::string &message, const char *funcName, const char *sourceFile, unsigned int lineNum);
 
 private:
-    TagMap                tags;
-    ErrorMessangerList    errorMessengers;
+    TagMap              tags;
+    ErrorMessangerList  errorMessengers;
+    Mutex               mutexTags;
+    Mutex               mutexMessenger;
 };
 
 

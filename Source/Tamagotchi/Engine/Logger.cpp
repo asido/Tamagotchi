@@ -1,6 +1,7 @@
-#include <assert.h>
 #include <sstream>
 #include <iostream>
+#include <assert.h>
+#include <time.h>
 
 #if defined(WIN32)
 #include <windows.h>
@@ -61,15 +62,14 @@ LogMgr::LogMgr()
 
 LogMgr::~LogMgr()
 {
-    // TODO: Lock messenger critical section.
+    this->mutexMessenger.Lock();
     for (ErrorMessangerList::iterator it = this->errorMessengers.begin(); it != this->errorMessengers.end(); ++it)
     {
         ErrorMessenger *messenger = *it;
         delete messenger;
     }
-
     this->errorMessengers.clear();
-    // TODO: Unlock messenger critical section.
+    this->mutexMessenger.Unlock();
 }
 
 //-----------------------------------------------
@@ -128,12 +128,11 @@ bool LogMgr::Init(const std::string *logConfigFilename)
 
 void LogMgr::Log(const std::string &tag, const std::string &message, const char *funcName, const char *sourceFile, unsigned int lineNum)
 {
-    // TODO: Tag critical section lock.
-
+    this->mutexTags.Lock();
     TagMap::iterator it = this->tags.find(tag);
     if (it != this->tags.end())
     {
-        // TODO: Tag critical section unlock.
+        this->mutexTags.Unlock();
 
         std::string buffer;
         GetOutputBuffer(buffer, tag, message, funcName, sourceFile, lineNum);
@@ -141,20 +140,20 @@ void LogMgr::Log(const std::string &tag, const std::string &message, const char 
     }
     else
     {
-        // TODO: Tag critical section unlock.
+        this->mutexTags.Unlock();
     }
 }
 
 void LogMgr::AddErrorMessenger(ErrorMessenger *messenger)
 {
-    // TODO: messenger critical section lock.
+    this->mutexMessenger.Lock();
     this->errorMessengers.push_back(messenger);
-    // TODO: messenger critical section unlock.
+    this->mutexMessenger.Unlock();
 }
 
 void LogMgr::SetTagFlags(const std::string &tag, unsigned char flags)
 {
-    // TODO: tag critical section lock.
+    this->mutexTags.Lock();
 
     if (flags == 0)
     {
@@ -173,7 +172,7 @@ void LogMgr::SetTagFlags(const std::string &tag, unsigned char flags)
         }
     }    
 
-    // TODO: tag critical section unlock.
+    this->mutexTags.Unlock();
 }
 
 ErrorDialogChoice LogMgr::Error(const std::string &errorMessage, bool isFatal, const char *funcName, const char *sourceFile, unsigned int lineNum)
@@ -183,13 +182,13 @@ ErrorDialogChoice LogMgr::Error(const std::string &errorMessage, bool isFatal, c
 
     GetOutputBuffer(buffer, tag, errorMessage, funcName, sourceFile, lineNum);
 
-    // TODO: tag critical section lock.
+    this->mutexTags.Lock();
     TagMap::iterator it = this->tags.find(tag);
     if (it != this->tags.end())
     {
         OutputFinalBufferToLogs(buffer, it->second);
     }
-    // TODO: tag critical section unlock.
+    this->mutexTags.Unlock();
 
 #if defined(WIN32)
     int result = MessageBoxA(NULL, buffer.c_str(), tag.c_str(), MB_ABORTRETRYIGNORE|MB_ICONERROR|MB_DEFBUTTON3);
@@ -262,13 +261,20 @@ bool LogMgr::WriteToLogFile(const std::string &data)
 
 void LogMgr::GetOutputBuffer(std::string &outputBuffer, const std::string &tag, const std::string &message, const char *funcName, const char *sourceFile, unsigned int lineNum)
 {
+    time_t currentTime;
+    struct tm *ptm;
+
+    time(&currentTime);
+    ptm = localtime(&currentTime);
+    outputBuffer = StringUtilities::Format("<%02d:%02d:%02d.%003d> ", ptm->tm_hour, ptm->tm_min, ptm->tm_sec, clock());
+
     if (!tag.empty())
     {
-        outputBuffer = "[" + tag + "] " + message;
+        outputBuffer += "[" + tag + "] " + message;
     }
     else
     {
-        outputBuffer = message;
+        outputBuffer += message;
     }
 
     if (sourceFile)
