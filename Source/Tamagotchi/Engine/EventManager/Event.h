@@ -12,8 +12,8 @@ typedef unsigned long EventType;
 class IEvent
 {
 public:
-    virtual const EventType GetEventType() const = 0;
-    virtual const std::string& GetName() const = 0;
+    virtual const EventType     GetEventType() const = 0;
+    virtual const std::string&  GetName() const = 0;
 };
 
 
