@@ -24,6 +24,9 @@
     <Filter Include="Source Files\Threading">
       <UniqueIdentifier>{6ae061fc-22a5-467b-9181-3a30f2539709}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\EventManager">
+      <UniqueIdentifier>{8ac01cd4-4878-4731-b60d-a3809b09aac9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Engine\StringUtilities.h">
@@ -95,6 +98,15 @@
     <ClInclude Include="..\Engine\Clock.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\Actors\RenderComponent.h">
+      <Filter>Source Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\EventManager\EventManager.h">
+      <Filter>Source Files\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\EventManager\Event.h">
+      <Filter>Source Files\EventManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -153,6 +165,15 @@
     </ClCompile>
     <ClCompile Include="..\Engine\Clock.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Actors\RenderComponent.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\EventManager\EventManager.cpp">
+      <Filter>Source Files\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\EventManager\Event.cpp">
+      <Filter>Source Files\EventManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

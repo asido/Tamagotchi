@@ -13,8 +13,11 @@
   <ItemGroup>
     <ClCompile Include="..\Engine\Actors\Actor.cpp" />
     <ClCompile Include="..\Engine\Actors\ActorFactory.cpp" />
+    <ClCompile Include="..\Engine\Actors\RenderComponent.cpp" />
     <ClCompile Include="..\Engine\Actors\TransformComponent.cpp" />
     <ClCompile Include="..\Engine\Clock.cpp" />
+    <ClCompile Include="..\Engine\EventManager\Event.cpp" />
+    <ClCompile Include="..\Engine\EventManager\EventManager.cpp" />
     <ClCompile Include="..\Engine\GameLogic.cpp" />
     <ClCompile Include="..\Engine\Rendering\Renderer.cpp" />
     <ClCompile Include="..\Engine\Rendering\Scene.cpp" />
@@ -35,8 +38,11 @@
     <ClInclude Include="..\Engine\Actors\Actor.h" />
     <ClInclude Include="..\Engine\Actors\ActorComponent.h" />
     <ClInclude Include="..\Engine\Actors\ActorFactory.h" />
+    <ClInclude Include="..\Engine\Actors\RenderComponent.h" />
     <ClInclude Include="..\Engine\Actors\TransformComponent.h" />
     <ClInclude Include="..\Engine\Clock.h" />
+    <ClInclude Include="..\Engine\EventManager\Event.h" />
+    <ClInclude Include="..\Engine\EventManager\EventManager.h" />
     <ClInclude Include="..\Engine\GameLogic.h" />
     <ClInclude Include="..\Engine\ObjectFactory.h" />
     <ClInclude Include="..\Engine\Rendering\GLES.h" />
@@ -103,7 +109,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Engine;C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\zlib\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Engine;C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\zlib\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -126,7 +132,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Engine;C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\zlib\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Engine;C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\zlib\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
