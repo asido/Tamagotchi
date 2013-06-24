@@ -35,14 +35,14 @@ static const unsigned char TAG_FLAGS_DEFAULT_INFO       = 0;
 ErrorMessenger::ErrorMessenger()
     : enabled(true)
 {
-    LogMgr::Instance().AddErrorMessenger(this);
+    LogMgr::Get().AddErrorMessenger(this);
 }
 
 void ErrorMessenger::Show(const std::string &errorMessage, bool isFatal, const char *funcName, const char *sourceFile, unsigned int lineNum)
 {
     if (this->enabled)
     {
-        if (LogMgr::Instance().Error(errorMessage, isFatal, funcName, sourceFile, lineNum) == ErrorDialogChoice::LOGMGR_ERROR_IGNORE)
+        if (LogMgr::Get().Error(errorMessage, isFatal, funcName, sourceFile, lineNum) == ErrorDialogChoice::LOGMGR_ERROR_IGNORE)
         {
             this->enabled = false;
         }
@@ -77,7 +77,7 @@ LogMgr::~LogMgr()
 // Static
 //-----------------------------------------------
 
-LogMgr& LogMgr::Instance()
+LogMgr& LogMgr::Get()
 {
     static LogMgr instance;
     return instance;
@@ -116,7 +116,7 @@ bool LogMgr::Init(const std::string *logConfigFilename)
                 flags |= TAG_FLAG_WRITE_TO_LOG_FILE;
             }
 
-            LogMgr::Instance().SetTagFlags(tag, flags);
+            LogMgr::Get().SetTagFlags(tag, flags);
         }
     }
 

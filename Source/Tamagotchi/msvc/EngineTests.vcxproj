@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\EngineTests\EventManagerTest.cpp" />
     <ClCompile Include="..\EngineTests\main_win32.cpp" />
     <ClCompile Include="..\EngineTests\ResourceMgrTest.cpp" />
     <ClCompile Include="..\EngineTests\StringUtilitiesTest.cpp" />
@@ -24,6 +25,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\EngineTests\EventManagerTest.h" />
     <ClInclude Include="..\EngineTests\ResourceMgrTest.h" />
     <ClInclude Include="..\EngineTests\StringUtilitiesTest.h" />
     <ClInclude Include="..\EngineTests\TestMain.h" />
@@ -82,7 +84,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile />
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,7 +104,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\ARM\Mali Developer Tools\OpenGL ES Emulator v1.3.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

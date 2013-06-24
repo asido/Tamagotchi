@@ -2,6 +2,20 @@
 #include "Logger.h"
 #include "Clock.h"
 
+//-----------------------------------------------
+// Static
+//-----------------------------------------------
+
+EventManager& EventManager::Get()
+{
+    static EventManager instance;
+    return instance;
+}
+
+//-----------------------------------------------
+// Public
+//-----------------------------------------------
+
 EventManager::EventManager()
     : activeQueue(0)
 {

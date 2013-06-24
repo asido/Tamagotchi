@@ -24,6 +24,8 @@ const unsigned int EVENTMANAGER_INFINITE_MILLIS = 0xFFFFFFFF;
 class EventManager
 {
 public:
+    static EventManager& Get();
+
     EventManager();
 
     bool AddListener(const EventListenerDelegate &eventDelegate, const EventType type);
