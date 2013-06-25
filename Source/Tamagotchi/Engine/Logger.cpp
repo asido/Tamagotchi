@@ -21,10 +21,12 @@ static const char *ERRORLOG_FILENAME = "error.log";
 static const unsigned char TAG_FLAGS_DEFAULT_ERROR      = TAG_FLAG_WRITE_TO_DEBUGGER | TAG_FLAG_WRITE_TO_LOG_FILE;
 static const unsigned char TAG_FLAGS_DEFAULT_WARNING    = TAG_FLAG_WRITE_TO_DEBUGGER | TAG_FLAG_WRITE_TO_LOG_FILE;
 static const unsigned char TAG_FLAGS_DEFAULT_INFO       = TAG_FLAG_WRITE_TO_DEBUGGER | TAG_FLAG_WRITE_TO_LOG_FILE;
+static const unsigned char TAG_FLAGS_DEFAULT_SPAM       = TAG_FLAG_WRITE_TO_DEBUGGER | TAG_FLAG_WRITE_TO_LOG_FILE;
 #else
 static const unsigned char TAG_FLAGS_DEFAULT_ERROR      = 0;
 static const unsigned char TAG_FLAGS_DEFAULT_WARNING    = 0;
 static const unsigned char TAG_FLAGS_DEFAULT_INFO       = 0;
+static const unsigned char TAG_FLAGS_DEFAULT_SPAM       = 0;
 #endif
 
 
@@ -59,6 +61,7 @@ LogMgr::LogMgr()
     SetTagFlags("ERROR", TAG_FLAGS_DEFAULT_ERROR);
     SetTagFlags("WARNING", TAG_FLAGS_DEFAULT_WARNING);
     SetTagFlags("INFO", TAG_FLAGS_DEFAULT_INFO);
+    SetTagFlags("SPAM", TAG_FLAGS_DEFAULT_SPAM);
 }
 
 LogMgr::~LogMgr()

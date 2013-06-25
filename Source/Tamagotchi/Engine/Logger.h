@@ -112,4 +112,10 @@ private:
         LogMgr::Get().Log("INFO", s, NULL, NULL, NULL);                             \
     } while (0)
 
+#define LogSpam(str, ...)                                                           \
+    do {                                                                            \
+        const std::string s = StringUtilities::Format(str, ##__VA_ARGS__);          \
+        LogMgr::Get().Log("SPAM", s, NULL, NULL, NULL);                             \
+    } while (0)
+
 #endif
