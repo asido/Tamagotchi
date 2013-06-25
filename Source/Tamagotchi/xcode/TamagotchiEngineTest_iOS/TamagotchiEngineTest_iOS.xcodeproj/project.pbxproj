@@ -29,6 +29,7 @@
 		7060804D1772AD2200D0D419 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7060804B1772ACF300D0D419 /* OpenGLES.framework */; };
 		70DA97AE176A489F00DFD277 /* ZipFileTest.zip in Resources */ = {isa = PBXBuildFile; fileRef = 700FC41D176A1F5F00D3DF9A /* ZipFileTest.zip */; };
 		70DA97B0176A49CC00DFD277 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DA97AF176A49CC00DFD277 /* CoreFoundation.framework */; };
+		70F121D5177A02AC00FE7142 /* EventManagerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121D3177A02AC00FE7142 /* EventManagerTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,8 @@
 		706080491772ACBC00D0D419 /* libcppunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcppunit.a; path = ../../../3rdParty/cppunit/libcppunit.a; sourceTree = "<group>"; };
 		7060804B1772ACF300D0D419 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		70DA97AF176A49CC00DFD277 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		70F121D3177A02AC00FE7142 /* EventManagerTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventManagerTest.cpp; path = ../../EngineTests/EventManagerTest.cpp; sourceTree = "<group>"; };
+		70F121D4177A02AC00FE7142 /* EventManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventManagerTest.h; path = ../../EngineTests/EventManagerTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				700FC3EF176A1F0600D3DF9A /* TamagotchiEngineTest_iOS */,
 				700FC416176A1F5F00D3DF9A /* TestMain.cpp */,
 				700FC41E176A1F8100D3DF9A /* TestMain.h */,
+				70F121D3177A02AC00FE7142 /* EventManagerTest.cpp */,
+				70F121D4177A02AC00FE7142 /* EventManagerTest.h */,
 				700FC417176A1F5F00D3DF9A /* ResourceMgrTest.cpp */,
 				700FC418176A1F5F00D3DF9A /* ResourceMgrTest.h */,
 				700FC419176A1F5F00D3DF9A /* StringUtilitiesTest.cpp */,
@@ -238,6 +243,7 @@
 				700FC3FA176A1F0600D3DF9A /* AppDelegate.m in Sources */,
 				700FC403176A1F0600D3DF9A /* ViewController.mm in Sources */,
 				706080481772A9F200D0D419 /* TransformComponentTest.cpp in Sources */,
+				70F121D5177A02AC00FE7142 /* EventManagerTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +308,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../3rdParty/cppunit/include/ $(SRCROOT)/../../Engine/ $(SRCROOT)/../../../3rdParty/eigen-3.1.3/include/ $(SRCROOT)/../../../3rdParty/libpng-1.6.2/include/ $(SRCROOT)/../../../3rdParty/tinyxml2/include/";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../3rdParty/cppunit/include/ $(SRCROOT)/../../Engine/ $(SRCROOT)/../../../3rdParty/eigen-3.1.3/include/ $(SRCROOT)/../../../3rdParty/libpng-1.6.2/include/ $(SRCROOT)/../../../3rdParty/tinyxml2/include/ $(SRCROOT)/../../../3rdParty/FastDelegate/include/";
 			};
 			name = Debug;
 		};
@@ -330,7 +336,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../3rdParty/cppunit/include/ $(SRCROOT)/../../Engine/ $(SRCROOT)/../../../3rdParty/eigen-3.1.3/include/ $(SRCROOT)/../../../3rdParty/libpng-1.6.2/include/ $(SRCROOT)/../../../3rdParty/tinyxml2/include/";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../3rdParty/cppunit/include/ $(SRCROOT)/../../Engine/ $(SRCROOT)/../../../3rdParty/eigen-3.1.3/include/ $(SRCROOT)/../../../3rdParty/libpng-1.6.2/include/ $(SRCROOT)/../../../3rdParty/tinyxml2/include/ $(SRCROOT)/../../../3rdParty/FastDelegate/include/";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

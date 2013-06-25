@@ -159,7 +159,7 @@ bool EventManager::Update(unsigned long maxMillis /* = EVENTMANAGER_INFINITE_MIL
         if (it != this->eventListeners.end())
         {
             const EventListenerList &listeners = it->second;
-            LogInfo("Processing event: %s. Found delegates: %d", event->GetName(), listeners.size());
+            LogInfo("Processing event: %s. Found delegates: %d", event->GetName().c_str(), listeners.size());
 
             // Call each listener.
             for (EventListenerList::const_iterator it = listeners.begin(); it != listeners.end(); ++it)

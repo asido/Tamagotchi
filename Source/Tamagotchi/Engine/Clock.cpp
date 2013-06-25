@@ -1,4 +1,9 @@
 #include <cassert>
+
+#if defined (__APPLE__)
+#include <sys/time.h>
+#endif
+
 #include "Clock.h"
 #include "Logger.h"
 

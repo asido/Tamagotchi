@@ -13,7 +13,6 @@
 		70C313B4177227D7000A6253 /* ActorFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C3138E177227D7000A6253 /* ActorFactory.cpp */; };
 		70C313B5177227D7000A6253 /* TransformComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C31390177227D7000A6253 /* TransformComponent.cpp */; };
 		70C313B6177227D7000A6253 /* GameLogic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C31395177227D7000A6253 /* GameLogic.cpp */; };
-		70C313B7177227D7000A6253 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C31397177227D7000A6253 /* GameView.cpp */; };
 		70C313B8177227D7000A6253 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C31399177227D7000A6253 /* Logger.cpp */; };
 		70C313B9177227D7000A6253 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C3139E177227D7000A6253 /* Renderer.cpp */; };
 		70C313BA177227D7000A6253 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C313A0177227D7000A6253 /* Scene.cpp */; };
@@ -26,6 +25,13 @@
 		70C313C1177227D7000A6253 /* StringUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C313AF177227D7000A6253 /* StringUtilities.cpp */; };
 		70C313C2177227D7000A6253 /* TamagotchiEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70C313B1177227D7000A6253 /* TamagotchiEngine.cpp */; };
 		70DA97BB176A520200DFD277 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DA97BA176A520200DFD277 /* CoreFoundation.framework */; };
+		70F121C0177A00E000FE7142 /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121BC177A00E000FE7142 /* GameView.cpp */; };
+		70F121C1177A00E000FE7142 /* ScreenElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121BE177A00E000FE7142 /* ScreenElement.cpp */; };
+		70F121C4177A010000FE7142 /* RenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121C2177A010000FE7142 /* RenderComponent.cpp */; };
+		70F121C8177A013900FE7142 /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121C6177A013900FE7142 /* Mutex.cpp */; };
+		70F121CE177A015100FE7142 /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121CA177A015100FE7142 /* Event.cpp */; };
+		70F121CF177A015100FE7142 /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121CC177A015100FE7142 /* EventManager.cpp */; };
+		70F121D2177A017700FE7142 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70F121D0177A017700FE7142 /* Clock.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,8 +63,6 @@
 		70C31394177227D7000A6253 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/EngineMain.h; sourceTree = "<group>"; };
 		70C31395177227D7000A6253 /* GameLogic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLogic.cpp; sourceTree = "<group>"; };
 		70C31396177227D7000A6253 /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
-		70C31397177227D7000A6253 /* GameView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = "<group>"; };
-		70C31398177227D7000A6253 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
 		70C31399177227D7000A6253 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
 		70C3139A177227D7000A6253 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
 		70C3139B177227D7000A6253 /* ObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectFactory.h; sourceTree = "<group>"; };
@@ -84,6 +88,20 @@
 		70C313B1177227D7000A6253 /* TamagotchiEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TamagotchiEngine.cpp; sourceTree = "<group>"; };
 		70C313B2177227D7000A6253 /* TamagotchiEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TamagotchiEngine.h; sourceTree = "<group>"; };
 		70DA97BA176A520200DFD277 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		70F121BC177A00E000FE7142 /* GameView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameView.cpp; sourceTree = "<group>"; };
+		70F121BD177A00E000FE7142 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		70F121BE177A00E000FE7142 /* ScreenElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenElement.cpp; sourceTree = "<group>"; };
+		70F121BF177A00E000FE7142 /* ScreenElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenElement.h; sourceTree = "<group>"; };
+		70F121C2177A010000FE7142 /* RenderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderComponent.cpp; sourceTree = "<group>"; };
+		70F121C3177A010000FE7142 /* RenderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderComponent.h; sourceTree = "<group>"; };
+		70F121C6177A013900FE7142 /* Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
+		70F121C7177A013900FE7142 /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mutex.h; sourceTree = "<group>"; };
+		70F121CA177A015100FE7142 /* Event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Event.cpp; sourceTree = "<group>"; };
+		70F121CB177A015100FE7142 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		70F121CC177A015100FE7142 /* EventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventManager.cpp; sourceTree = "<group>"; };
+		70F121CD177A015100FE7142 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
+		70F121D0177A017700FE7142 /* Clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
+		70F121D1177A017700FE7142 /* Clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clock.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,16 +150,19 @@
 		70C31389177227D7000A6253 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				70F121C9177A015100FE7142 /* EventManager */,
+				70F121C5177A013900FE7142 /* Threading */,
+				70F121BB177A00E000FE7142 /* UI */,
 				70C3138A177227D7000A6253 /* Actors */,
 				70C31392177227D7000A6253 /* defines.h */,
 				70C31393177227D7000A6253 /* EngineMain.h */,
 				70C31395177227D7000A6253 /* GameLogic.cpp */,
 				70C31396177227D7000A6253 /* GameLogic.h */,
-				70C31397177227D7000A6253 /* GameView.cpp */,
-				70C31398177227D7000A6253 /* GameView.h */,
 				70C31399177227D7000A6253 /* Logger.cpp */,
 				70C3139A177227D7000A6253 /* Logger.h */,
 				70C3139B177227D7000A6253 /* ObjectFactory.h */,
+				70F121D0177A017700FE7142 /* Clock.cpp */,
+				70F121D1177A017700FE7142 /* Clock.h */,
 				70C3139C177227D7000A6253 /* Rendering */,
 				70C313A4177227D7000A6253 /* ResourceManager */,
 				70C313AF177227D7000A6253 /* StringUtilities.cpp */,
@@ -156,6 +177,8 @@
 		70C3138A177227D7000A6253 /* Actors */ = {
 			isa = PBXGroup;
 			children = (
+				70F121C2177A010000FE7142 /* RenderComponent.cpp */,
+				70F121C3177A010000FE7142 /* RenderComponent.h */,
 				70C3138B177227D7000A6253 /* Actor.cpp */,
 				70C3138C177227D7000A6253 /* Actor.h */,
 				70C3138D177227D7000A6253 /* ActorComponent.h */,
@@ -196,6 +219,37 @@
 				70C313AE177227D7000A6253 /* ZipFile.h */,
 			);
 			path = ResourceManager;
+			sourceTree = "<group>";
+		};
+		70F121BB177A00E000FE7142 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				70F121BC177A00E000FE7142 /* GameView.cpp */,
+				70F121BD177A00E000FE7142 /* GameView.h */,
+				70F121BE177A00E000FE7142 /* ScreenElement.cpp */,
+				70F121BF177A00E000FE7142 /* ScreenElement.h */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		70F121C5177A013900FE7142 /* Threading */ = {
+			isa = PBXGroup;
+			children = (
+				70F121C6177A013900FE7142 /* Mutex.cpp */,
+				70F121C7177A013900FE7142 /* Mutex.h */,
+			);
+			path = Threading;
+			sourceTree = "<group>";
+		};
+		70F121C9177A015100FE7142 /* EventManager */ = {
+			isa = PBXGroup;
+			children = (
+				70F121CA177A015100FE7142 /* Event.cpp */,
+				70F121CB177A015100FE7142 /* Event.h */,
+				70F121CC177A015100FE7142 /* EventManager.cpp */,
+				70F121CD177A015100FE7142 /* EventManager.h */,
+			);
+			path = EventManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +307,6 @@
 				70C313B4177227D7000A6253 /* ActorFactory.cpp in Sources */,
 				70C313B5177227D7000A6253 /* TransformComponent.cpp in Sources */,
 				70C313B6177227D7000A6253 /* GameLogic.cpp in Sources */,
-				70C313B7177227D7000A6253 /* GameView.cpp in Sources */,
 				70C313B8177227D7000A6253 /* Logger.cpp in Sources */,
 				70C313B9177227D7000A6253 /* Renderer.cpp in Sources */,
 				70C313BA177227D7000A6253 /* Scene.cpp in Sources */,
@@ -265,6 +318,13 @@
 				70C313C0177227D7000A6253 /* ZipFile.cpp in Sources */,
 				70C313C1177227D7000A6253 /* StringUtilities.cpp in Sources */,
 				70C313C2177227D7000A6253 /* TamagotchiEngine.cpp in Sources */,
+				70F121C0177A00E000FE7142 /* GameView.cpp in Sources */,
+				70F121C1177A00E000FE7142 /* ScreenElement.cpp in Sources */,
+				70F121C4177A010000FE7142 /* RenderComponent.cpp in Sources */,
+				70F121C8177A013900FE7142 /* Mutex.cpp in Sources */,
+				70F121CE177A015100FE7142 /* Event.cpp in Sources */,
+				70F121CF177A015100FE7142 /* EventManager.cpp in Sources */,
+				70F121D2177A017700FE7142 /* Clock.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +422,7 @@
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../3rdParty/eigen-3.1.3/include/ $(SRCROOT)/../../../3rdParty/tinyxml2/include/ $(SRCROOT)/../../../3rdParty/libpng-1.6.2/include/ $(SRCROOT)/../../Engine/ $(SRCROOT)/../../../3rdParty/FastDelegate/include/";
 			};
 			name = Debug;
 		};
@@ -386,6 +447,7 @@
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../3rdParty/eigen-3.1.3/include/ $(SRCROOT)/../../../3rdParty/tinyxml2/include/ $(SRCROOT)/../../../3rdParty/libpng-1.6.2/include/ $(SRCROOT)/../../Engine/ $(SRCROOT)/../../../3rdParty/FastDelegate/include/";
 			};
 			name = Release;
 		};
