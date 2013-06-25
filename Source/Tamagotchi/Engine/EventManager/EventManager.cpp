@@ -65,7 +65,7 @@ bool EventManager::RemoveListener(const EventListenerDelegate &eventDelegate, co
 
 bool EventManager::TriggerEvent(const std::shared_ptr<IEvent> event) const
 {
-    LogInfo("Event triggered: " + event->GetName());
+    LogSpam("Event triggered: " + event->GetName());
     bool processed = false;
 
     EventListenerMap::const_iterator it = this->eventListeners.find(event->GetEventType());
@@ -91,7 +91,7 @@ bool EventManager::QueueEvent(const std::shared_ptr<IEvent> event)
         return false;
     }
 
-    LogInfo("Attempting to queue event: " + event->GetName());
+    LogSpam("Attempting to queue event: " + event->GetName());
 
     EventListenerMap::iterator it = this->eventListeners.find(event->GetEventType());
     if (it == this->eventListeners.end())
@@ -102,7 +102,7 @@ bool EventManager::QueueEvent(const std::shared_ptr<IEvent> event)
     else
     {
         this->queues[this->activeQueue].push_back(event);
-        LogInfo("Event queued: " + event->GetName());
+        LogSpam("Event queued: " + event->GetName());
         return true;
     }
 }
@@ -146,7 +146,7 @@ bool EventManager::Update(unsigned long maxMillis /* = EVENTMANAGER_INFINITE_MIL
     this->activeQueue = (this->activeQueue + 1) % EVENTMANAGER_NUM_QUEUES;
     this->queues[this->activeQueue].clear();
 
-    LogInfo("Processing event queue: %d. Total events: %d.", queueToProcess, this->queues[queueToProcess].size());
+    LogSpam("Processing event queue: %d. Total events: %d.", queueToProcess, this->queues[queueToProcess].size());
 
     while (!this->queues[queueToProcess].empty())
     {
@@ -159,7 +159,7 @@ bool EventManager::Update(unsigned long maxMillis /* = EVENTMANAGER_INFINITE_MIL
         if (it != this->eventListeners.end())
         {
             const EventListenerList &listeners = it->second;
-            LogInfo("Processing event: %s. Found delegates: %d", event->GetName().c_str(), listeners.size());
+            LogSpam("Processing event: %s. Found delegates: %d", event->GetName().c_str(), listeners.size());
 
             // Call each listener.
             for (EventListenerList::const_iterator it = listeners.begin(); it != listeners.end(); ++it)
