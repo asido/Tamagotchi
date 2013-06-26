@@ -3,6 +3,10 @@
 
 #include <map>
 #include <memory>
+
+#include <Eigen/Dense>
+using namespace Eigen;
+
 #include "Actors/Actor.h"
 
 class SceneNode;
@@ -18,17 +22,19 @@ typedef std::map< ActorId, std::shared_ptr<SceneNode> > SceneActorMap;
 class Scene
 {
 public:
-    Scene(std::shared_ptr<IRenderer> renderer);
+    bool                        AddChild(std::shared_ptr<SceneNode> node);
+    bool                        RemoveChild(ActorId actorId);
+    std::shared_ptr<SceneNode>  FindChild(ActorId actorId);
 
-    virtual void OnUpdate(float delta);
-    virtual void OnRender();
+    void                        PushAndSetMatrix(const Matrix4f &matrix);
+
+    virtual void                OnUpdate(float delta);
+    virtual void                OnRender();
 
 private:
     std::shared_ptr<SceneNode>          rootNode;
     std::shared_ptr<CameraSceneNode>    cameraNode;
     SceneActorMap                       actorMap;
-
-    std::shared_ptr<IRenderer>          renderer;
 };
 
 #endif // __SCENE_H__

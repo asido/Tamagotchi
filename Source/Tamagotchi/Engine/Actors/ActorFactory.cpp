@@ -12,8 +12,7 @@
 ActorFactory::ActorFactory()
     : lastActorId(INVALID_ACTOR_ID)
 {
-    // TODO: register all actor components. i.e:
-    //this->componentFactory.Register<SomeComponent>(SomeComponent::ComponentId);
+    this->componentFactory.Register<TransformComponent>(TransformComponent::GetIdStatic());
 }
 
 //-----------------------------------------------
@@ -51,6 +50,7 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string &actorResourc
         }
         else
         {
+            LogError("Actor creation has failed because a component could not be created: %s.", node->Value());
             return std::shared_ptr<Actor>();
         }
     }
@@ -75,7 +75,7 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string &actorResourc
 
 void ActorFactory::ModifyActor(std::shared_ptr<Actor> actor, tinyxml2::XMLElement *overrides)
 {
-
+    LogError("Implement me.");
 }
 
 //-----------------------------------------------
@@ -90,5 +90,22 @@ ActorId ActorFactory::GetNextActorId()
 
 std::shared_ptr<ActorComponent> ActorFactory::CreateComponent(tinyxml2::XMLElement *data)
 {
-    return std::shared_ptr<ActorComponent>();
+    const std::string name(data->Value());
+    std::shared_ptr<ActorComponent> component(this->componentFactory.Create(ActorComponent::GetIdFromName(name)));
+    
+    if (component)
+    {
+        if (!component->Init(data))
+        {
+            LogError("Failed to initialize component named '%s'.", name.c_str());
+            return std::shared_ptr<ActorComponent>();
+        }
+    }
+    else
+    {
+        LogError("Failed to create component named '%s'.", name.c_str());
+        return std::shared_ptr<ActorComponent>();
+    }
+
+    return component;
 }

@@ -10,6 +10,7 @@
 using namespace Eigen;
 
 #include "Logger.h"
+#include "StringUtilities.h"
 
 class Actor;
 
@@ -26,6 +27,8 @@ class ActorComponent
     friend class ActorFactory;
 
 public:
+    static ComponentId          GetIdFromName(const std::string &name) { return StringUtilities::Hash(name); }
+
     virtual bool                Init(tinyxml2::XMLElement *data) = 0;
     virtual void                PostInit() {}
     virtual void                Update(float delta) {}
@@ -33,7 +36,7 @@ public:
     virtual ComponentId         GetId() const = 0;
     virtual const std::string&  GetName() const = 0;
 
-private:
+protected:
     void                        SetOwner(std::weak_ptr<Actor> owner) { this->owner = owner; }
     std::shared_ptr<Actor>      GetOwner() const
     {

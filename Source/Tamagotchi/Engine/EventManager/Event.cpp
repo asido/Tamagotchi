@@ -22,3 +22,27 @@ const std::string& Event_Test::GetName() const
     static const std::string name("Event_Test");
     return name;
 }
+
+
+//-----------------------------------------------------------------------------------------------------------
+//  Event_NewRenderComponent
+//-----------------------------------------------------------------------------------------------------------
+
+const EventType Event_NewRenderComponent::Type(0xe4403d5e);
+
+Event_NewRenderComponent::Event_NewRenderComponent(ActorId id, std::shared_ptr<SceneNode> node)
+    : actorId(id), sceneNode(node)
+{
+
+}
+
+EventType Event_NewRenderComponent::GetEventType() const
+{
+    return this->Type;
+}
+
+const std::string& Event_NewRenderComponent::GetName() const
+{
+    static const std::string name("Event_NewRenderComponent");
+    return name;
+}

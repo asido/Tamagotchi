@@ -18,7 +18,7 @@ public:
     virtual void PostInit() override;
 
 protected:
-    virtual std::shared_ptr<SceneNode> GetSceneNode() = 0;
+    virtual std::shared_ptr<SceneNode> CreateSceneNode() = 0;
 };
 
 #endif // __RENDERCOMPONENT_H__

@@ -4,6 +4,11 @@
 #include <vector>
 #include <memory>
 
+#include <Eigen/Dense>
+using namespace Eigen;
+
+#include "Actors/Actor.h"
+
 //-----------------------------------------------------------------------------------------------------------
 //  class SceneNode
 //-----------------------------------------------------------------------------------------------------------
@@ -14,11 +19,31 @@ typedef std::vector< std::shared_ptr<SceneNode> > SceneNodeList;
 class SceneNode
 {
 public:
-    virtual void OnUpdate(float delta);
-    virtual void OnRender();
+    SceneNode(ActorId actor);
+
+    bool            AddChild(std::shared_ptr<SceneNode> kid);
+    bool            RemoveChild(ActorId id);
+
+    bool            IsVisible() const;
+
+    virtual void    OnUpdate(float delta);
+    virtual void    OnPreRender();
+    virtual void    OnRender();
+    virtual void    OnRenderChildren();
+    virtual void    OnPostRender();
+
+    ActorId         GetActorId() const { return this->actorId; }
+    void            SetParent(std::weak_ptr<SceneNode> parent) { this->parent = parent; }
 
 private:
-    SceneNodeList childNodes;
+    std::shared_ptr<SceneNode>  GetParent() const;
+
+private:
+    SceneNodeList               childNodes;
+
+    ActorId                     actorId;
+    std::weak_ptr<SceneNode>    parent;
+    Matrix4f                    toWorld;
 };
 
 
