@@ -4,6 +4,7 @@
 #include "ResourceManager/ZipFile.h"
 #include "ResourceManager/TextureResource.h"
 #include "ResourceManager/XMLResource.h"
+#include "ResourceManager/ShaderResource.h"
 #include "defines.h"
 #include "TestMain.h"
 
@@ -48,4 +49,16 @@ void ResourceMgrTest::GetHandleTest()
     tinyxml2::XMLElement *root = xmlExtra->GetRoot();
     CPPUNIT_ASSERT(root->Value() == std::string("TestElement"));
     CPPUNIT_ASSERT(root->Attribute("testattribute") == std::string("testvalue"));
+
+    const Resource r6("shader.vsh");
+    handle = this->resourceMgr->GetHandle(r6);
+    CPPUNIT_ASSERT(handle);
+    std::shared_ptr<ShaderResourceExtraData> vertexExtra = std::static_pointer_cast<ShaderResourceExtraData>(handle->GetExtra());
+    CPPUNIT_ASSERT(vertexExtra->GetGlShader() > 0);
+
+    const Resource r7("shader.fsh");
+    handle = this->resourceMgr->GetHandle(r7);
+    CPPUNIT_ASSERT(handle);
+    std::shared_ptr<ShaderResourceExtraData> fragmentExtra = std::static_pointer_cast<ShaderResourceExtraData>(handle->GetExtra());
+    CPPUNIT_ASSERT(fragmentExtra->GetGlShader() > 0);
 }

@@ -36,6 +36,12 @@ struct StreamBuf : std::streambuf
     }
 };
 
+const std::string& TextureResourceLoader::GetPattern() const
+{
+    static const std::string pattern("*.png");
+    return pattern;
+}
+
 unsigned int TextureResourceLoader::GetLoadedResourceSize(char *rawBuffer, unsigned int rawSize)
 {
     // Keep the resource cache from allocating memory for the texture, so OpenGL can manage it on it's own.

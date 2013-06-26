@@ -107,6 +107,12 @@
     <ClInclude Include="..\Engine\EventManager\Event.h">
       <Filter>Source Files\EventManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\Shader.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceManager\ShaderResource.h">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -174,6 +180,12 @@
     </ClCompile>
     <ClCompile Include="..\Engine\EventManager\Event.cpp">
       <Filter>Source Files\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Rendering\Shader.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceManager\ShaderResource.cpp">
+      <Filter>Source Files\ResourceManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -48,12 +48,12 @@ class ResourceHandle;
 class IResourceLoader
 {
 public:
-    virtual std::string     GetPattern() = 0;
-    virtual bool            UseRawFile() = 0;
-    virtual bool            DiscardRawBufferAfterLoad() = 0;
-    virtual bool            AddNullZero() { return false; }
-    virtual unsigned int    GetLoadedResourceSize(char *rawBuffer, unsigned int rawSize) = 0;
-    virtual bool            LoadResource(char *rawBuffer, unsigned int rawSize, std::shared_ptr<ResourceHandle> handle) = 0;
+    virtual const std::string&  GetPattern() const = 0;
+    virtual bool                UseRawFile() const = 0;
+    virtual bool                DiscardRawBufferAfterLoad() const = 0;
+    virtual bool                AddNullZero() const { return false; }
+    virtual unsigned int        GetLoadedResourceSize(char *rawBuffer, unsigned int rawSize) = 0;
+    virtual bool                LoadResource(char *rawBuffer, unsigned int rawSize, std::shared_ptr<ResourceHandle> handle) = 0;
 };
 
 

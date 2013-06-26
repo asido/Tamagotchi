@@ -22,8 +22,10 @@
     <ClCompile Include="..\Engine\Rendering\Renderer.cpp" />
     <ClCompile Include="..\Engine\Rendering\Scene.cpp" />
     <ClCompile Include="..\Engine\Rendering\SceneNode.cpp" />
+    <ClCompile Include="..\Engine\Rendering\Shader.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\Filesystem.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\ResourceManager.cpp" />
+    <ClCompile Include="..\Engine\ResourceManager\ShaderResource.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\TextureResource.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\XMLResource.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\ZipFile.cpp" />
@@ -49,8 +51,10 @@
     <ClInclude Include="..\Engine\Rendering\Renderer.h" />
     <ClInclude Include="..\Engine\Rendering\Scene.h" />
     <ClInclude Include="..\Engine\Rendering\SceneNode.h" />
+    <ClInclude Include="..\Engine\Rendering\Shader.h" />
     <ClInclude Include="..\Engine\ResourceManager\Filesystem.h" />
     <ClInclude Include="..\Engine\ResourceManager\ResourceManager.h" />
+    <ClInclude Include="..\Engine\ResourceManager\ShaderResource.h" />
     <ClInclude Include="..\Engine\ResourceManager\TextureResource.h" />
     <ClInclude Include="..\Engine\ResourceManager\XMLResource.h" />
     <ClInclude Include="..\Engine\ResourceManager\ZipFile.h" />

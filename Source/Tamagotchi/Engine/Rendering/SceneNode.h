@@ -8,6 +8,7 @@
 using namespace Eigen;
 
 #include "Actors/Actor.h"
+#include "Rendering/GLES.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class SceneNode
@@ -55,6 +56,17 @@ class CameraSceneNode : public SceneNode
 {
 private:
     std::shared_ptr<SceneNode> target;
+};
+
+
+//-----------------------------------------------------------------------------------------------------------
+//  class SpriteSceneNode
+//-----------------------------------------------------------------------------------------------------------
+
+class SpriteSceneNode : public SceneNode
+{
+private:
+    GLuint texture;
 };
 
 #endif // __SCENENODE_H__

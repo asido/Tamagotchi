@@ -2,6 +2,7 @@
 #include "ZipFile.h"
 #include "XMLResource.h"
 #include "TextureResource.h"
+#include "ShaderResource.h"
 #include "StringUtilities.h"
 #include "defines.h"
 #include "Logger.h"
@@ -57,8 +58,10 @@ bool ResourceManager::Init()
     }
 
     // Register all resource loaders.
-    RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW XMLResourceLoader()));
-    RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW TextureResourceLoader()));
+    RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW XMLResourceLoader));
+    RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW TextureResourceLoader));
+    RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW VertexShaderResourceLoader));
+    RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW FragmentShaderResourceLoader));
 
     return true;
 }

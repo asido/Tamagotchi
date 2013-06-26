@@ -28,6 +28,12 @@ tinyxml2::XMLElement *XMLResourceExtraData::GetRoot()
 //  class XMLResourceLoader
 //-----------------------------------------------------------------------------------------------------------
 
+const std::string& XMLResourceLoader::GetPattern() const
+{
+    static const std::string pattern("*.xml");
+    return pattern;
+}
+
 unsigned int XMLResourceLoader::GetLoadedResourceSize(char *rawBuffer, unsigned int rawSize)
 {
     // Keep the resource cache from allocating memory for the XML file so that tinyxml2 can manage it on it's own.
