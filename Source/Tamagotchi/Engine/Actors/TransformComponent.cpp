@@ -58,3 +58,17 @@ void TransformComponent::SetPosition(const Vector3f &newPosition)
     this->transform(3,1) = newPosition(1);
     this->transform(3,2) = newPosition(2);
 }
+
+Vector3f TransformComponent::GetScale() const
+{
+    return Vector3f(this->transform(0,0),
+                    this->transform(1,1),
+                    this->transform(2,2));
+}
+
+void TransformComponent::SetScale(const Vector3f &newScale)
+{
+    this->transform(0,0) = newScale(0);
+    this->transform(1,1) = newScale(1);
+    this->transform(2,2) = newScale(2);
+}

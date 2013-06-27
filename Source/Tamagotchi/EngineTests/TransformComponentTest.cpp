@@ -36,3 +36,13 @@ void TransformComponentTest::SetPositionTest()
     this->transformComponent->SetPosition(newPos);
     CPPUNIT_ASSERT(this->transformComponent->GetPosition() == newPos);
 }
+
+void TransformComponentTest::SetScaleTest()
+{
+    Vector3f newScale(2, 2, 2);
+    Vector3f defaultScale(1, 1, 1);
+
+    CPPUNIT_ASSERT(this->transformComponent->GetScale() == defaultScale);
+    this->transformComponent->SetScale(newScale);
+    CPPUNIT_ASSERT(this->transformComponent->GetScale() == newScale);
+}

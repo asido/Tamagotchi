@@ -10,6 +10,7 @@ class TransformComponentTest : public CPPUNIT_NS::TestFixture
     CPPUNIT_TEST_SUITE(TransformComponentTest);
     CPPUNIT_TEST(SetTransformTest);
     CPPUNIT_TEST(SetPositionTest);
+    CPPUNIT_TEST(SetScaleTest);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -18,6 +19,7 @@ public:
 
     void SetTransformTest();
     void SetPositionTest();
+    void SetScaleTest();
 
 protected:
     TransformComponent *transformComponent;
