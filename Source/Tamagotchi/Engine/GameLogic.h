@@ -22,7 +22,7 @@ public:
     GameLogic();
     ~GameLogic();
 
-    bool Init();
+    bool                                Init();
     
     virtual void                        AddGameView(std::shared_ptr<GameView> gameView, ActorId actorId=INVALID_ACTOR_ID);
     virtual void                        RemoveGameView(std::shared_ptr<GameView> gameView);

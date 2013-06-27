@@ -58,17 +58,21 @@ void SceneNode::OnPreRender()
     LogError("Implement me!");
 }
 
-void SceneNode::OnRender()
-{
-    LogError("Implement me!");
-}
-
 void SceneNode::OnRenderChildren()
 {
     LogError("Implement me!");
 }
 
 void SceneNode::OnPostRender()
+{
+    LogError("Implement me!");
+}
+
+//-----------------------------------------------------------------------------------------------------------
+//  class SpriteSceneNode
+//-----------------------------------------------------------------------------------------------------------
+
+void SpriteSceneNode::OnRender()
 {
     LogError("Implement me!");
 }

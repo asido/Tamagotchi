@@ -29,7 +29,7 @@ public:
 
     virtual void    OnUpdate(float delta);
     virtual void    OnPreRender();
-    virtual void    OnRender();
+    virtual void    OnRender() = 0;
     virtual void    OnRenderChildren();
     virtual void    OnPostRender();
 
@@ -65,6 +65,9 @@ private:
 
 class SpriteSceneNode : public SceneNode
 {
+public:
+    virtual void    OnRender() override;
+
 private:
     GLuint texture;
 };
