@@ -113,6 +113,9 @@
     <ClInclude Include="..\Engine\ResourceManager\ShaderResource.h">
       <Filter>Source Files\ResourceManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\ShaderManager.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -186,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="..\Engine\ResourceManager\ShaderResource.cpp">
       <Filter>Source Files\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Rendering\ShaderManager.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

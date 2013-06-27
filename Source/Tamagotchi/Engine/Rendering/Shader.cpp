@@ -10,9 +10,35 @@
 //-----------------------------------------------
 
 Shader::Shader()
-    : program(0)
+    : program(0), vertexShader(0), fragmentShader(0)
 {
 
+}
+
+Shader::~Shader()
+{
+    if (this->vertexShader)
+    {
+        if (this->program)
+        {
+            glDetachShader(this->program, this->vertexShader);
+        }
+        glDeleteShader(this->vertexShader);
+    }
+    if (this->fragmentShader)
+    {
+        if (this->program)
+        {
+            glDetachShader(this->program, this->fragmentShader);
+        }
+        glDeleteShader(this->fragmentShader);
+    }
+    if (this->program)
+    {
+        glDeleteProgram(this->program);
+    }
+
+    GL_CHECK_ERROR();
 }
 
 //-----------------------------------------------
@@ -47,6 +73,8 @@ bool Shader::LinkProgram()
         return false;
     }
 
+    GL_CHECK_ERROR();
+
     return true;
 }
 
@@ -78,7 +106,19 @@ bool Shader::ValidateProgram()
         return false;
     }
 
+    GL_CHECK_ERROR();
+
     return true;
+}
+
+std::shared_ptr<RenderComponent> Shader::GetRenderComponent() const
+{
+    std::shared_ptr<RenderComponent> r = this->renderComponent.lock();
+    if (!r)
+    {
+        LogWarning("Shader::renderComponent == NULL.");
+    }
+    return r;
 }
 
 
@@ -112,7 +152,9 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
     if (!LinkProgram())
     {
         glDetachShader(this->program, vertexShader);
+        glDeleteShader(vertexShader);
         glDetachShader(this->program, fragmentShader);
+        glDeleteShader(fragmentShader);
         glDeleteProgram(this->program);
         this->program = 0;
 
@@ -123,7 +165,9 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
     if (!ValidateProgram())
     {
         glDetachShader(this->program, vertexShader);
+        glDeleteShader(vertexShader);
         glDetachShader(this->program, fragmentShader);
+        glDeleteShader(fragmentShader);
         glDeleteProgram(this->program);
         this->program = 0;
 
@@ -131,11 +175,14 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
         return false;
     }
 
+    GL_CHECK_ERROR();
+
     return true;
 }
 
 bool DefaultShader::PrepareToRender()
 {
-    LogError("Implement me!");
+    std::shared_ptr<RenderComponent> renderComponent = GetRenderComponent();
+    std::shared_ptr<ResourceHandle> textureHandle = ResourceManager::GetHandle()
     return false;
 }

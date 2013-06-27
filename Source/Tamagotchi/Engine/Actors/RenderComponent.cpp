@@ -53,15 +53,13 @@ bool SpriteRenderComponent::Init(tinyxml2::XMLElement *data)
     tinyxml2::XMLElement *textureElement = data->FirstChildElement("Texture");
     if (textureElement)
     {
-        const std::string file(textureElement->Attribute("resource"));
+        this->textureFilename(textureElement->Attribute("resource"));
 
-        if (file.size() == 0)
+        if (this->textureFilename.size() == 0)
         {
             LogError("<Texture> tag has no 'resource' attribute.");
             return false;
         }
-
-        this->textureResource = std::shared_ptr<Resource>(TG_NEW Resource(file));
     }
     else
     {
@@ -73,29 +71,11 @@ bool SpriteRenderComponent::Init(tinyxml2::XMLElement *data)
     tinyxml2::XMLElement *shaderElement = data->FirstChildElement("Shader");
     if (shaderElement)
     {
-        const std::string shaderName(shaderElement->Attribute("name"));
+        this->shaderName(shaderElement->Attribute("name"));
 
-        if (shaderName.size() == 0)
+        if (this->shaderName.size() == 0)
         {
             LogError("<Shader> tag has no 'name' attribute.");
-            return false;
-        }
-
-        std::shared_ptr<ResourceHandle> vShaderHandle = g_engine->GetResourceManager()->GetHandle(shaderName + ".vsh");
-        std::shared_ptr<ResourceHandle> fShaderHandle = g_engine->GetResourceManager()->GetHandle(shaderName + ".fsh");
-
-        if (!vShaderHandle || !fShaderHandle)
-        {
-            return false;
-        }
-
-        std::shared_ptr<ShaderResourceExtraData> vertexExtra = std::static_pointer_cast<ShaderResourceExtraData>(vShaderHandle->GetExtra());
-        std::shared_ptr<ShaderResourceExtraData> fragmentExtra = std::static_pointer_cast<ShaderResourceExtraData>(fShaderHandle->GetExtra());
-
-        this->shader = std::shared_ptr<Shader>(TG_NEW DefaultShader);
-        if (!this->shader->Init(vertexExtra->GetGlShader(), fragmentExtra->GetGlShader()))
-        {
-            LogError("Shader initialization has failed: %s.", shaderName.c_str());
             return false;
         }
     }
@@ -124,5 +104,5 @@ bool SpriteRenderComponent::Init(tinyxml2::XMLElement *data)
 
 std::shared_ptr<SceneNode> SpriteRenderComponent::CreateSceneNode()
 {
-    return std::shared_ptr<SpriteSceneNode>(TG_NEW SpriteSceneNode(GetOwner()->GetId()));
+    return std::shared_ptr<SpriteSceneNode>(TG_NEW SpriteSceneNode(GetOwner()->GetId(), std::shared_ptr(this)));
 }

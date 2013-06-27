@@ -23,6 +23,7 @@
     <ClCompile Include="..\Engine\Rendering\Scene.cpp" />
     <ClCompile Include="..\Engine\Rendering\SceneNode.cpp" />
     <ClCompile Include="..\Engine\Rendering\Shader.cpp" />
+    <ClCompile Include="..\Engine\Rendering\ShaderManager.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\Filesystem.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\ShaderResource.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="..\Engine\Rendering\Scene.h" />
     <ClInclude Include="..\Engine\Rendering\SceneNode.h" />
     <ClInclude Include="..\Engine\Rendering\Shader.h" />
+    <ClInclude Include="..\Engine\Rendering\ShaderManager.h" />
     <ClInclude Include="..\Engine\ResourceManager\Filesystem.h" />
     <ClInclude Include="..\Engine\ResourceManager\ResourceManager.h" />
     <ClInclude Include="..\Engine\ResourceManager\ShaderResource.h" />

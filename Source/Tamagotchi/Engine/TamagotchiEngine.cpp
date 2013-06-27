@@ -53,6 +53,8 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 
     this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer());
 
+    this->shaderMgr = std::shared_ptr<ShaderManager>(TG_NEW ShaderManager);
+
     this->gameLogic = CreateGameLogic();
     if (!this->gameLogic)
     {

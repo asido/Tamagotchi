@@ -1,0 +1,8 @@
+<? xml version="1.0" ?>
+
+<level>
+    <StaticActors>
+        <Actor resource="Actors/Agetchi.xml">
+        </Actor>
+    </StaticActors>
+</level>
