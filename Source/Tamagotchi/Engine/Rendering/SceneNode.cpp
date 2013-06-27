@@ -72,6 +72,12 @@ void SceneNode::OnPostRender()
 //  class SpriteSceneNode
 //-----------------------------------------------------------------------------------------------------------
 
+SpriteSceneNode::SpriteSceneNode(ActorId actorId)
+    : SceneNode(actorId)
+{
+
+}
+
 void SpriteSceneNode::OnRender()
 {
     LogError("Implement me!");

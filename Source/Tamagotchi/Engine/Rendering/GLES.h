@@ -2,6 +2,7 @@
 #define __GLES_H__
 
 #ifdef WIN32
+#define GL_GLEXT_PROTOTYPES
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 #include <GLES2/gl2platform.h>
@@ -16,7 +17,7 @@
             GLenum error = glGetError();            \
             if (error != GL_NO_ERROR)               \
             {                                       \
-                LogWarning("GL Error: 0x%X", error);  \
+                LogWarning("GL Error: 0x%X", error);\
             }                                       \
         } while (0)
 #else

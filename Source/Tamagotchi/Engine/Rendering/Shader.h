@@ -11,17 +11,16 @@
 class Shader
 {
 public:
-    virtual bool    Init() = 0;
+    Shader();
+
+    virtual bool    Init(GLuint vertexShader, GLuint fragmentShader) = 0;
     virtual bool    PrepareToRender() = 0;
 
 protected:
-    GLuint          GetProgram() const { return this->program; }
+    bool            LinkProgram();
+    bool            ValidateProgram();
 
 protected:
-    bool            LinkProgram(GLuint program);
-    bool            ValidateProgram(GLuint program);
-
-private:
     GLuint program;
 };
 
@@ -33,7 +32,7 @@ private:
 class DefaultShader : public Shader
 {
 public:
-    virtual bool Init() override;
+    virtual bool Init(GLuint vertexShader, GLuint fragmentShader) override;
     virtual bool PrepareToRender() override;
 };
 

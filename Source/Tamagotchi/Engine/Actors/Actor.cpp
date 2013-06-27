@@ -4,24 +4,24 @@
 Actor::Actor(ActorId id)
     : id(id), components()
 {
-    LogInfo("Actor created: %d", this->id);
+    LogSpam("Actor created: %d", this->id);
 }
 
 Actor::~Actor()
 {
-    LogInfo("Actor destroyed: %d", this->id);
+    LogSpam("Actor destroyed: %d", this->id);
     this->components.clear();
 }
 
 bool Actor::Init()
 {
-    LogInfo("Actor initialising: %d", this->id);
+    LogSpam("Actor initialising: %d", this->id);
     return true;
 }
 
 void Actor::PostInit()
 {
-    LogInfo("Actor post init: %d", this->id);
+    LogSpam("Actor post init: %d", this->id);
 
     for (ActorComponents::iterator it = this->components.begin(); it != this->components.end(); ++it)
     {

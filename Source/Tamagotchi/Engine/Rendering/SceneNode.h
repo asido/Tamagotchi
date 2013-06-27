@@ -35,6 +35,7 @@ public:
 
     ActorId         GetActorId() const { return this->actorId; }
     void            SetParent(std::weak_ptr<SceneNode> parent) { this->parent = parent; }
+    void            SetTransform(const Matrix4f &transform) { this->toWorld = transform; }
 
 private:
     std::shared_ptr<SceneNode>  GetParent() const;
@@ -66,10 +67,9 @@ private:
 class SpriteSceneNode : public SceneNode
 {
 public:
-    virtual void    OnRender() override;
+    SpriteSceneNode(ActorId actorId);
 
-private:
-    GLuint texture;
+    virtual void    OnRender() override;
 };
 
 #endif // __SCENENODE_H__
