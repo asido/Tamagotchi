@@ -1,5 +1,10 @@
 #include "SceneNode.h"
+#include "Scene.h"
 #include "Logger.h"
+#include "TamagotchiEngine.h"
+#include "ShaderManager.h"
+#include "Actors/RenderComponent.h"
+#include "ResourceManager/ResourceManager.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class SceneNode
@@ -13,17 +18,6 @@ SceneNode::SceneNode(ActorId actor, std::weak_ptr<RenderComponent> renderComp)
     : actorId(actor), renderComponent(renderComp)
 {
 
-}
-
-bool SceneNode::Init()
-{
-    // TODO: ask ShaderManager to load the shader.
-    this->shader = std::shared_ptr<Shader>(TG_NEW DefaultShader);
-    if (!this->shader->Init(vertexExtra->GetGlShader(), fragmentExtra->GetGlShader()))
-    {
-        LogError("Shader initialization has failed: %s.", shaderName.c_str());
-        return false;
-    }
 }
 
 bool SceneNode::AddChild(std::shared_ptr<SceneNode> kid)
@@ -60,7 +54,7 @@ void SceneNode::OnUpdate(const Scene &scene, float delta)
     for (SceneNodeList::iterator it = this->childNodes.begin(); it != this->childNodes.end(); ++it)
     {
         std::shared_ptr<SceneNode> node = *it;
-        node->OnUpdate(delta);
+        node->OnUpdate(scene, delta);
     }
 }
 
@@ -103,19 +97,47 @@ std::shared_ptr<RenderComponent> SceneNode::GetRenderComponent() const
 //  class SpriteSceneNode
 //-----------------------------------------------------------------------------------------------------------
 
+enum {
+    VERTEX_ATTRIB_POSITION=0,
+    VERTEX_ATTRIB_TEXTURE
+};
+
+typedef struct {
+    Vector3f positionCoords;
+    Vector2f textureCoords;
+} VertexData;
+
+static const VertexData SpriteVerticies[] = {
+    { Vector3f(0.0f, 0.0f, 0.0f), Vector2f(0.0f, 0.0f) },
+    { Vector3f(1.0f, 0.0f, 0.0f), Vector2f(1.0f, 0.0f) },
+    { Vector3f(0.0f, 1.0f, 0.0f), Vector2f(0.0f, 1.0f) },
+    { Vector3f(1.0f, 1.0f, 0.0f), Vector2f(1.0f, 1.0f) }
+};
+
 SpriteSceneNode::SpriteSceneNode(ActorId actorId, std::weak_ptr<RenderComponent> renderComp)
-    : SceneNode(actorId, renderComp)
+    : SceneNode(actorId, renderComp), vertexCount(4)
 {
 
 }
 
 bool SpriteSceneNode::Init()
 {
-    if (!SceneNode::Init())
-    {
-        LogError("SceneNode::Init() has failed.");
-        return false;
-    }
+    const std::string &shaderName = GetRenderComponent()->GetShaderName();
+    this->shader = g_engine->GetShaderManager()->GetShader(shaderName);
+
+    // Init VBO
+    glGenVertexArraysOES(1, &this->glVertexArray);
+    glBindVertexArrayOES(this->glVertexArray);
+
+    glGenBuffers(1, &this->glBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, this->glBuffer);
+    glBufferData(this->glBuffer, sizeof(SpriteVerticies), SpriteVerticies, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), static_cast<GLvoid*>(NULL + offsetof(VertexData, positionCoords)));
+    glEnableVertexAttribArray(VERTEX_ATTRIB_POSITION);
+
+    glVertexAttribPointer(VERTEX_ATTRIB_TEXTURE, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), reinterpret_cast<GLvoid*>(NULL + offsetof(VertexData, textureCoords)));
+    glEnableVertexAttribArray(VERTEX_ATTRIB_TEXTURE);
 
     return true;
 }
@@ -129,13 +151,13 @@ void SpriteSceneNode::OnRender(const Scene &scene)
         return;
     }
 
-    glBindVertexArrayOES(renderComponent->GetGlVertexArray());
+    glBindVertexArrayOES(this->glVertexArray);
 
-    if (!renderComponent->GetShader()->PrepareToRender())
+    if (!this->shader->PrepareToRender())
     {
         LogError("Shader prepare to render has failed.");
-        return false;
+        return;
     }
 
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, renderComponent->GetVertexCount());
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, this->vertexCount);
 }

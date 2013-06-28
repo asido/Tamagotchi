@@ -4,16 +4,22 @@
 #include <memory>
 #include <string>
 #include "Rendering/GLES.h"
+#include "StringUtilities.h"
 
 typedef unsigned int ShaderId;
+const ShaderId INVALID_SHADER_ID = 0;
 
 //-----------------------------------------------------------------------------------------------------------
 //  class Shader
 //-----------------------------------------------------------------------------------------------------------
 
+class RenderComponent;
+
 class Shader
 {
 public:
+    static ShaderId GetIdFromName(const std::string &name) { return StringUtilities::Hash(name); }
+
     Shader();
     ~Shader();
 
@@ -28,7 +34,7 @@ protected:
 
 protected:
     GLuint program;
-    GLuint vertexShader, GLuint fragmentShader;
+    GLuint vertexShader, fragmentShader;
 
 private:
     std::weak_ptr<RenderComponent>  renderComponent;
@@ -36,14 +42,19 @@ private:
 
 
 //-----------------------------------------------------------------------------------------------------------
-//  class IShader
+//  class DefaultShader
 //-----------------------------------------------------------------------------------------------------------
 
 class DefaultShader : public Shader
 {
 public:
+    static ShaderId GetIdStatic();
+
     virtual bool Init(GLuint vertexShader, GLuint fragmentShader) override;
     virtual bool PrepareToRender() override;
+
+private:
+    static const std::string name;
 };
 
 #endif // __SHADER_H__

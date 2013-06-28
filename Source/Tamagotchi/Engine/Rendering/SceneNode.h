@@ -14,7 +14,10 @@ using namespace Eigen;
 //  class SceneNode
 //-----------------------------------------------------------------------------------------------------------
 
+class Scene;
 class SceneNode;
+class RenderComponent;
+
 typedef std::vector< std::shared_ptr<SceneNode> > SceneNodeList;
 
 class SceneNode
@@ -27,7 +30,7 @@ public:
 
     bool            IsVisible() const;
 
-    virtual bool    Init();
+    virtual bool    Init() = 0;
     virtual void    OnUpdate(const Scene &scene, float delta);
     virtual void    OnPreRender(const Scene &scene);
     virtual void    OnRender(const Scene &scene) = 0;
@@ -38,7 +41,7 @@ public:
     void            SetParent(std::weak_ptr<SceneNode> parent) { this->parent = parent; }
     void            SetTransform(const Matrix4f &transform) { this->toWorld = transform; }
 
-private:
+protected:
     std::shared_ptr<SceneNode>       GetParent() const;
     std::shared_ptr<RenderComponent> GetRenderComponent() const;
 
@@ -66,6 +69,9 @@ private:
 //  class SpriteSceneNode
 //-----------------------------------------------------------------------------------------------------------
 
+class Shader;
+class Resource;
+
 class SpriteSceneNode : public SceneNode
 {
 public:
@@ -75,9 +81,12 @@ public:
     virtual void    OnRender(const Scene &scene) override;
 
 private:
-    
     std::shared_ptr<Shader>         shader;
     std::shared_ptr<Resource>       textureResource;
+
+    GLuint          glVertexArray;
+    GLuint          glBuffer;
+    unsigned int    vertexCount;
 };
 
 #endif // __SCENENODE_H__

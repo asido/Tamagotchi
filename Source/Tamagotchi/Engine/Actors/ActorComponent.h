@@ -15,7 +15,6 @@ using namespace Eigen;
 class Actor;
 
 typedef unsigned int ComponentId;
-
 const ComponentId INVALID_COMPONENT_ID = 0;
 
 //-----------------------------------------------------------------------------------------------------------

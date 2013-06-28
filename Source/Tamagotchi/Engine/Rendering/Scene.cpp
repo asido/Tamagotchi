@@ -56,7 +56,7 @@ void Scene::OnUpdate(float delta)
         return;
     }
 
-    return this->rootNode->OnUpdate(delta);
+    return this->rootNode->OnUpdate(*this, delta);
 }
 
 void Scene::OnRender()
@@ -67,8 +67,8 @@ void Scene::OnRender()
         return;
     }
 
-    this->rootNode->OnPreRender();
-    this->rootNode->OnRender();
-    this->rootNode->OnRenderChildren();
-    this->rootNode->OnPostRender();
+    this->rootNode->OnPreRender(*this);
+    this->rootNode->OnRender(*this);
+    this->rootNode->OnRenderChildren(*this);
+    this->rootNode->OnPostRender(*this);
 }

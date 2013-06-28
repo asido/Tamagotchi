@@ -25,16 +25,6 @@ bool TransformComponent::Init(tinyxml2::XMLElement *data)
     return false;
 }
 
-ComponentId TransformComponent::GetId() const
-{
-    return GetIdStatic();
-}
-
-const std::string& TransformComponent::GetName() const
-{
-    return name;
-}
-
 Matrix4f TransformComponent::GetTransform() const
 {
     return this->transform;

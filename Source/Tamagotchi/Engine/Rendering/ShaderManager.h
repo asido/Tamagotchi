@@ -16,6 +16,8 @@ typedef std::map< std::string, std::shared_ptr<Shader> > ShaderMap;
 class ShaderManager
 {
 public:
+    ShaderManager();
+
     std::shared_ptr<Shader> GetShader(const std::string &shaderName);
 
 private:

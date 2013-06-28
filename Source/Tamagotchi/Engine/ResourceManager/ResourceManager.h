@@ -106,23 +106,23 @@ class ResourceManager
 
 public:
     ResourceManager(unsigned int cacheSize, std::shared_ptr<IResourceFile> file);
-    virtual ~ResourceManager();
+    ~ResourceManager();
 
-    bool Init();
-    void RegisterLoader(std::shared_ptr<IResourceLoader> loader);
+    bool                            Init();
+    void                            RegisterLoader(std::shared_ptr<IResourceLoader> loader);
     std::shared_ptr<ResourceHandle> GetHandle(const Resource &r);
 
 private:
-    bool MakeRoom(unsigned int size);
-    char *Allocate(unsigned int size);
-    void Free(std::shared_ptr<ResourceHandle> gonner);
+    bool                            MakeRoom(unsigned int size);
+    char*                           Allocate(unsigned int size);
+    void                            Free(std::shared_ptr<ResourceHandle> gonner);
 
     std::shared_ptr<ResourceHandle> Load(const Resource &r);
     std::shared_ptr<ResourceHandle> Find(const Resource &r);
     void                            Update(std::shared_ptr<ResourceHandle> handle);
 
-    void FreeOneResource();
-    void MemoryHasBeenFreed(unsigned int size);
+    void                            FreeOneResource();
+    void                            MemoryHasBeenFreed(unsigned int size);
 
 private:
     // Resource usage list. The front contains most recently referred resources while the end the least.

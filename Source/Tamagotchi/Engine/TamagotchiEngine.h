@@ -10,6 +10,7 @@
 class ResourceManager;
 class IRenderer;
 class ShaderManager;
+class EngineConfig;
 
 class TamagotchiEngine
 {
@@ -24,8 +25,9 @@ public:
 
     std::shared_ptr<ResourceManager>    GetResourceManager() const { return this->resourceMgr; }
     std::shared_ptr<IRenderer>          GetRenderer() const { return this->renderer; }
-    std::shared_ptr<ShaderManager>      GetShadermanager() const { return this->shaderMgr; }
+    std::shared_ptr<ShaderManager>      GetShaderManager() const { return this->shaderMgr; }
     std::shared_ptr<GameLogic>          GetGameLogic() const { return this->gameLogic; }
+    std::shared_ptr<EngineConfig>       GetEngineConfig() const { return this->engineConfig; }
 
 protected:
     // Game specific initialization which must be defined by subclass.
@@ -44,6 +46,7 @@ private:
     std::shared_ptr<IRenderer>          renderer;
     std::shared_ptr<ShaderManager>      shaderMgr;
     std::shared_ptr<GameLogic>          gameLogic;
+    std::shared_ptr<EngineConfig>       engineConfig;
 };
 
 extern TamagotchiEngine *g_engine;

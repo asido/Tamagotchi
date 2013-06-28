@@ -8,7 +8,18 @@
 #include <EGL/egl.h>
 #include <GLES2/gl2.h>
 
+#include "TamagotchiEngine.h"
 #include "Logger.h"
+
+class TamagotchiGameStub : public TamagotchiEngine
+{
+protected:
+    virtual std::shared_ptr<GameLogic>  CreateGameLogic() override;
+    virtual std::shared_ptr<GameView>   CreateFirstView() override;
+};
+
+std::shared_ptr<GameLogic> TamagotchiGameStub::CreateGameLogic() { return std::shared_ptr<GameLogic>(new GameLogic); }
+std::shared_ptr<GameView>  TamagotchiGameStub::CreateFirstView() { return std::shared_ptr<GameView>(); }
 
 static EGLNativeWindowType hwnd;
 
@@ -95,6 +106,9 @@ const std::string TestMain()
         return status;
     }
 
+    TamagotchiGameStub *game = new TamagotchiGameStub;
+    game->Init(100, 100);
+
     // Create the event manager and test controller.
     CPPUNIT_NS::TestResult controller;
 
@@ -113,6 +127,7 @@ const std::string TestMain()
 
     // Destroy GL stub.
     DestroyGlStub();
+    delete game;
 
     // Grab the output.
     std::stringbuf buffer;

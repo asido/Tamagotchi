@@ -116,6 +116,9 @@
     <ClInclude Include="..\Engine\Rendering\ShaderManager.h">
       <Filter>Source Files\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\EngineConfig.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -192,6 +195,9 @@
     </ClCompile>
     <ClCompile Include="..\Engine\Rendering\ShaderManager.cpp">
       <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\EngineConfig.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

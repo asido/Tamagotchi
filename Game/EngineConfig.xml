@@ -1,0 +1,15 @@
+<EngineConfig>
+
+    <!-- A file to all game resources. -->
+    <AssetFile>Assets.zip</AssetFile>
+
+    <!-- Path to specific assets. -->
+    <AssetPathActors>Actors/</AssetPathActors>
+    <AssetPathLevels>Levels/</AssetPathLevels>
+    <AssetPathShaders>Shaders/</AssetPathShaders>
+    <AssetPathTextures>Textures/</AssetPathTextures>
+
+    <!-- Resource cache size in MB. -->
+    <ResourceCacheSize>50.0</ResourceCacheSize>
+
+</EngineConfig>

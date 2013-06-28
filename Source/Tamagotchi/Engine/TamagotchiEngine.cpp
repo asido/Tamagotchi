@@ -3,8 +3,10 @@
 #include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/ZipFile.h"
 #include "Rendering/Renderer.h"
+#include "Rendering/ShaderManager.h"
 #include "Logger.h"
 #include "Clock.h"
+#include "EngineConfig.h"
 
 TamagotchiEngine *g_engine = NULL;
 
@@ -35,12 +37,15 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
         return false;
     }
 
-    // TODO: we should create TamagotchiOptions class which will parse the .xml config file
-    // and get all necessary information, like asset zip file name, ResourceManager cache size and such.
-    std::string assetFile = "Assets.zip";
+    this->engineConfig = std::shared_ptr<EngineConfig>(TG_NEW EngineConfig());
+    if (!this->engineConfig->Init("EngineConfig.xml"))
+    {
+        LogError("Failed to initialize EngineConfig.");
+        return false;
+    }
 
-    std::shared_ptr<IResourceFile> resourceFile = std::shared_ptr<IResourceFile>(TG_NEW ResourceZipFile(assetFile));
-    this->resourceMgr = std::shared_ptr<ResourceManager>(TG_NEW ResourceManager(static_cast<unsigned int>(MB_TO_B(50.0f)), resourceFile));
+    std::shared_ptr<IResourceFile> resourceFile = std::shared_ptr<IResourceFile>(TG_NEW ResourceZipFile(this->engineConfig->GetAssetFile()));
+    this->resourceMgr = std::shared_ptr<ResourceManager>(TG_NEW ResourceManager(static_cast<unsigned int>(MB_TO_B(this->engineConfig->GetResourceCacheSize())), resourceFile));
     if (!this->resourceMgr->Init())
     {
         LogError("ResourceMgr::Init() has failed.");
@@ -76,7 +81,7 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
      * It will go away once we have renderer ready to draw our objects.
      */
 
-    const char vShaderStr[] =  
+    const char vShaderStr[] =
         "attribute vec4 vPosition;    \n"
         "void main()                  \n"
         "{                            \n"

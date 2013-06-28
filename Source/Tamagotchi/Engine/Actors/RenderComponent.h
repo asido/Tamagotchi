@@ -17,11 +17,16 @@ class Shader;
 class RenderComponent : public ActorComponent
 {
 public:
-    virtual bool Init(tinyxml2::XMLElement *data) = 0;
-    virtual void PostInit() override;
+    virtual bool        Init(tinyxml2::XMLElement *data) override;
+    virtual void        PostInit() override;
+
+    const std::string&  GetShaderName() const { return this->shaderName; }
 
 protected:
     virtual std::shared_ptr<SceneNode> CreateSceneNode() = 0;
+
+private:
+    std::string shaderName;
 };
 
 
@@ -32,19 +37,21 @@ protected:
 class SpriteRenderComponent : public RenderComponent
 {
 public:
-    SpriteRenderComponent();
+    static ComponentId          GetIdStatic();
 
-    virtual bool        Init(tinyxml2::XMLElement *data) override;
+    virtual bool                Init(tinyxml2::XMLElement *data) override;
+    virtual ComponentId         GetId() const override { return SpriteRenderComponent::GetIdStatic(); }
+    virtual const std::string&  GetName() const override { return SpriteRenderComponent::name; }
 
-    const std::string&  GetTextureFilename() const { return this->textureFilename; }
-    const std::string&  GetShaderName() const { return this->shaderName; }
-
+    const std::string&          GetTextureFilename() const { return this->textureFilename; }
+    
 protected:
     virtual std::shared_ptr<SceneNode> CreateSceneNode() override;
 
 private:
+    static const std::string name;
+
     std::string textureFilename;
-    std::string shaderName;
 };
 
 #endif // __RENDERCOMPONENT_H__

@@ -4,6 +4,7 @@
 #include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/XMLResource.h"
 #include "TransformComponent.h"
+#include "RenderComponent.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ActorFactory
@@ -13,6 +14,7 @@ ActorFactory::ActorFactory()
     : lastActorId(INVALID_ACTOR_ID)
 {
     this->componentFactory.Register<TransformComponent>(TransformComponent::GetIdStatic());
+    this->componentFactory.Register<SpriteRenderComponent>(SpriteRenderComponent::GetIdStatic());
 }
 
 //-----------------------------------------------

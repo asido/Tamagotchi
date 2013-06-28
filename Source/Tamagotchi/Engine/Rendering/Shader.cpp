@@ -126,6 +126,20 @@ std::shared_ptr<RenderComponent> Shader::GetRenderComponent() const
 //  class DefaultShader
 //-----------------------------------------------------------------------------------------------------------
 
+const std::string DefaultShader::name("DefaultShader");
+
+ShaderId DefaultShader::GetIdStatic()
+{
+    static ShaderId id = INVALID_SHADER_ID;
+
+    if (id == INVALID_SHADER_ID)
+    {
+        id = StringUtilities::Hash(DefaultShader::name);
+    }
+
+    return id;
+}
+
 bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
 {
     if (vertexShader == 0)
@@ -182,7 +196,6 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
 
 bool DefaultShader::PrepareToRender()
 {
-    std::shared_ptr<RenderComponent> renderComponent = GetRenderComponent();
-    std::shared_ptr<ResourceHandle> textureHandle = ResourceManager::GetHandle()
+    LogError("Implement me!");
     return false;
 }

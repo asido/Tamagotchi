@@ -1,6 +1,9 @@
 #include "ShaderManager.h"
 #include "Shader.h"
 #include "TamagotchiEngine.h"
+#include "EngineConfig.h"
+#include "ResourceManager/ResourceManager.h"
+#include "ResourceManager/ShaderResource.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ShaderManager
@@ -9,6 +12,11 @@
 //-----------------------------------------------
 // Public
 //-----------------------------------------------
+
+ShaderManager::ShaderManager()
+{
+    this->shaderFactory.Register<DefaultShader>(DefaultShader::GetIdStatic());
+}
 
 std::shared_ptr<Shader> ShaderManager::GetShader(const std::string &shaderName)
 {
@@ -21,7 +29,7 @@ std::shared_ptr<Shader> ShaderManager::GetShader(const std::string &shaderName)
         
         if (!shader)
         {
-            LogError("shader == NULL");
+            LogWarning("Shader was not loaded: %s", shaderName.c_str());
             return std::shared_ptr<Shader>();
         }
     }
@@ -35,19 +43,20 @@ std::shared_ptr<Shader> ShaderManager::GetShader(const std::string &shaderName)
 
 std::shared_ptr<Shader> ShaderManager::LoadShader(const std::string &shaderName)
 {
-    std::shared_ptr<ResourceHandle> vShaderHandle = g_engine->GetResourceManager()->GetHandle(shaderName + ".vsh");
-    std::shared_ptr<ResourceHandle> fShaderHandle = g_engine->GetResourceManager()->GetHandle(shaderName + ".fsh");
+    const std::string shadersPath = g_engine->GetEngineConfig()->GetAssetPathShaders();
+    std::shared_ptr<ResourceHandle> vShaderHandle = g_engine->GetResourceManager()->GetHandle(shadersPath + shaderName + ".vsh");
+    std::shared_ptr<ResourceHandle> fShaderHandle = g_engine->GetResourceManager()->GetHandle(shadersPath + shaderName + ".fsh");
 
     if (!vShaderHandle || !fShaderHandle)
     {
-        LogError("Couldn't load shader resource handles.");
+        LogWarning("Couldn't load resource handles of shader: %s", shaderName.c_str());
         return std::shared_ptr<Shader>();
     }
 
     std::shared_ptr<ShaderResourceExtraData> vertexExtra = std::static_pointer_cast<ShaderResourceExtraData>(vShaderHandle->GetExtra());
     std::shared_ptr<ShaderResourceExtraData> fragmentExtra = std::static_pointer_cast<ShaderResourceExtraData>(fShaderHandle->GetExtra());
 
-    std::shared_ptr<Shader> shader = std::shared_ptr<Shader>(TG_NEW Shader());
+    std::shared_ptr<Shader> shader(this->shaderFactory.Create(Shader::GetIdFromName(shaderName)));
 
     if (!shader->Init(vertexExtra->GetGlShader(), fragmentExtra->GetGlShader()))
     {

@@ -32,6 +32,9 @@
     <ClCompile Include="..\EngineTests\EventManagerTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\EngineTests\ShaderManagerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\EngineTests\StringUtilitiesTest.h">
@@ -50,6 +53,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\EngineTests\EventManagerTest.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EngineTests\ShaderManagerTest.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
