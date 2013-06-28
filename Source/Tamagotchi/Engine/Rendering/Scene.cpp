@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "SceneNode.h"
+#include "EventManager/EventManager.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class Scene
@@ -8,6 +9,11 @@
 //-----------------------------------------------
 // Public
 //-----------------------------------------------
+
+Scene::Scene()
+{
+    EventManager::Get().AddListener(fastdelegate::MakeDelegate(this, &Scene::NewRenderComponentDelegate), Event_NewRenderComponent::Type);
+}
 
 bool Scene::AddChild(std::shared_ptr<SceneNode> node)
 {
@@ -71,4 +77,15 @@ void Scene::OnRender()
     this->rootNode->OnRender(*this);
     this->rootNode->OnRenderChildren(*this);
     this->rootNode->OnPostRender(*this);
+}
+
+//-----------------------------------------------
+// Event delegates
+//-----------------------------------------------
+
+void Scene::NewRenderComponentDelegate(std::shared_ptr<IEvent> e)
+{
+    std::shared_ptr<Event_NewRenderComponent> event = std::static_pointer_cast<Event_NewRenderComponent>(e);
+    std::shared_ptr<SceneNode> sceneNode = event->GetSceneNode();
+    AddChild(sceneNode);
 }

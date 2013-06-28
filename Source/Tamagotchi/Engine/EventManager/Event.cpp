@@ -30,8 +30,8 @@ const std::string& Event_Test::GetName() const
 
 const EventType Event_NewRenderComponent::Type(0xe4403d5e);
 
-Event_NewRenderComponent::Event_NewRenderComponent(ActorId id, std::shared_ptr<SceneNode> node)
-    : actorId(id), sceneNode(node)
+Event_NewRenderComponent::Event_NewRenderComponent(std::shared_ptr<SceneNode> node)
+    : sceneNode(node)
 {
 
 }

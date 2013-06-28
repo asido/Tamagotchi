@@ -47,8 +47,14 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string &actorResourc
 
         if (component)
         {
-            actor->AddComponent(component);
-            component->SetOwner(actor);
+            if (actor->AddComponent(component))
+            {
+                component->SetOwner(actor);
+            }
+            else
+            {
+                LogError("Failed to add actor component %s to actor ID %d", node->Value(), actor->GetId());
+            }
         }
         else
         {
@@ -77,7 +83,30 @@ std::shared_ptr<Actor> ActorFactory::CreateActor(const std::string &actorResourc
 
 void ActorFactory::ModifyActor(std::shared_ptr<Actor> actor, tinyxml2::XMLElement *overrides)
 {
-    LogError("Implement me.");
+    for (tinyxml2::XMLElement *node = overrides->FirstChildElement(); node; node = node->NextSiblingElement())
+    {
+        ComponentId componentId = ActorComponent::GetIdFromName(node->Value());
+        std::shared_ptr<ActorComponent> component = actor->GetComponent<ActorComponent>(componentId);
+        if (component)
+        {
+            component->Init(node);
+        }
+        else
+        {
+            component = CreateComponent(node);
+            if (component)
+            {
+                if (actor->AddComponent(component))
+                {
+                    component->SetOwner(actor);
+                }
+                else
+                {
+                    LogError("Failed to add actor component %s to actor ID %d", node->Value(), actor->GetId());
+                }
+            }
+        }
+    }
 }
 
 //-----------------------------------------------

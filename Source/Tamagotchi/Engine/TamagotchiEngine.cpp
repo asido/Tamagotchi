@@ -74,7 +74,7 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 
     this->gameLogic->AddGameView(this->CreateFirstView());
 
-
+    this->gameLogic->LoadScene(this->GetEngineConfig()->GetFirstScene());
 
     /*
      * All the following crap is just to render a test triangle.

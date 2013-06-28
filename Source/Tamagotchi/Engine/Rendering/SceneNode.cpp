@@ -17,7 +17,12 @@
 SceneNode::SceneNode(ActorId actor, std::weak_ptr<RenderComponent> renderComp)
     : actorId(actor), renderComponent(renderComp)
 {
+    LogSpam("SceneNode created for actor: %d", actor);
+}
 
+SceneNode::~SceneNode()
+{
+    LogSpam("SceneNode destroyed for actor: %d", this->actorId);
 }
 
 bool SceneNode::AddChild(std::shared_ptr<SceneNode> kid)

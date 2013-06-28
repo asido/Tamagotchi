@@ -49,16 +49,14 @@ class Event_NewRenderComponent : public IEvent
 public:
     static const EventType Type;
 
-    Event_NewRenderComponent(ActorId id, std::shared_ptr<SceneNode> node);
+    Event_NewRenderComponent(std::shared_ptr<SceneNode> node);
 
     virtual EventType           GetEventType() const override;
     virtual const std::string&  GetName() const override;
 
-    ActorId                     GetActorId() const { return this->actorId; }
     std::shared_ptr<SceneNode>  GetSceneNode() const { return this->sceneNode; }
 
 private:
-    ActorId                     actorId;
     std::shared_ptr<SceneNode>  sceneNode;
 };
 

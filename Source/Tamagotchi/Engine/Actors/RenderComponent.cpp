@@ -39,7 +39,7 @@ bool RenderComponent::Init(tinyxml2::XMLElement *data)
 void RenderComponent::PostInit()
 {
     std::shared_ptr<SceneNode> sceneNode(CreateSceneNode());
-    std::shared_ptr<Event_NewRenderComponent> event = std::shared_ptr<Event_NewRenderComponent>(TG_NEW Event_NewRenderComponent(this->GetOwner()->GetId(), sceneNode));
+    std::shared_ptr<Event_NewRenderComponent> event = std::shared_ptr<Event_NewRenderComponent>(TG_NEW Event_NewRenderComponent(sceneNode));
     EventManager::Get().TriggerEvent(event);
 }
 
@@ -93,5 +93,6 @@ bool SpriteRenderComponent::Init(tinyxml2::XMLElement *data)
 
 std::shared_ptr<SceneNode> SpriteRenderComponent::CreateSceneNode()
 {
-    return std::shared_ptr<SpriteSceneNode>(TG_NEW SpriteSceneNode(GetOwner()->GetId(), std::shared_ptr<RenderComponent>(this)));
+    std::shared_ptr<ActorComponent> smartThis = ActorComponent::shared_from_this();
+    return std::shared_ptr<SpriteSceneNode>(TG_NEW SpriteSceneNode(GetOwner()->GetId(), std::static_pointer_cast<RenderComponent>(smartThis)));
 }

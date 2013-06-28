@@ -12,4 +12,7 @@
     <!-- Resource cache size in MB. -->
     <ResourceCacheSize>50.0</ResourceCacheSize>
 
+    <!-- First scene which is going to be load after engine initialization -->
+    <FirstScene>TestScene.xml</FirstScene>
+
 </EngineConfig>

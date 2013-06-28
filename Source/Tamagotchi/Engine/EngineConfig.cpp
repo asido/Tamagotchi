@@ -73,6 +73,7 @@ bool EngineConfig::ReadAllConfigs(tinyxml2::XMLElement *data)
     this->assetPathShaders  = std::string(ReadConfig(data, "AssetPathShaders"));
     this->assetPathTextures = std::string(ReadConfig(data, "AssetPathTextures"));
     this->resourceCacheSize = static_cast<float>(atof(ReadConfig(data, "ResourceCacheSize")));
+    this->firstScene        = std::string(ReadConfig(data, "FirstScene"));
 
     return result;
 }

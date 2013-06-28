@@ -1,13 +1,9 @@
 #include "GameView.h"
 #include "ScreenElement.h"
+#include "TamagotchiEngine.h"
 #include "Rendering/Renderer.h"
 
 const float SCREEN_REFRESH_RATE = 1000.0f / 60.0f;
-
-GameView::GameView(std::shared_ptr<IRenderer> renderer)
-{
-
-}
 
 GameView::~GameView()
 {

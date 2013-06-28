@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 
+#define EIGEN_DONT_ALIGN_STATICALLY
 #include <Eigen/Dense>
 using namespace Eigen;
 
@@ -23,7 +24,10 @@ typedef std::vector< std::shared_ptr<SceneNode> > SceneNodeList;
 class SceneNode
 {
 public:
+    //EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
     SceneNode(ActorId actor, std::weak_ptr<RenderComponent> renderComp);
+    virtual ~SceneNode();
 
     bool            AddChild(std::shared_ptr<SceneNode> kid);
     bool            RemoveChild(ActorId id);

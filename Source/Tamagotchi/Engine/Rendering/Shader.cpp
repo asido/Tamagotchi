@@ -35,6 +35,7 @@ Shader::~Shader()
     }
     if (this->program)
     {
+        LogSpam("Shader program destroyed: %d", this->program);
         glDeleteProgram(this->program);
     }
 
@@ -159,6 +160,7 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
         LogError("glCreateProgram() has failed.");
         return false;
     }
+    LogSpam("Shader program created: %d", this->program);
 
     glAttachShader(this->program, vertexShader);
     glAttachShader(this->program, fragmentShader);

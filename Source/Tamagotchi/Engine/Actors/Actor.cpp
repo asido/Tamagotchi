@@ -33,7 +33,8 @@ void Actor::OnUpdate(float delta)
 {
     for (ActorComponents::iterator it = this->components.begin(); it != this->components.end(); ++it)
     {
-        it->second->Update(delta);
+        std::shared_ptr<ActorComponent> component = it->second;
+        component->Update(delta);
     }
 }
 

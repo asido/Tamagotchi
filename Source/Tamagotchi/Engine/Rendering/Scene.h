@@ -12,6 +12,7 @@ using namespace Eigen;
 class SceneNode;
 class CameraSceneNode;
 class IRenderer;
+class IEvent;
 
 //-----------------------------------------------------------------------------------------------------------
 //  class Scene
@@ -22,6 +23,8 @@ typedef std::map< ActorId, std::shared_ptr<SceneNode> > SceneActorMap;
 class Scene
 {
 public:
+    Scene();
+
     bool                        AddChild(std::shared_ptr<SceneNode> node);
     bool                        RemoveChild(ActorId actorId);
     std::shared_ptr<SceneNode>  FindChild(ActorId actorId);
@@ -30,6 +33,9 @@ public:
 
     virtual void                OnUpdate(float delta);
     virtual void                OnRender();
+
+    // Event delegates.
+    void                        NewRenderComponentDelegate(std::shared_ptr<IEvent> e);
 
 private:
     std::shared_ptr<SceneNode>          rootNode;

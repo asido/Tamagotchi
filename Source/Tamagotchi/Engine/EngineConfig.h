@@ -19,6 +19,7 @@ public:
     std::string GetAssetPathShaders() const { return this->assetPathShaders; }
     std::string GetAssetPathTextures() const { return this->assetPathTextures; }
     float       GetResourceCacheSize() const { return this->resourceCacheSize; }
+    std::string GetFirstScene() const { return this->firstScene; }
 
 private:
     bool        ReadAllConfigs(tinyxml2::XMLElement *data);
@@ -32,6 +33,8 @@ private:
     std::string assetPathTextures;
 
     float       resourceCacheSize;
+
+    std::string firstScene;
 };
 
 #endif // __ENGINECONFIG_H__

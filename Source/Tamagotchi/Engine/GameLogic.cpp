@@ -1,6 +1,10 @@
 #include "GameLogic.h"
 #include "UI/GameView.h"
 #include "Actors/ActorFactory.h"
+#include "ResourceManager/ResourceManager.h"
+#include "ResourceManager/XMLResource.h"
+#include "TamagotchiEngine.h"
+#include "EngineConfig.h"
 #include "defines.h"
 
 GameLogic::GameLogic()
@@ -21,12 +25,43 @@ bool GameLogic::Init()
 
 void GameLogic::AddGameView(std::shared_ptr<GameView> gameView, ActorId actorId)
 {
+    // TODO: do we need this actorId here?
 
+    this->gameViews.push_back(gameView);
 }
 
 void GameLogic::RemoveGameView(std::shared_ptr<GameView> gameView)
 {
+    this->gameViews.remove(gameView);
+}
 
+bool GameLogic::LoadScene(const std::string &sceneFile)
+{
+    const Resource r(g_engine->GetEngineConfig()->GetAssetPathLevels() + sceneFile);
+    std::shared_ptr<ResourceHandle> sceneHandle = g_engine->GetResourceManager()->GetHandle(r);
+    if (!sceneHandle)
+    {
+        LogError("Couldn't load scene: %s", r.GetName().c_str());
+        return false;
+    }
+
+    std::shared_ptr<XMLResourceExtraData> sceneExtra = std::static_pointer_cast<XMLResourceExtraData>(sceneHandle->GetExtra());
+    tinyxml2::XMLElement *root = sceneExtra->GetRoot();
+
+    tinyxml2::XMLElement *actorsElement = root->FirstChildElement("StaticActors");
+    if (actorsElement)
+    {
+        for (tinyxml2::XMLElement *actorElement = actorsElement->FirstChildElement(); actorElement; actorElement = actorElement->NextSiblingElement())
+        {
+            std::shared_ptr<Actor> actor = CreateActor(actorElement->Attribute("resource"), actorElement);
+        }
+    }
+    else
+    {
+        LogWarning("Scene has no actors: %s", r.GetName().c_str());
+    }
+
+    return false;
 }
 
 std::shared_ptr<Actor> GameLogic::GetActor(ActorId actorId)

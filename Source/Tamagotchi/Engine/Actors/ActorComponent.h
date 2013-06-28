@@ -21,7 +21,9 @@ const ComponentId INVALID_COMPONENT_ID = 0;
 //  class ActorComponent
 //-----------------------------------------------------------------------------------------------------------
 
-class ActorComponent
+// We have to inherit std::enable_shared_from_this as RenderComponent subclasses use it when creating
+// SceneNode subclasses by passing weak_ptr of 'this'.
+class ActorComponent : public std::enable_shared_from_this<ActorComponent>
 {
     friend class ActorFactory;
 

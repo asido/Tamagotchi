@@ -12,7 +12,6 @@ typedef std::list< std::shared_ptr<ScreenElement> > ScreenElementList;
 class GameView
 {
 public:
-    GameView(std::shared_ptr<IRenderer> renderer);
     virtual ~GameView();
 
     void AddElement(std::shared_ptr<ScreenElement> element);
