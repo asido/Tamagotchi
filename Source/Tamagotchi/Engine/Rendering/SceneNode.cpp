@@ -14,6 +14,12 @@
 // Public
 //-----------------------------------------------
 
+SceneNode::SceneNode()
+    : actorId(INVALID_ACTOR_ID)
+{
+
+}
+
 SceneNode::SceneNode(ActorId actor, std::weak_ptr<RenderComponent> renderComp)
     : actorId(actor), renderComponent(renderComp)
 {
@@ -27,7 +33,7 @@ SceneNode::~SceneNode()
 
 bool SceneNode::AddChild(std::shared_ptr<SceneNode> kid)
 {
-    kid->SetParent(std::shared_ptr<SceneNode>(this));
+    kid->SetParent(shared_from_this());
     this->childNodes.push_back(kid);
     return true;
 }
@@ -50,8 +56,9 @@ bool SceneNode::RemoveChild(ActorId id)
 
 bool SceneNode::IsVisible() const
 {
-    LogError("Implement me!");
-    return false;
+    // TODO: for now everything is visible, but we need to do some logic here in order
+    // to improve game performance.
+    return true;
 }
 
 void SceneNode::OnUpdate(const Scene &scene, float delta)
@@ -65,17 +72,28 @@ void SceneNode::OnUpdate(const Scene &scene, float delta)
 
 void SceneNode::OnPreRender(const Scene &scene)
 {
-    LogError("Implement me!");
+    // TODO: push and set world matrix to actor TransformComponent matrix.
 }
 
 void SceneNode::OnRenderChildren(const Scene &scene)
 {
-    LogError("Implement me!");
+    for (SceneNodeList::iterator it = this->childNodes.begin(), end = this->childNodes.end(); it != end; ++it)
+    {
+        std::shared_ptr<SceneNode> node = *it;
+
+        if (node->IsVisible())
+        {
+            node->OnPreRender(scene);
+            node->OnRender(scene);
+            node->OnRenderChildren(scene);
+            node->OnPostRender(scene);
+        }
+    }
 }
 
 void SceneNode::OnPostRender(const Scene &scene)
 {
-    LogError("Implement me!");
+    // TODO: pop a matrix pushed during SceneNode::OnUpdate
 }
 
 std::shared_ptr<SceneNode> SceneNode::GetParent() const
@@ -99,20 +117,25 @@ std::shared_ptr<RenderComponent> SceneNode::GetRenderComponent() const
 }
 
 //-----------------------------------------------------------------------------------------------------------
+//  class RootSceneNode
+//-----------------------------------------------------------------------------------------------------------
+
+RootSceneNode::RootSceneNode()
+{
+    LogSpam("RootSceneNode created.");
+}
+
+RootSceneNode::~RootSceneNode()
+{
+    LogSpam("RootSceneNode destroyed.");
+}
+
+
+//-----------------------------------------------------------------------------------------------------------
 //  class SpriteSceneNode
 //-----------------------------------------------------------------------------------------------------------
 
-enum {
-    VERTEX_ATTRIB_POSITION=0,
-    VERTEX_ATTRIB_TEXTURE
-};
-
-typedef struct {
-    Vector3f positionCoords;
-    Vector2f textureCoords;
-} VertexData;
-
-static const VertexData SpriteVerticies[] = {
+static const DefaultVertexData SpriteVerticies[] = {
     { Vector3f(0.0f, 0.0f, 0.0f), Vector2f(0.0f, 0.0f) },
     { Vector3f(1.0f, 0.0f, 0.0f), Vector2f(1.0f, 0.0f) },
     { Vector3f(0.0f, 1.0f, 0.0f), Vector2f(0.0f, 1.0f) },
@@ -122,7 +145,12 @@ static const VertexData SpriteVerticies[] = {
 SpriteSceneNode::SpriteSceneNode(ActorId actorId, std::weak_ptr<RenderComponent> renderComp)
     : SceneNode(actorId, renderComp), vertexCount(4)
 {
+    LogSpam("SpriteSceneNode created for actor: %d", GetActorId());
+}
 
+SpriteSceneNode::~SpriteSceneNode()
+{
+    LogSpam("SpriteSceneNode destroyed for actor: %d", GetActorId());
 }
 
 bool SpriteSceneNode::Init()
@@ -136,13 +164,18 @@ bool SpriteSceneNode::Init()
 
     glGenBuffers(1, &this->glBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, this->glBuffer);
-    glBufferData(this->glBuffer, sizeof(SpriteVerticies), SpriteVerticies, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(SpriteVerticies), SpriteVerticies, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), static_cast<GLvoid*>(NULL + offsetof(VertexData, positionCoords)));
-    glEnableVertexAttribArray(VERTEX_ATTRIB_POSITION);
+    glVertexAttribPointer(DEFAULT_VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(DefaultVertexData), static_cast<GLvoid*>(NULL + offsetof(DefaultVertexData, positionCoords)));
+    glEnableVertexAttribArray(DEFAULT_VERTEX_ATTRIB_POSITION);
 
-    glVertexAttribPointer(VERTEX_ATTRIB_TEXTURE, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), reinterpret_cast<GLvoid*>(NULL + offsetof(VertexData, textureCoords)));
-    glEnableVertexAttribArray(VERTEX_ATTRIB_TEXTURE);
+    // TODO: we need sprite shader attributes.
+    //glVertexAttribPointer(VERTEX_ATTRIB_TEXTURE, 2, GL_FLOAT, GL_FALSE, sizeof(DefaultVertexData), reinterpret_cast<GLvoid*>(NULL + offsetof(DefaultVertexData, textureCoords)));
+    //glEnableVertexAttribArray(VERTEX_ATTRIB_TEXTURE);
+
+    GL_CHECK_ERROR();
+
+    LogSpam("SpriteSceneNode initialized for actor: %d", GetActorId());
 
     return true;
 }
@@ -165,4 +198,6 @@ void SpriteSceneNode::OnRender(const Scene &scene)
     }
 
     glDrawArrays(GL_TRIANGLE_STRIP, 0, this->vertexCount);
+
+    GL_CHECK_ERROR();
 }

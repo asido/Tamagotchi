@@ -11,8 +11,16 @@
 //-----------------------------------------------
 
 Scene::Scene()
+    : rootNode(TG_NEW RootSceneNode)
 {
+    LogSpam("Scene created.");
     EventManager::Get().AddListener(fastdelegate::MakeDelegate(this, &Scene::NewRenderComponentDelegate), Event_NewRenderComponent::Type);
+}
+
+Scene::~Scene()
+{
+    EventManager::Get().RemoveListener(fastdelegate::MakeDelegate(this, &Scene::NewRenderComponentDelegate), Event_NewRenderComponent::Type);
+    LogSpam("Scene destroyed.");
 }
 
 bool Scene::AddChild(std::shared_ptr<SceneNode> node)

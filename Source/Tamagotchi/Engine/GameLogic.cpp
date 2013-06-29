@@ -45,6 +45,14 @@ bool GameLogic::LoadScene(const std::string &sceneFile)
         return false;
     }
 
+    // Reset game view scene.
+    for (GameViewList::iterator it = this->gameViews.begin(), end = this->gameViews.end(); it != end; ++it)
+    {
+        std::shared_ptr<GameView> gameView = *it;
+        gameView->ResetScene();
+    }
+
+    // Create static scene actors.
     std::shared_ptr<XMLResourceExtraData> sceneExtra = std::static_pointer_cast<XMLResourceExtraData>(sceneHandle->GetExtra());
     tinyxml2::XMLElement *root = sceneExtra->GetRoot();
 

@@ -3,6 +3,10 @@
 
 #include <memory>
 #include <string>
+
+#include <Eigen/Dense>
+using namespace Eigen;
+
 #include "Rendering/GLES.h"
 #include "StringUtilities.h"
 
@@ -44,6 +48,15 @@ private:
 //-----------------------------------------------------------------------------------------------------------
 //  class DefaultShader
 //-----------------------------------------------------------------------------------------------------------
+
+enum {
+    DEFAULT_VERTEX_ATTRIB_POSITION=0
+};
+
+typedef struct {
+    Vector3f positionCoords;
+    Vector2f textureCoords;
+} DefaultVertexData;
 
 class DefaultShader : public Shader
 {

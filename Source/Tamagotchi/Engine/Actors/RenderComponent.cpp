@@ -104,5 +104,13 @@ bool SpriteRenderComponent::Init(tinyxml2::XMLElement *data)
 std::shared_ptr<SceneNode> SpriteRenderComponent::CreateSceneNode()
 {
     std::shared_ptr<ActorComponent> smartThis = ActorComponent::shared_from_this();
-    return std::shared_ptr<SpriteSceneNode>(TG_NEW SpriteSceneNode(GetOwner()->GetId(), std::static_pointer_cast<RenderComponent>(smartThis)));
+    std::shared_ptr<SceneNode> sceneNode = std::shared_ptr<SpriteSceneNode>(TG_NEW SpriteSceneNode(GetOwner()->GetId(), std::static_pointer_cast<RenderComponent>(smartThis)));
+    
+    if (!sceneNode->Init())
+    {
+        LogError("SceneNode creation has failed.");
+        return std::shared_ptr<SceneNode>();
+    }
+
+    return sceneNode;
 }

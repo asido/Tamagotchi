@@ -165,6 +165,9 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
     glAttachShader(this->program, vertexShader);
     glAttachShader(this->program, fragmentShader);
 
+    // Bind shader attribute locations.
+    glBindAttribLocation(this->program, DEFAULT_VERTEX_ATTRIB_POSITION, "a_position");
+
     if (!LinkProgram())
     {
         glDetachShader(this->program, vertexShader);
@@ -198,6 +201,9 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
 
 bool DefaultShader::PrepareToRender()
 {
-    LogError("Implement me!");
-    return false;
+    glUseProgram(this->program);
+
+    GL_CHECK_ERROR();
+
+    return true;
 }

@@ -24,6 +24,7 @@ class Scene
 {
 public:
     Scene();
+    ~Scene();
 
     bool                        AddChild(std::shared_ptr<SceneNode> node);
     bool                        RemoveChild(ActorId actorId);

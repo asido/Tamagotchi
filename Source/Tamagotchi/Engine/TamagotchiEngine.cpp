@@ -82,6 +82,7 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
      * It will go away once we have renderer ready to draw our objects.
      */
 
+    /*
     const char vShaderStr[] =
         "attribute vec4 vPosition;    \n"
         "void main()                  \n"
@@ -128,6 +129,7 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 
     this->shaderProgram = programObject;
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    */
 
     return true;
 }
@@ -145,7 +147,7 @@ void TamagotchiEngine::FrameRender()
         gameView->OnRender();
     }
 
-
+    /*
     GLfloat vVertices[] = {  0.0f,  0.5f, 0.0f, 
                             -0.5f, -0.5f, 0.0f,
                              0.5f, -0.5f, 0.0f };
@@ -155,6 +157,7 @@ void TamagotchiEngine::FrameRender()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
     glEnableVertexAttribArray(0);
     glDrawArrays(GL_TRIANGLES, 0, 3);
+    */
 }
 
 //-----------------------------------------------------------------------------------------------------------

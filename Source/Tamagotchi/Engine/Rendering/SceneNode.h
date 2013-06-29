@@ -20,13 +20,14 @@ class RenderComponent;
 
 typedef std::vector< std::shared_ptr<SceneNode> > SceneNodeList;
 
-class SceneNode
+class SceneNode : public std::enable_shared_from_this<SceneNode>
 {
 public:
 #if !defined(DEBUG) && !defined(_DEBUG)
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 #endif
 
+    SceneNode();
     SceneNode(ActorId actor, std::weak_ptr<RenderComponent> renderComp);
     virtual ~SceneNode();
 
@@ -71,6 +72,21 @@ private:
 
 
 //-----------------------------------------------------------------------------------------------------------
+//  class RootSceneNode
+//-----------------------------------------------------------------------------------------------------------
+
+class RootSceneNode : public SceneNode
+{
+public:
+    RootSceneNode();
+    ~RootSceneNode();
+
+    virtual bool Init() override { return true; }
+    virtual void OnRender(const Scene &scene) override { }
+};
+
+
+//-----------------------------------------------------------------------------------------------------------
 //  class SpriteSceneNode
 //-----------------------------------------------------------------------------------------------------------
 
@@ -81,6 +97,7 @@ class SpriteSceneNode : public SceneNode
 {
 public:
     SpriteSceneNode(ActorId actorId, std::weak_ptr<RenderComponent> renderComp);
+    ~SpriteSceneNode();
 
     virtual bool    Init() override;
     virtual void    OnRender(const Scene &scene) override;
