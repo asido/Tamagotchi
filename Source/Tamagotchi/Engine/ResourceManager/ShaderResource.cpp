@@ -81,7 +81,7 @@ GLuint ShaderResourceLoader::CompileShader(const char *source) const
         {
             char *logBuffer = new char[logLength];
             glGetShaderInfoLog(s, logLength, NULL, logBuffer);
-            LogError("%s", logBuffer);
+            LogError("Shader compile error: %s", logBuffer);
             delete[] logBuffer;
         }
 

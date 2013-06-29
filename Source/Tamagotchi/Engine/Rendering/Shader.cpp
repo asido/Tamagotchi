@@ -1,5 +1,6 @@
 #include "Shader.h"
 #include "Logger.h"
+#include "TamagotchiEngine.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class Shader
@@ -112,16 +113,6 @@ bool Shader::ValidateProgram()
     return true;
 }
 
-std::shared_ptr<RenderComponent> Shader::GetRenderComponent() const
-{
-    std::shared_ptr<RenderComponent> r = this->renderComponent.lock();
-    if (!r)
-    {
-        LogWarning("Shader::renderComponent == NULL.");
-    }
-    return r;
-}
-
 
 //-----------------------------------------------------------------------------------------------------------
 //  class DefaultShader
@@ -167,6 +158,7 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
 
     // Bind shader attribute locations.
     glBindAttribLocation(this->program, DEFAULT_VERTEX_ATTRIB_POSITION, "a_position");
+    glBindAttribLocation(this->program, DEFAULT_VERTEX_ATTRIB_TEXTURE, "a_textureCoord");
 
     if (!LinkProgram())
     {
@@ -194,6 +186,12 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
         return false;
     }
 
+    this->uniforms[DEFAULT_SHADER_UNIFORM_TEXTURE] = glGetUniformLocation(this->program, "u_sampler");
+    if (this->uniforms[DEFAULT_SHADER_UNIFORM_TEXTURE] == -1)
+    {
+        LogWarning("glGetUniformLocation() for 'u_sampler' failed.");
+    }
+
     GL_CHECK_ERROR();
 
     return true;
@@ -201,7 +199,11 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
 
 bool DefaultShader::PrepareToRender()
 {
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, this->glTexture);
+
     glUseProgram(this->program);
+    glUniform1i(this->uniforms[DEFAULT_SHADER_UNIFORM_TEXTURE], 0);
 
     GL_CHECK_ERROR();
 

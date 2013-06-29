@@ -34,14 +34,9 @@ protected:
     bool            LinkProgram();
     bool            ValidateProgram();
 
-    std::shared_ptr<RenderComponent> GetRenderComponent() const;
-
 protected:
     GLuint program;
     GLuint vertexShader, fragmentShader;
-
-private:
-    std::weak_ptr<RenderComponent>  renderComponent;
 };
 
 
@@ -50,7 +45,8 @@ private:
 //-----------------------------------------------------------------------------------------------------------
 
 enum {
-    DEFAULT_VERTEX_ATTRIB_POSITION=0
+    DEFAULT_VERTEX_ATTRIB_POSITION=0,
+    DEFAULT_VERTEX_ATTRIB_TEXTURE
 };
 
 typedef struct {
@@ -63,11 +59,21 @@ class DefaultShader : public Shader
 public:
     static ShaderId GetIdStatic();
 
-    virtual bool Init(GLuint vertexShader, GLuint fragmentShader) override;
-    virtual bool PrepareToRender() override;
+    virtual bool    Init(GLuint vertexShader, GLuint fragmentShader) override;
+    virtual bool    PrepareToRender() override;
+
+    void            SetTexture(GLuint texture) { this->glTexture = texture; }
 
 private:
     static const std::string name;
+
+    enum DefaultShaderUniforms {
+        DEFAULT_SHADER_UNIFORM_TEXTURE=0,
+        DEFAULT_SHADER_UNIFORM_COUNT
+    };
+    GLuint  uniforms[DEFAULT_SHADER_UNIFORM_COUNT];
+
+    GLuint  glTexture;
 };
 
 #endif // __SHADER_H__
