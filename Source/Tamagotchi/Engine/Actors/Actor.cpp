@@ -9,8 +9,8 @@ Actor::Actor(ActorId id)
 
 Actor::~Actor()
 {
-    LogSpam("Actor destroyed: %d", this->id);
     this->components.clear();
+    LogSpam("Actor destroyed: %d", this->id);
 }
 
 bool Actor::Init()

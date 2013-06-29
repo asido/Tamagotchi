@@ -62,6 +62,16 @@ ComponentId SpriteRenderComponent::GetIdStatic()
     return id;
 }
 
+SpriteRenderComponent::SpriteRenderComponent()
+{
+    LogSpam("SpriteRenderComponent created: %s", this->textureFilename.c_str());
+}
+
+SpriteRenderComponent::~SpriteRenderComponent()
+{
+    LogSpam("SpriteRenderComponent destroyed: %s", this->textureFilename.c_str());
+}
+
 bool SpriteRenderComponent::Init(tinyxml2::XMLElement *data)
 {
     if (!RenderComponent::Init(data))

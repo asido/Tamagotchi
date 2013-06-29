@@ -30,6 +30,9 @@ class ActorComponent : public std::enable_shared_from_this<ActorComponent>
 public:
     static ComponentId          GetIdFromName(const std::string &name) { return StringUtilities::Hash(name); }
 
+    ActorComponent() {}
+    virtual ~ActorComponent() {}
+
     virtual bool                Init(tinyxml2::XMLElement *data) = 0;
     virtual void                PostInit() {}
     virtual void                Update(float delta) {}

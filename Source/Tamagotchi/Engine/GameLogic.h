@@ -28,6 +28,7 @@ public:
     virtual void                        RemoveGameView(std::shared_ptr<GameView> gameView);
 
     bool                                LoadScene(const std::string &sceneFile);
+    bool                                UnloadCurrentScene();
 
     virtual std::shared_ptr<Actor>      GetActor(ActorId actorId);
     virtual std::shared_ptr<Actor>      CreateActor(const std::string &actorResource, tinyxml2::XMLElement *override, const Eigen::Matrix4f *initialTransform=NULL);

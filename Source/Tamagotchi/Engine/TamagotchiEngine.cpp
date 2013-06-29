@@ -23,6 +23,7 @@ TamagotchiEngine::TamagotchiEngine()
 
 TamagotchiEngine::~TamagotchiEngine()
 {
+    this->gameLogic->UnloadCurrentScene();
     g_engine = NULL;
 }
 

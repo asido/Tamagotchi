@@ -23,10 +23,10 @@ static const unsigned char TAG_FLAGS_DEFAULT_WARNING    = TAG_FLAG_WRITE_TO_DEBU
 static const unsigned char TAG_FLAGS_DEFAULT_INFO       = TAG_FLAG_WRITE_TO_DEBUGGER | TAG_FLAG_WRITE_TO_LOG_FILE;
 static const unsigned char TAG_FLAGS_DEFAULT_SPAM       = TAG_FLAG_WRITE_TO_DEBUGGER | TAG_FLAG_WRITE_TO_LOG_FILE;
 #else
-static const unsigned char TAG_FLAGS_DEFAULT_ERROR      = 0;
-static const unsigned char TAG_FLAGS_DEFAULT_WARNING    = 0;
-static const unsigned char TAG_FLAGS_DEFAULT_INFO       = 0;
-static const unsigned char TAG_FLAGS_DEFAULT_SPAM       = 0;
+static const unsigned char TAG_FLAGS_DEFAULT_ERROR      = TAG_FLAG_WRITE_TO_DEBUGGER;
+static const unsigned char TAG_FLAGS_DEFAULT_WARNING    = TAG_FLAG_WRITE_TO_DEBUGGER;
+static const unsigned char TAG_FLAGS_DEFAULT_INFO       = TAG_FLAG_WRITE_TO_DEBUGGER;
+static const unsigned char TAG_FLAGS_DEFAULT_SPAM       = TAG_FLAG_WRITE_TO_DEBUGGER;
 #endif
 
 

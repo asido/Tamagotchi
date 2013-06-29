@@ -29,7 +29,12 @@ ComponentId TransformComponent::GetIdStatic()
 TransformComponent::TransformComponent()
     : transform(Matrix4f::Identity())
 {
-    
+    LogSpam("Transform component created.");
+}
+
+TransformComponent::~TransformComponent()
+{
+    LogSpam("Transform component destroyed.");
 }
 
 bool TransformComponent::Init(tinyxml2::XMLElement *data)

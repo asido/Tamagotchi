@@ -10,7 +10,7 @@
 // but it does not declare new operator taking TG_NEW specified arguments. The solution is probably to try define the missing new
 // overrides, but for now we just use plain simple 'new' here.
 template <class BaseType, class SubType>
-BaseType *GenericObjectCreationFunction() { return new SubType; }
+BaseType *GenericObjectCreationFunction() { return TG_NEW SubType; }
 
 template <class BaseClass, class IdType>
 class GenericObjectFactory

@@ -17,6 +17,9 @@ class Shader;
 class RenderComponent : public ActorComponent
 {
 public:
+    RenderComponent() {}
+    virtual ~RenderComponent() {}
+
     virtual bool                Init(tinyxml2::XMLElement *data) override;
     virtual void                PostInit() override;
 
@@ -44,8 +47,8 @@ class SpriteRenderComponent : public RenderComponent
 public:
     static ComponentId          GetIdStatic();
 
-    SpriteRenderComponent() {}
-    ~SpriteRenderComponent() {}
+    SpriteRenderComponent();
+    virtual ~SpriteRenderComponent();
 
     virtual bool                Init(tinyxml2::XMLElement *data) override;
     virtual ComponentId         GetId() const override { return SpriteRenderComponent::GetIdStatic(); }

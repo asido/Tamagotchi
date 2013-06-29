@@ -64,6 +64,12 @@ bool GameLogic::LoadScene(const std::string &sceneFile)
     return false;
 }
 
+bool GameLogic::UnloadCurrentScene()
+{
+    this->actors.clear();
+    return true;
+}
+
 std::shared_ptr<Actor> GameLogic::GetActor(ActorId actorId)
 {
     ActorMap::iterator it = this->actors.find(actorId);

@@ -17,11 +17,14 @@ using namespace Eigen;
 class TransformComponent : public ActorComponent
 {
 public:
+#if !defined(DEBUG) && !defined(_DEBUG)
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+#endif
 
     static ComponentId          GetIdStatic();
 
     TransformComponent();
+    virtual ~TransformComponent();
 
     virtual bool                Init(tinyxml2::XMLElement *data) override;
     virtual ComponentId         GetId() const override { return TransformComponent::GetIdStatic(); }
