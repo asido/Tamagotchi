@@ -42,9 +42,9 @@ bool TransformComponent::Init(tinyxml2::XMLElement *data)
     tinyxml2::XMLElement *positionElement = data->FirstChildElement("Position");
     if (positionElement)
     {
-        Vector3f pos(atof(positionElement->Attribute("x")),
-                     atof(positionElement->Attribute("y")),
-                     atof(positionElement->Attribute("z")));
+        Vector3f pos(static_cast<float>(atof(positionElement->Attribute("x"))),
+                     static_cast<float>(atof(positionElement->Attribute("y"))),
+                     static_cast<float>(atof(positionElement->Attribute("z"))));
         this->SetPosition(pos);
     }
     else
@@ -55,9 +55,9 @@ bool TransformComponent::Init(tinyxml2::XMLElement *data)
     tinyxml2::XMLElement *scaleElement = data->FirstChildElement("Scale");
     if (scaleElement)
     {
-        Vector3f scale(atof(scaleElement->Attribute("x")),
-                       atof(scaleElement->Attribute("y")),
-                       atof(scaleElement->Attribute("z")));
+        Vector3f scale(static_cast<float>(atof(scaleElement->Attribute("x"))),
+                       static_cast<float>(atof(scaleElement->Attribute("y"))),
+                       static_cast<float>(atof(scaleElement->Attribute("z"))));
         this->SetScale(scale);
     }
     else
