@@ -80,16 +80,16 @@ void TransformComponent::SetTransform(const Matrix4f &newTransform)
 
 Vector3f TransformComponent::GetPosition() const
 {
-    return Vector3f(this->transform(3,0),
-                    this->transform(3,1),
-                    this->transform(3,2));
+    return Vector3f(this->transform(0,3),
+                    this->transform(1,3),
+                    this->transform(2,3));
 }
 
 void TransformComponent::SetPosition(const Vector3f &newPosition)
 {
-    this->transform(3,0) = newPosition(0);
-    this->transform(3,1) = newPosition(1);
-    this->transform(3,2) = newPosition(2);
+    this->transform(0,3) = newPosition(0);
+    this->transform(1,3) = newPosition(1);
+    this->transform(2,3) = newPosition(2);
 }
 
 Vector3f TransformComponent::GetScale() const
