@@ -19,7 +19,7 @@ protected:
 };
 
 std::shared_ptr<GameLogic> TamagotchiGameStub::CreateGameLogic() { return std::shared_ptr<GameLogic>(new GameLogic); }
-std::shared_ptr<GameView>  TamagotchiGameStub::CreateFirstView() { return std::shared_ptr<GameView>(); }
+std::shared_ptr<GameView>  TamagotchiGameStub::CreateFirstView() { return std::shared_ptr<GameView>(new GameView); }
 
 static EGLNativeWindowType hwnd;
 

@@ -10,9 +10,9 @@ using namespace Eigen;
 #include "Actors/Actor.h"
 
 class SceneNode;
-class CameraSceneNode;
 class IRenderer;
 class IEvent;
+class Camera;
 
 //-----------------------------------------------------------------------------------------------------------
 //  class Scene
@@ -40,8 +40,8 @@ public:
 
 private:
     std::shared_ptr<SceneNode>          rootNode;
-    std::shared_ptr<CameraSceneNode>    cameraNode;
     SceneActorMap                       actorMap;
+    std::shared_ptr<Camera>             camera;
 };
 
 #endif // __SCENE_H__

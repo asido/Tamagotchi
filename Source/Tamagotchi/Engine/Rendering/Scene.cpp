@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "SceneNode.h"
+#include "Camera.h"
 #include "EventManager/EventManager.h"
 
 //-----------------------------------------------------------------------------------------------------------

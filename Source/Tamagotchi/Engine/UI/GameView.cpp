@@ -7,6 +7,7 @@
 const float SCREEN_REFRESH_RATE = 1000.0f / 60.0f;
 
 GameView::GameView()
+    : scene(TG_NEW Scene)
 {
 
 }
