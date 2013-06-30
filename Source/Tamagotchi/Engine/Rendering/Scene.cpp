@@ -1,6 +1,9 @@
 #include "Scene.h"
 #include "SceneNode.h"
 #include "Camera.h"
+#include "Geometry.h"
+#include "TamagotchiEngine.h"
+#include "Rendering/Renderer.h"
 #include "EventManager/EventManager.h"
 
 //-----------------------------------------------------------------------------------------------------------
@@ -12,10 +15,15 @@
 //-----------------------------------------------
 
 Scene::Scene()
-    : rootNode(TG_NEW RootSceneNode)
+    : rootNode(TG_NEW RootSceneNode), camera(TG_NEW Camera), matrixStack(TG_NEW MatrixStack)
 {
-    LogSpam("Scene created.");
+    std::shared_ptr<IRenderer> renderer = g_engine->GetRenderer();
+    Matrix4f projectionMatrix = Math3D::MakeOrthoMatrix(0.0f, 100.0f * renderer->GetAspectRatio(), 0.0f, 100.0f, 0.0f, 100.0f);
+    this->camera->SetProjectionMatrix(projectionMatrix);
+
     EventManager::Get().AddListener(fastdelegate::MakeDelegate(this, &Scene::NewRenderComponentDelegate), Event_NewRenderComponent::Type);
+
+    LogSpam("Scene created.");
 }
 
 Scene::~Scene()
@@ -58,9 +66,19 @@ std::shared_ptr<SceneNode> Scene::FindChild(ActorId actorId)
     return it->second;
 }
 
-void Scene::PushAndSetMatrix(const Matrix4f &matrix)
+void Scene::PushMatrix(const Matrix4f &matrix)
 {
-    LogError("Implement me!");
+    this->matrixStack->Push(this->matrixStack->GetTop() * matrix);
+}
+
+void Scene::PopMatrix()
+{
+    this->matrixStack->Pop();
+}
+
+Matrix4f Scene::GetTopMatrix() const
+{
+    return this->matrixStack->GetTop();
 }
 
 void Scene::OnUpdate(float delta)

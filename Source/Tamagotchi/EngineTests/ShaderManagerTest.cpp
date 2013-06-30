@@ -1,6 +1,7 @@
 #include <cppunit/config/SourcePrefix.h>
 #include "ShaderManagerTest.h"
 #include "Rendering/ShaderManager.h"
+
 // We need to access shader and program GL handles.
 #define private public
 #define protected public

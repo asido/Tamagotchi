@@ -20,6 +20,7 @@
     <ClCompile Include="..\Engine\EventManager\Event.cpp" />
     <ClCompile Include="..\Engine\EventManager\EventManager.cpp" />
     <ClCompile Include="..\Engine\GameLogic.cpp" />
+    <ClCompile Include="..\Engine\Geometry.cpp" />
     <ClCompile Include="..\Engine\Rendering\Camera.cpp" />
     <ClCompile Include="..\Engine\Rendering\Renderer.cpp" />
     <ClCompile Include="..\Engine\Rendering\Scene.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="..\Engine\EventManager\Event.h" />
     <ClInclude Include="..\Engine\EventManager\EventManager.h" />
     <ClInclude Include="..\Engine\GameLogic.h" />
+    <ClInclude Include="..\Engine\Geometry.h" />
     <ClInclude Include="..\Engine\ObjectFactory.h" />
     <ClInclude Include="..\Engine\Rendering\Camera.h" />
     <ClInclude Include="..\Engine\Rendering\GLES.h" />

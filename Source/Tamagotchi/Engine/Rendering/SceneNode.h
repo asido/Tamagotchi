@@ -38,10 +38,10 @@ public:
 
     virtual bool    Init() = 0;
     virtual void    OnUpdate(const Scene &scene, float delta);
-    virtual void    OnPreRender(const Scene &scene);
-    virtual void    OnRender(const Scene &scene) = 0;
-    virtual void    OnRenderChildren(const Scene &scene);
-    virtual void    OnPostRender(const Scene &scene);
+    virtual bool    OnPreRender(Scene &scene);
+    virtual void    OnRender(Scene &scene) = 0;
+    virtual void    OnRenderChildren(Scene &scene);
+    virtual void    OnPostRender(Scene &scene);
 
     ActorId         GetActorId() const { return this->actorId; }
     void            SetParent(std::weak_ptr<SceneNode> parent) { this->parent = parent; }
@@ -71,7 +71,7 @@ public:
     ~RootSceneNode();
 
     virtual bool Init() override { return true; }
-    virtual void OnRender(const Scene &scene) override { }
+    virtual void OnRender(Scene &scene) override { }
 };
 
 
@@ -89,7 +89,7 @@ public:
     ~SpriteSceneNode();
 
     virtual bool    Init() override;
-    virtual void    OnRender(const Scene &scene) override;
+    virtual void    OnRender(Scene &scene) override;
 
 private:
     std::shared_ptr<Shader>         shader;

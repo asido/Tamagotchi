@@ -7,6 +7,10 @@
 #include "GameLogic.h"
 #include "UI/GameView.h"
 
+//-----------------------------------------------------------------------------------------------------------
+//  class TamagotchiEngine
+//-----------------------------------------------------------------------------------------------------------
+
 class ResourceManager;
 class IRenderer;
 class ShaderManager;

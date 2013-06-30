@@ -122,6 +122,9 @@
     <ClInclude Include="..\Engine\Rendering\Camera.h">
       <Filter>Source Files\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\Geometry.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -204,6 +207,9 @@
     </ClCompile>
     <ClCompile Include="..\Engine\Rendering\Camera.cpp">
       <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Geometry.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

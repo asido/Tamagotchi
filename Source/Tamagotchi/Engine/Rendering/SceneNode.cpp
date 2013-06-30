@@ -3,7 +3,9 @@
 #include "Logger.h"
 #include "TamagotchiEngine.h"
 #include "ShaderManager.h"
+#include "Camera.h"
 #include "Actors/RenderComponent.h"
+#include "Actors/TransformComponent.h"
 #include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/TextureResource.h"
 
@@ -71,12 +73,28 @@ void SceneNode::OnUpdate(const Scene &scene, float delta)
     }
 }
 
-void SceneNode::OnPreRender(const Scene &scene)
+bool SceneNode::OnPreRender(Scene &scene)
 {
-    // TODO: push and set world matrix to actor TransformComponent matrix.
+    std::shared_ptr<Actor> actor = g_engine->GetGameLogic()->GetActor(this->actorId);
+    if (!actor)
+    {
+        // During sanity check we have to push some matrix or otherwise Pop() at SceneNode::OnPostRender will screw up the stack.
+        scene.PushMatrix(Matrix4f::Identity());
+        return false;
+    }
+
+    std::shared_ptr<TransformComponent> transformComp = actor->GetComponent<TransformComponent>(TransformComponent::GetIdStatic());
+    if (!transformComp)
+    {
+        scene.PushMatrix(Matrix4f::Identity());
+        return false;
+    }
+
+    scene.PushMatrix(transformComp->GetTransform());
+    return true;
 }
 
-void SceneNode::OnRenderChildren(const Scene &scene)
+void SceneNode::OnRenderChildren(Scene &scene)
 {
     for (SceneNodeList::iterator it = this->childNodes.begin(), end = this->childNodes.end(); it != end; ++it)
     {
@@ -84,17 +102,19 @@ void SceneNode::OnRenderChildren(const Scene &scene)
 
         if (node->IsVisible())
         {
-            node->OnPreRender(scene);
-            node->OnRender(scene);
-            node->OnRenderChildren(scene);
-            node->OnPostRender(scene);
+            if (node->OnPreRender(scene))
+            {
+                node->OnRender(scene);
+                node->OnRenderChildren(scene);
+                node->OnPostRender(scene);
+            }
         }
     }
 }
 
-void SceneNode::OnPostRender(const Scene &scene)
+void SceneNode::OnPostRender(Scene &scene)
 {
-    // TODO: pop a matrix pushed during SceneNode::OnUpdate
+    scene.PopMatrix();
 }
 
 std::shared_ptr<SceneNode> SceneNode::GetParent() const
@@ -144,7 +164,7 @@ static const DefaultVertexData SpriteVerticies[] = {
 };
 
 SpriteSceneNode::SpriteSceneNode(ActorId actorId, std::weak_ptr<RenderComponent> renderComp)
-    : SceneNode(actorId, renderComp), vertexCount(4)
+    : SceneNode(actorId, renderComp), vertexCount(ARRAY_SIZE(SpriteVerticies))
 {
     LogSpam("SpriteSceneNode created for actor: %d", GetActorId());
 }
@@ -168,10 +188,11 @@ bool SpriteSceneNode::Init()
     glBindBuffer(GL_ARRAY_BUFFER, this->glBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(SpriteVerticies), SpriteVerticies, GL_STATIC_DRAW);
 
+    // Position coord vertex data.
     glVertexAttribPointer(DEFAULT_VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(DefaultVertexData), static_cast<GLvoid*>(NULL + offsetof(DefaultVertexData, positionCoords)));
     glEnableVertexAttribArray(DEFAULT_VERTEX_ATTRIB_POSITION);
 
-    // TODO: we need sprite shader attributes.
+    // Texture coord vertex data.
     glVertexAttribPointer(DEFAULT_VERTEX_ATTRIB_TEXTURE, 2, GL_FLOAT, GL_FALSE, sizeof(DefaultVertexData), reinterpret_cast<GLvoid*>(NULL + offsetof(DefaultVertexData, textureCoords)));
     glEnableVertexAttribArray(DEFAULT_VERTEX_ATTRIB_TEXTURE);
 
@@ -182,7 +203,7 @@ bool SpriteSceneNode::Init()
     return true;
 }
 
-void SpriteSceneNode::OnRender(const Scene &scene)
+void SpriteSceneNode::OnRender(Scene &scene)
 {
     std::shared_ptr<SpriteRenderComponent> renderComponent = std::static_pointer_cast<SpriteRenderComponent>(this->GetRenderComponent());
     if (!renderComponent)
@@ -199,6 +220,11 @@ void SpriteSceneNode::OnRender(const Scene &scene)
 
     std::shared_ptr<DefaultShader> defaultShader = std::static_pointer_cast<DefaultShader>(this->shader);
     defaultShader->SetTexture(textureExtra->GetTexture());
+
+    
+    Matrix4f mvp = scene.GetCamera()->CalculateMVP(scene);
+    defaultShader->SetMvpMatrix(mvp);
+
     if (!defaultShader->PrepareToRender())
     {
         LogError("Shader prepare to render has failed.");

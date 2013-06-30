@@ -11,8 +11,12 @@
 TamagotchiEngine *g_engine = NULL;
 
 //-----------------------------------------------------------------------------------------------------------
-// Public
+//  class TamagotchiEngine
 //-----------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------------
+// Public
+//-----------------------------------------------
 
 TamagotchiEngine::TamagotchiEngine()
     : width(0), height(0),
@@ -53,11 +57,7 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
         return false;
     }
 
-    this->width = width;
-    this->height = height;
-    LogInfo("Using resolution: %dx%d", this->width, this->height);
-
-    this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer());
+    this->renderer = std::shared_ptr<IRenderer>(TG_NEW GLESRenderer(width, height));
 
     this->shaderMgr = std::shared_ptr<ShaderManager>(TG_NEW ShaderManager);
 
@@ -94,9 +94,9 @@ void TamagotchiEngine::FrameRender()
     }
 }
 
-//-----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------
 // Private
-//-----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------
 
 GLuint TamagotchiEngine::LoadShader(GLenum type, const char *shaderSrc)
 {

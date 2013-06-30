@@ -63,17 +63,23 @@ public:
     virtual bool    PrepareToRender() override;
 
     void            SetTexture(GLuint texture) { this->glTexture = texture; }
+    void            SetMvpMatrix(const Matrix4f &mvp) { this->mvpMatrix = mvp; }
+
+private:
+    bool            LoadUniformLocation(GLenum uniform, const std::string &uniformVar);
 
 private:
     static const std::string name;
 
     enum DefaultShaderUniforms {
-        DEFAULT_SHADER_UNIFORM_TEXTURE=0,
+        DEFAULT_SHADER_UNIFORM_MVP=0,
+        DEFAULT_SHADER_UNIFORM_TEXTURE,
         DEFAULT_SHADER_UNIFORM_COUNT
     };
     GLuint  uniforms[DEFAULT_SHADER_UNIFORM_COUNT];
 
-    GLuint  glTexture;
+    GLuint      glTexture;
+    Matrix4f    mvpMatrix;
 };
 
 #endif // __SHADER_H__

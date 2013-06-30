@@ -120,6 +120,10 @@ bool Shader::ValidateProgram()
 
 const std::string DefaultShader::name("DefaultShader");
 
+//-----------------------------------------------
+// Public
+//-----------------------------------------------
+
 ShaderId DefaultShader::GetIdStatic()
 {
     static ShaderId id = INVALID_SHADER_ID;
@@ -186,11 +190,8 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
         return false;
     }
 
-    this->uniforms[DEFAULT_SHADER_UNIFORM_TEXTURE] = glGetUniformLocation(this->program, "u_sampler");
-    if (this->uniforms[DEFAULT_SHADER_UNIFORM_TEXTURE] == -1)
-    {
-        LogWarning("glGetUniformLocation() for 'u_sampler' failed.");
-    }
+    LoadUniformLocation(DEFAULT_SHADER_UNIFORM_MVP, "u_mvp");
+    LoadUniformLocation(DEFAULT_SHADER_UNIFORM_TEXTURE, "u_sampler");
 
     GL_CHECK_ERROR();
 
@@ -203,9 +204,30 @@ bool DefaultShader::PrepareToRender()
     glBindTexture(GL_TEXTURE_2D, this->glTexture);
 
     glUseProgram(this->program);
+    glUniformMatrix4fv(this->uniforms[DEFAULT_SHADER_UNIFORM_MVP], 1, GL_FALSE, this->mvpMatrix.data());
     glUniform1i(this->uniforms[DEFAULT_SHADER_UNIFORM_TEXTURE], 0);
 
     GL_CHECK_ERROR();
 
     return true;
+}
+
+//-----------------------------------------------
+// Private
+//-----------------------------------------------
+
+bool DefaultShader::LoadUniformLocation(GLenum uniform, const std::string &uniformVar)
+{
+    LogAssert(uniform < DEFAULT_SHADER_UNIFORM_COUNT && "Invalid uniform.");
+    this->uniforms[uniform] = glGetUniformLocation(this->program, uniformVar.c_str());
+
+    if (this->uniforms[uniform] == -1)
+    {
+        LogWarning("glGetUniformLocation() for uniform '%s' has failed.", uniformVar.c_str());
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }

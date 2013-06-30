@@ -33,4 +33,9 @@
 #define GB_TO_B(a)      (MB_TO_B(a) * 1024.0f)
 #define TB_TO_B(a)      (GB_TO_B(a) * 1024.0f)
 
+// Determines the size of statically allocated array.
+// the last bit of division is a compile time check in order to make sure the array size is divisible by the size of a single element size.
+// If not, the macro will evaluate to division by zero and compilation will fail.
+#define ARRAY_SIZE(a)   (sizeof(a) / sizeof(*(a)) / static_cast<size_t>(!(sizeof(a) % sizeof(*(a)))))
+
 #endif // __COMMON_H__
