@@ -38,6 +38,7 @@
     <ClCompile Include="..\Engine\StringUtilities.cpp" />
     <ClCompile Include="..\Engine\Threading\Mutex.cpp" />
     <ClCompile Include="..\Engine\UI\GameView.cpp" />
+    <ClCompile Include="..\Engine\UI\HudFactory.cpp" />
     <ClCompile Include="..\Engine\UI\ScreenElement.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +73,7 @@
     <ClInclude Include="..\Engine\StringUtilities.h" />
     <ClInclude Include="..\Engine\Threading\Mutex.h" />
     <ClInclude Include="..\Engine\UI\GameView.h" />
+    <ClInclude Include="..\Engine\UI\HudFactory.h" />
     <ClInclude Include="..\Engine\UI\ScreenElement.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

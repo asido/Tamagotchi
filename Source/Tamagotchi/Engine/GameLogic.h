@@ -13,6 +13,7 @@
 
 class GameView;
 class ActorFactory;
+class HudFactory;
 class XMLElement;
 
 typedef std::map< ActorId, std::shared_ptr<Actor> > ActorMap;
@@ -44,6 +45,7 @@ private:
     ActorMap                            actors;
     GameViewList                        gameViews;
     std::shared_ptr<ActorFactory>       actorFactory;
+    std::shared_ptr<HudFactory>         hudFactory;
 };
 
 #endif // __GAMELOGIC_H__

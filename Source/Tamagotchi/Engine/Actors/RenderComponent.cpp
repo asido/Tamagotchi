@@ -15,6 +15,12 @@ using namespace Eigen;
 
 bool RenderComponent::Init(tinyxml2::XMLElement *data)
 {
+    if (!data)
+    {
+        LogError("XML data == NULL");
+        return false;
+    }
+
     // Init shader.
     tinyxml2::XMLElement *shaderElement = data->FirstChildElement("Shader");
     if (shaderElement)
@@ -74,6 +80,12 @@ SpriteRenderComponent::~SpriteRenderComponent()
 
 bool SpriteRenderComponent::Init(tinyxml2::XMLElement *data)
 {
+    if (!data)
+    {
+        LogError("XML data == NULL");
+        return false;
+    }
+
     if (!RenderComponent::Init(data))
     {
         LogError("RenderComponent::Init has failed.");

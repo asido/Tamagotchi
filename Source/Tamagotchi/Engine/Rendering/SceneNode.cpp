@@ -179,6 +179,11 @@ bool SpriteSceneNode::Init()
     // Init shader.
     const std::string &shaderName = GetRenderComponent()->GetShaderName();
     this->shader = g_engine->GetShaderManager()->GetShader(shaderName);
+    if (!this->shader)
+    {
+        LogError("Failed to load shader: %s", shaderName.c_str());
+        return false;
+    }
 
     // Init VBO.
     glGenVertexArraysOES(1, &this->glVertexArray);

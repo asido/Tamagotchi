@@ -1,9 +1,20 @@
 <? xml version="1.0" ?>
 
 <Level>
+
     <StaticActors>
         <Actor resource="Actors/Agetchi.xml">
             <!-- Override actor properties if necessary. -->
         </Actor>
     </StaticActors>
+
+    <HUD>
+        <ButtonElement>
+            <Frame x="0" y="0" width="100" height="40" />
+            <Shader name="DefaultShader" />
+            <Texture resource="Button.png" />
+            <Text>Ok</Text>
+        </ButtonElement>
+    </HUD>
+
 </Level>

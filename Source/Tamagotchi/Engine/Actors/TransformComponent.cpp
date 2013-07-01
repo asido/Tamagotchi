@@ -39,6 +39,12 @@ TransformComponent::~TransformComponent()
 
 bool TransformComponent::Init(tinyxml2::XMLElement *data)
 {
+    if (!data)
+    {
+        LogError("XML data == NULL");
+        return false;
+    }
+
     tinyxml2::XMLElement *positionElement = data->FirstChildElement("Position");
     if (positionElement)
     {

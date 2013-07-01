@@ -1,6 +1,7 @@
 #include "GameLogic.h"
 #include "UI/GameView.h"
 #include "Actors/ActorFactory.h"
+#include "UI/HudFactory.h"
 #include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/XMLResource.h"
 #include "TamagotchiEngine.h"
@@ -24,6 +25,7 @@ GameLogic::~GameLogic()
 bool GameLogic::Init()
 {
     this->actorFactory = std::shared_ptr<ActorFactory>(TG_NEW ActorFactory);
+    this->hudFactory = std::shared_ptr<HudFactory>(TG_NEW HudFactory);
     return true;
 }
 
@@ -56,22 +58,38 @@ bool GameLogic::LoadScene(const std::string &sceneFile)
         gameView->ResetScene();
     }
 
-    // Create static scene actors.
+    // Load XML root element.
     std::shared_ptr<XMLResourceExtraData> sceneExtra = std::static_pointer_cast<XMLResourceExtraData>(sceneHandle->GetExtra());
     tinyxml2::XMLElement *root = sceneExtra->GetRoot();
 
+    // Create static scene actors.
     tinyxml2::XMLElement *actorsElement = root->FirstChildElement("StaticActors");
     if (actorsElement)
     {
         for (tinyxml2::XMLElement *actorElement = actorsElement->FirstChildElement(); actorElement; actorElement = actorElement->NextSiblingElement())
         {
-            std::shared_ptr<Actor> actor = CreateActor(actorElement->Attribute("resource"), actorElement);
+            CreateActor(actorElement->Attribute("resource"), actorElement);
         }
     }
-    else
+
+    // Whenever we add more game view support, this certainly will need to change and so raise an error in order not to forget in the future.
+    LogAssert(this->gameViews.size() == 1 && "WARNING *** Create HUD for human view only.");
+
+    // Create HUD elements if game view is attached.
+    std::shared_ptr<GameView> gameView = this->gameViews.front();
+    if (gameView)
     {
-        LogWarning("Scene has no actors: %s", r.GetName().c_str());
+        tinyxml2::XMLElement *hudElements = root->FirstChildElement("HUD");
+        if (hudElements)
+        {
+            for (tinyxml2::XMLElement *hudElement = hudElements->FirstChildElement(); hudElement; hudElement = hudElement->NextSiblingElement())
+            {
+                std::shared_ptr<ScreenElement> screenElement = this->hudFactory->CreateScreenElement(hudElement);
+                gameView->AddElement(screenElement);
+            }
+        }
     }
+    
 
     return false;
 }

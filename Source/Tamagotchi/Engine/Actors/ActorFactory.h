@@ -23,12 +23,11 @@ public:
     void                            ModifyActor(std::shared_ptr<Actor> actor, tinyxml2::XMLElement *overrides);
 
 private:
-    ActorId                         GetNextActorId();
+    ActorId                         GetNextActorId() const;
     std::shared_ptr<ActorComponent> CreateComponent(tinyxml2::XMLElement *data);
 
 private:
     GenericObjectFactory<ActorComponent, ComponentId> componentFactory;
-    ActorId lastActorId;
 };
 
 #endif // __ACTORFACTORY_H__

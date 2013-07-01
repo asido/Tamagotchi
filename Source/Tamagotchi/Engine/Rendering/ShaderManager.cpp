@@ -33,6 +33,10 @@ std::shared_ptr<Shader> ShaderManager::GetShader(const std::string &shaderName)
             return std::shared_ptr<Shader>();
         }
     }
+    else
+    {
+        shader = it->second;
+    }
 
     return shader;
 }

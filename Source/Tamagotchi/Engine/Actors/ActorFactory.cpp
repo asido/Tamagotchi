@@ -11,7 +11,6 @@
 //-----------------------------------------------------------------------------------------------------------
 
 ActorFactory::ActorFactory()
-    : lastActorId(INVALID_ACTOR_ID)
 {
     this->componentFactory.Register<TransformComponent>(TransformComponent::GetIdStatic());
     this->componentFactory.Register<SpriteRenderComponent>(SpriteRenderComponent::GetIdStatic());
@@ -113,10 +112,11 @@ void ActorFactory::ModifyActor(std::shared_ptr<Actor> actor, tinyxml2::XMLElemen
 // Private
 //-----------------------------------------------
 
-ActorId ActorFactory::GetNextActorId()
+ActorId ActorFactory::GetNextActorId() const
 {
-    this->lastActorId++;
-    return this->lastActorId;
+    static ActorId id = 0;
+    id++;
+    return id;
 }
 
 std::shared_ptr<ActorComponent> ActorFactory::CreateComponent(tinyxml2::XMLElement *data)
