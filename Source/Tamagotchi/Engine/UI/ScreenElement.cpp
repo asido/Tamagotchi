@@ -24,6 +24,8 @@ const unsigned int ScreenElement::VertexCount(ARRAY_SIZE(ScreenElement::ElementV
 ScreenElement::ScreenElement()
     : transform(TG_NEW TransformComponent), x(0), y(0), width(0), height(0), visible(true)
 {
+    // For UI rendering we use projection matrix with same bounds as viewport in order
+    // to be able to specify frame values in pixels.
     Resolution resolution = g_engine->GetRenderer()->GetResolution();
     this->projectionMatrix = Math3D::MakeOrthoMatrix(0.0f, static_cast<float>(resolution.width),
                                                      0.0f, static_cast<float>(resolution.height),
@@ -42,14 +44,16 @@ bool ScreenElement::Init(tinyxml2::XMLElement *data)
     tinyxml2::XMLElement *frameElement = data->FirstChildElement("Frame");
     if (frameElement)
     {
-        this->x = static_cast<float>(atof(frameElement->Attribute("x")));
-        this->y = static_cast<float>(atof(frameElement->Attribute("y")));
-        this->width = static_cast<float>(atof(frameElement->Attribute("width")));
-        this->height = static_cast<float>(atof(frameElement->Attribute("height")));
+        float x = static_cast<float>(atof(frameElement->Attribute("x")));
+        float y = static_cast<float>(atof(frameElement->Attribute("y")));
+        float width = static_cast<float>(atof(frameElement->Attribute("width")));
+        float height = static_cast<float>(atof(frameElement->Attribute("height")));
 
-        Vector3f pos(this->x, this->y, -1.0f);
+        // XXX: It's not a good idea to hardcode Z index, but as long as we don't have overlapping windows
+        // it will do the job.
+        Vector3f pos(x, y, -1.0f);
         this->transform->SetPosition(pos);
-        Vector3f scale(this->width, this->height, 1.0f);
+        Vector3f scale(width, height, 1.0f);
         this->transform->SetScale(scale);
     }
     else
@@ -112,6 +116,7 @@ void ScreenElement::OnRender()
 
     std::shared_ptr<ResourceHandle> handle = g_engine->GetResourceManager()->GetHandle(*this->textureResource.get());
     std::shared_ptr<GLESTextureResourceExtraData> textureExtra = std::static_pointer_cast<GLESTextureResourceExtraData>(handle->GetExtra());
+    // XXX: *very* nasty shader hardcode.
     std::shared_ptr<DefaultShader> s = std::static_pointer_cast<DefaultShader>(this->shader);
     s->SetTexture(textureExtra->GetTexture());
 
@@ -192,12 +197,10 @@ bool ButtonElement::Init(tinyxml2::XMLElement *data)
 
 void ButtonElement::OnUpdate(float delta)
 {
-    //LogError("Implement me!");
+
 }
 
 void ButtonElement::OnRender()
 {
     ScreenElement::OnRender();
-
-    //LogError("Implement me!");
 }

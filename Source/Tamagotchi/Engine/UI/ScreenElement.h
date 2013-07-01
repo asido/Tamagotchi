@@ -52,9 +52,6 @@ protected:
     Matrix4f                    projectionMatrix;
     std::shared_ptr<TransformComponent> transform;
 
-    float   x, y;
-    float   width, height;
-
     bool    visible;
 
     GLuint  glVertexArray;
