@@ -10,6 +10,6 @@ Camera::Camera()
 Matrix4f Camera::CalculateMVP(const Scene &scene) const
 {
     Matrix4f world = scene.GetTopMatrix();
-    Matrix4f mvp = world * this->viewMatrix;
-    return this->projectionMatrix * mvp;
+    Matrix4f mv = world * this->viewMatrix;
+    return this->projectionMatrix * mv;
 }

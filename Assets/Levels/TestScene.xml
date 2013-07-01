@@ -6,13 +6,21 @@
         <Actor resource="Actors/Agetchi.xml">
             <!-- Override actor properties if necessary. -->
         </Actor>
+
+        <Actor resource="Actors/Agetchi.xml">
+            <!-- Override actor properties if necessary. -->
+            <TransformComponent>
+                <Position x="70.0" y="40.0" z="-1.0" />
+                <Scale x="30.0" y="30.0" z="1.0" />
+            </TransformComponent>
+        </Actor>
     </StaticActors>
 
     <HUD>
         <ButtonElement>
             <Frame x="0" y="0" width="100" height="40" />
             <Shader name="DefaultShader" />
-            <Texture resource="Button.png" />
+            <Texture resource="Textures/Button.png" />
             <Text>Ok</Text>
         </ButtonElement>
     </HUD>

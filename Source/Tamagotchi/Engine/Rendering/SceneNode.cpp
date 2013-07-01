@@ -163,8 +163,10 @@ static const DefaultVertexData SpriteVerticies[] = {
     { Vector3f(1.0f, 1.0f, 0.0f), Vector2f(1.0f, 1.0f) }
 };
 
+unsigned int SpriteSceneNode::VertexCount(ARRAY_SIZE(SpriteVerticies));
+
 SpriteSceneNode::SpriteSceneNode(ActorId actorId, std::weak_ptr<RenderComponent> renderComp)
-    : SceneNode(actorId, renderComp), vertexCount(ARRAY_SIZE(SpriteVerticies))
+    : SceneNode(actorId, renderComp)
 {
     LogSpam("SpriteSceneNode created for actor: %d", GetActorId());
 }
@@ -236,7 +238,7 @@ void SpriteSceneNode::OnRender(Scene &scene)
         return;
     }
 
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, this->vertexCount);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, SpriteSceneNode::VertexCount);
 
     GL_CHECK_ERROR();
 }

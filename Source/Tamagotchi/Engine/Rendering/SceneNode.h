@@ -92,12 +92,13 @@ public:
     virtual void    OnRender(Scene &scene) override;
 
 private:
+    static unsigned int             VertexCount;
+
     std::shared_ptr<Shader>         shader;
     std::shared_ptr<Resource>       textureResource;
 
     GLuint          glVertexArray;
     GLuint          glBuffer;
-    unsigned int    vertexCount;
 };
 
 #endif // __SCENENODE_H__
