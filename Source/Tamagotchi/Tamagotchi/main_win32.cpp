@@ -1,7 +1,10 @@
 #include <windows.h>
+#include <stdio.h>
 #include "gles_init_win32.h"
 #include "TamagotchiGame.h"
 
+static const unsigned int surfaceWidth  = 1136;
+static const unsigned int surfaceHeight = 640;
 static Tamagotchi *game;
 
 void ESCALLBACK OnRender(ESContext *esContext)
@@ -16,10 +19,26 @@ void ESCALLBACK OnUpdate(ESContext *esContext, float deltaTime)
     game->FrameUpdate(deltaTime);
 }
 
-void ESCALLBACK OnKey(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY)
+void ESCALLBACK OnKey(ESContext *esContext, unsigned int msg, unsigned char wParam, int cursorX, int cursorY)
 {
-    // TODO: need to translate win32 input messages to input controller independent events
-    // which game engine can understand.
+    // Engine treats bottom-left corner as (0,0) coordinates, while in windows GUI top-left is (0,0).
+    cursorY = surfaceHeight - cursorY;
+
+    switch (msg) {
+    case WM_LBUTTONDOWN: {
+        std::shared_ptr<const Point> point = std::shared_ptr<const Point>(TG_NEW Point(static_cast<float>(cursorX), static_cast<float>(cursorY)));
+        ScreenEvent event(ScreenEvent::EVENT_TYPE_TOUCH, point);
+        game->HandleScreenEvent(event);
+        break;
+    }
+
+    case WM_LBUTTONUP: {
+        std::shared_ptr<const Point> point(TG_NEW Point(static_cast<float>(cursorX), static_cast<float>(cursorY)));
+        ScreenEvent event(ScreenEvent::EVENT_TYPE_RELEASE, point);
+        game->HandleScreenEvent(event);
+        break;
+    }
+    }
 }
 
 INT WINAPI wWinMain(_In_        HINSTANCE   hInstance,
@@ -38,7 +57,7 @@ INT WINAPI wWinMain(_In_        HINSTANCE   hInstance,
 
     _CrtSetDbgFlag(tmpDbgFlag);
 
-    ESContext es(1136, 640, L"Tamagotchi");
+    ESContext es(surfaceWidth, surfaceHeight, L"Tamagotchi");
     es.Init();
 
     game = TG_NEW Tamagotchi;

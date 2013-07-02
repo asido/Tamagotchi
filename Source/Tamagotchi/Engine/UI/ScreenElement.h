@@ -10,12 +10,37 @@ using namespace Eigen;
 
 #include "StringUtilities.h"
 #include "Rendering/Shader.h"
+#include "Geometry.h"
 
 typedef unsigned int ScreenElementId;
 const ScreenElementId INVALID_SCREEN_ELEMENT_ID = 0;
 
 class Resource;
 class TransformComponent;
+
+//-----------------------------------------------------------------------------------------------------------
+//  class ScreenEvent
+//-----------------------------------------------------------------------------------------------------------
+
+class ScreenEvent
+{
+public:
+    typedef enum {
+        // Valid for both mouse and finger.
+        EVENT_TYPE_TOUCH,
+        EVENT_TYPE_RELEASE
+    } EventType;
+
+    ScreenEvent(EventType type, std::shared_ptr<const Point> p) : type(type), point(p) { }
+
+    EventType       GetEventType() const { return this->type; }
+    const Point&    GetPoint() const { return *this->point.get(); }
+
+private:
+    EventType                       type;
+    std::shared_ptr<const Point>    point;
+};
+
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ScreenElement
@@ -37,10 +62,13 @@ public:
     virtual void    OnUpdate(float delta) = 0;
     virtual void    OnRender();
 
+    virtual bool    HandleEvent(const ScreenEvent &event) = 0;
+
     bool            IsVisible() const { return this->visible; }
 
 protected:
     Matrix4f        CalculateMVP();
+    bool            IsPointInside(const Point &point) const;
 
 protected:
     static const DefaultVertexData  ElementVerticies[];
@@ -72,6 +100,8 @@ public:
 
     virtual void    OnUpdate(float delta) override;
     virtual void    OnRender() override;
+
+    virtual bool    HandleEvent(const ScreenEvent &event) override;
 
 private:
     static const std::string    name;

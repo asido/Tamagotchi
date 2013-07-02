@@ -136,6 +136,16 @@ Matrix4f ScreenElement::CalculateMVP()
     return this->projectionMatrix * this->transform->GetTransform();
 }
 
+bool ScreenElement::IsPointInside(const Point &point) const
+{
+    Vector3f elementPos = this->transform->GetPosition();
+    Vector3f elementScale = this->transform->GetScale();
+
+    bool isIn = (point.GetX() >= elementPos(0) && point.GetX() <= (elementPos(0) + elementScale(0)) &&
+                 point.GetY() >= elementPos(1) && point.GetY() <= (elementPos(1) + elementScale(1)));
+    return isIn;
+}
+
 
 //-----------------------------------------------------------------------------------------------------------
 //  class ButtonElement
@@ -201,4 +211,30 @@ void ButtonElement::OnUpdate(float delta)
 void ButtonElement::OnRender()
 {
     ScreenElement::OnRender();
+}
+
+bool ButtonElement::HandleEvent(const ScreenEvent &event)
+{
+    if (IsPointInside((event.GetPoint())))
+    {
+        switch (event.GetEventType()) {
+        case ScreenEvent::EVENT_TYPE_TOUCH:
+            LogInfo("Button clicked!");
+            break;
+
+        case ScreenEvent::EVENT_TYPE_RELEASE:
+            LogInfo("Button released!");
+            break;
+
+        default:
+            LogWarning("Unknown button event!");
+            break;
+        }
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

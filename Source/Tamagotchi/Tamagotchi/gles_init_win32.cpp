@@ -47,8 +47,11 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     case WM_KEYUP:
     case WM_CHAR:
     case WM_MOUSEMOVE:
+    case WM_MOUSEHWHEEL:
+    case WM_LBUTTONDBLCLK:
     case WM_LBUTTONDOWN:
     case WM_LBUTTONUP:
+    case WM_RBUTTONDBLCLK:
     case WM_RBUTTONDOWN:
     case WM_RBUTTONUP: {
         POINT point;
@@ -56,8 +59,11 @@ LRESULT WINAPI ESWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         if (esContext && esContext->keyFunc)
         {
+            // Capture mouse coordinates.
             GetCursorPos(&point);
-            esContext->keyFunc(esContext, (unsigned char) wParam, (int) point.x, (int)point.y);
+            ScreenToClient(hWnd, &point);
+
+            esContext->keyFunc(esContext, static_cast<unsigned int>(msg), static_cast<unsigned char>(wParam), static_cast<int>(point.x), static_cast<int>(point.y));
         }
         break;
     }

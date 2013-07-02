@@ -94,6 +94,15 @@ void TamagotchiEngine::FrameRender()
     }
 }
 
+void TamagotchiEngine::HandleScreenEvent(const ScreenEvent &event)
+{
+    for (GameViewList::iterator it = this->gameLogic->gameViews.begin(), end = this->gameLogic->gameViews.end(); it != end; ++it)
+    {
+        std::shared_ptr<GameView> gameView = *it;
+        gameView->HandleScreenEvent(event);
+    }
+}
+
 //-----------------------------------------------
 // Private
 //-----------------------------------------------

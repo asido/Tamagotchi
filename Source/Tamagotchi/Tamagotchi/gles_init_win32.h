@@ -19,7 +19,7 @@ public:
 
     // Callbacks
     void (ESCALLBACK *renderFunc)(ESContext *esContext);
-    void (ESCALLBACK *keyFunc)(ESContext *esContext, unsigned char wParam, int cursorX, int cursorY);
+    void (ESCALLBACK *keyFunc)(ESContext *esContext, unsigned int msg, unsigned char wParam, int cursorX, int cursorY);
     void (ESCALLBACK *updateFunc)(ESContext *esContext, float deltaTime);
 
     EGLNativeWindowType GetHwnd() const { return this->hWnd; }

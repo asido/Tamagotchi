@@ -42,4 +42,22 @@ private:
     std::stack<Matrix4f> stack;
 };
 
+
+//-----------------------------------------------------------------------------------------------------------
+//  class Point
+//-----------------------------------------------------------------------------------------------------------
+
+class Point
+{
+public:
+    Point(float x, float y) : x(x), y(y) { }
+
+    float GetX() const { return this->x; }
+    float GetY() const { return this->y; }
+
+private:
+    float x;
+    float y;
+};
+
 #endif // __GEOMETRY_H__

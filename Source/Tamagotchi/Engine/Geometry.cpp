@@ -22,7 +22,7 @@ Matrix4f Math3D::MakeOrthoMatrix(float left, float right,
         0.0f, 0.0f, -2.0f / fsn, 0.0f,
         -ral / rsl, -tab / tsb, -fan / fsn, 1.0f;
 
-    // Eigen takes the argument column-major, thus the transpose.
+    // Eigen takes the argument in column-major, thus the transpose.
     // For efficiency you could write the values to matrix in transposed order, but
     // this function isn't called that often, thus I prefer readability.
     m.transposeInPlace();

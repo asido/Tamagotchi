@@ -6,6 +6,7 @@
 #include "Rendering/GLES.h"
 #include "GameLogic.h"
 #include "UI/GameView.h"
+#include "UI/ScreenElement.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class TamagotchiEngine
@@ -26,6 +27,8 @@ public:
 
     void FrameUpdate(float delta);
     void FrameRender();
+
+    void HandleScreenEvent(const ScreenEvent &event);
 
     std::shared_ptr<ResourceManager>    GetResourceManager() const { return this->resourceMgr; }
     std::shared_ptr<IRenderer>          GetRenderer() const { return this->renderer; }

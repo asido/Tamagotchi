@@ -10,6 +10,7 @@
 
 class IRenderer;
 class ScreenElement;
+class ScreenEvent;
 class Scene;
 
 typedef std::list< std::shared_ptr<ScreenElement> > ScreenElementList;
@@ -27,6 +28,8 @@ public:
 
     virtual void OnUpdate(float delta);
     virtual void OnRender();
+
+    virtual void HandleScreenEvent(const ScreenEvent &event);
 
 private:
     std::shared_ptr<Scene>  scene;
