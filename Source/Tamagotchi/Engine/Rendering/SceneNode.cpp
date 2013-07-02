@@ -180,7 +180,7 @@ bool SpriteSceneNode::Init()
 {
     // Init shader.
     const std::string &shaderName = GetRenderComponent()->GetShaderName();
-    this->shader = g_engine->GetShaderManager()->GetShader(shaderName);
+    this->shader = std::static_pointer_cast<SpriteShader>(g_engine->GetShaderManager()->GetShader(shaderName));
     if (!this->shader)
     {
         LogError("Failed to load shader: %s", shaderName.c_str());
@@ -225,14 +225,12 @@ void SpriteSceneNode::OnRender(Scene &scene)
     std::shared_ptr<ResourceHandle> textureHandle = g_engine->GetResourceManager()->GetHandle(r);
     std::shared_ptr<GLESTextureResourceExtraData> textureExtra = std::static_pointer_cast<GLESTextureResourceExtraData>(textureHandle->GetExtra());
 
-    std::shared_ptr<DefaultShader> defaultShader = std::static_pointer_cast<DefaultShader>(this->shader);
-    defaultShader->SetTexture(textureExtra->GetTexture());
-
+    this->shader->SetTexture(textureExtra->GetTexture());
     
     Matrix4f mvp = scene.GetCamera()->CalculateMVP(scene);
-    defaultShader->SetMvpMatrix(mvp);
+    this->shader->SetMvpMatrix(mvp);
 
-    if (!defaultShader->PrepareToRender())
+    if (!this->shader->PrepareToRender())
     {
         LogError("Shader prepare to render has failed.");
         return;

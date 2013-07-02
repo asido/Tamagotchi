@@ -41,7 +41,7 @@ protected:
 
 
 //-----------------------------------------------------------------------------------------------------------
-//  class DefaultShader
+//  class SpriteShader
 //-----------------------------------------------------------------------------------------------------------
 
 enum {
@@ -54,7 +54,7 @@ typedef struct {
     Vector2f textureCoords;
 } DefaultVertexData;
 
-class DefaultShader : public Shader
+class SpriteShader : public Shader
 {
 public:
     static ShaderId GetIdStatic();

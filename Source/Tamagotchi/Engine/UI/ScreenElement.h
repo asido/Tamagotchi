@@ -46,10 +46,10 @@ protected:
     static const DefaultVertexData  ElementVerticies[];
     static const unsigned int       VertexCount;
 
-    std::shared_ptr<Shader>     shader;
-    std::shared_ptr<Resource>   textureResource;
+    std::shared_ptr<SpriteShader>   shader;
+    std::shared_ptr<Resource>       textureResource;
 
-    Matrix4f                    projectionMatrix;
+    Matrix4f                        projectionMatrix;
     std::shared_ptr<TransformComponent> transform;
 
     bool    visible;

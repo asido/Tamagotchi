@@ -115,28 +115,28 @@ bool Shader::ValidateProgram()
 
 
 //-----------------------------------------------------------------------------------------------------------
-//  class DefaultShader
+//  class SpriteShader
 //-----------------------------------------------------------------------------------------------------------
 
-const std::string DefaultShader::name("DefaultShader");
+const std::string SpriteShader::name("SpriteShader");
 
 //-----------------------------------------------
 // Public
 //-----------------------------------------------
 
-ShaderId DefaultShader::GetIdStatic()
+ShaderId SpriteShader::GetIdStatic()
 {
     static ShaderId id = INVALID_SHADER_ID;
 
     if (id == INVALID_SHADER_ID)
     {
-        id = StringUtilities::Hash(DefaultShader::name);
+        id = StringUtilities::Hash(SpriteShader::name);
     }
 
     return id;
 }
 
-bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
+bool SpriteShader::Init(GLuint vertexShader, GLuint fragmentShader)
 {
     if (vertexShader == 0)
     {
@@ -198,7 +198,7 @@ bool DefaultShader::Init(GLuint vertexShader, GLuint fragmentShader)
     return true;
 }
 
-bool DefaultShader::PrepareToRender()
+bool SpriteShader::PrepareToRender()
 {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, this->glTexture);
@@ -216,7 +216,7 @@ bool DefaultShader::PrepareToRender()
 // Private
 //-----------------------------------------------
 
-bool DefaultShader::LoadUniformLocation(GLenum uniform, const std::string &uniformVar)
+bool SpriteShader::LoadUniformLocation(GLenum uniform, const std::string &uniformVar)
 {
     LogAssert(uniform < DEFAULT_SHADER_UNIFORM_COUNT && "Invalid uniform.");
     this->uniforms[uniform] = glGetUniformLocation(this->program, uniformVar.c_str());

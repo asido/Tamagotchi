@@ -9,7 +9,7 @@
 
     <SpriteRenderComponent>
         <Texture resource="Textures/Agetchi.png" />
-        <Shader name="DefaultShader" />
+        <Shader name="SpriteShader" />
     </SpriteRenderComponent>
 
 </Actor>

@@ -19,7 +19,7 @@
     <HUD>
         <ButtonElement>
             <Frame x="0" y="0" width="100" height="40" />
-            <Shader name="DefaultShader" />
+            <Shader name="SpriteShader" />
             <Texture resource="Textures/Button.png" />
             <Text>Ok</Text>
         </ButtonElement>

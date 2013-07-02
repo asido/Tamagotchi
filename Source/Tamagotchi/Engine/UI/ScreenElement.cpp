@@ -22,7 +22,7 @@ const DefaultVertexData ScreenElement::ElementVerticies[] = {
 const unsigned int ScreenElement::VertexCount(ARRAY_SIZE(ScreenElement::ElementVerticies));
 
 ScreenElement::ScreenElement()
-    : transform(TG_NEW TransformComponent), x(0), y(0), width(0), height(0), visible(true)
+    : transform(TG_NEW TransformComponent), visible(true)
 {
     // For UI rendering we use projection matrix with same bounds as viewport in order
     // to be able to specify frame values in pixels.
@@ -66,7 +66,7 @@ bool ScreenElement::Init(tinyxml2::XMLElement *data)
     if (shaderElement)
     {
         const std::string shaderName(shaderElement->Attribute("name"));
-        this->shader = g_engine->GetShaderManager()->GetShader(shaderName);
+        this->shader = std::static_pointer_cast<SpriteShader>(g_engine->GetShaderManager()->GetShader(shaderName));
 
         if (!this->shader)
         {
@@ -116,13 +116,11 @@ void ScreenElement::OnRender()
 
     std::shared_ptr<ResourceHandle> handle = g_engine->GetResourceManager()->GetHandle(*this->textureResource.get());
     std::shared_ptr<GLESTextureResourceExtraData> textureExtra = std::static_pointer_cast<GLESTextureResourceExtraData>(handle->GetExtra());
-    // XXX: *very* nasty shader hardcode.
-    std::shared_ptr<DefaultShader> s = std::static_pointer_cast<DefaultShader>(this->shader);
-    s->SetTexture(textureExtra->GetTexture());
 
-    s->SetMvpMatrix(this->CalculateMVP());
+    this->shader->SetTexture(textureExtra->GetTexture());
+    this->shader->SetMvpMatrix(this->CalculateMVP());
 
-    if (!s->PrepareToRender())
+    if (!this->shader->PrepareToRender())
     {
         LogError("Shader prepare to render has failed.");
         return;

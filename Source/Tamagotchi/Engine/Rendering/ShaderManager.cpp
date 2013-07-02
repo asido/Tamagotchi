@@ -15,7 +15,7 @@
 
 ShaderManager::ShaderManager()
 {
-    this->shaderFactory.Register<DefaultShader>(DefaultShader::GetIdStatic());
+    this->shaderFactory.Register<SpriteShader>(SpriteShader::GetIdStatic());
 }
 
 std::shared_ptr<Shader> ShaderManager::GetShader(const std::string &shaderName)
@@ -61,6 +61,11 @@ std::shared_ptr<Shader> ShaderManager::LoadShader(const std::string &shaderName)
     std::shared_ptr<ShaderResourceExtraData> fragmentExtra = std::static_pointer_cast<ShaderResourceExtraData>(fShaderHandle->GetExtra());
 
     std::shared_ptr<Shader> shader(this->shaderFactory.Create(Shader::GetIdFromName(shaderName)));
+    if (!shader)
+    {
+        LogWarning("Failed to create a new shared named: %s", shaderName.c_str());
+        return std::shared_ptr<Shader>();
+    }
 
     if (!shader->Init(vertexExtra->GetGlShader(), fragmentExtra->GetGlShader()))
     {

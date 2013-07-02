@@ -79,7 +79,7 @@ public:
 //  class SpriteSceneNode
 //-----------------------------------------------------------------------------------------------------------
 
-class Shader;
+class SpriteShader;
 class Resource;
 
 class SpriteSceneNode : public SceneNode
@@ -94,7 +94,7 @@ public:
 private:
     static unsigned int             VertexCount;
 
-    std::shared_ptr<Shader>         shader;
+    std::shared_ptr<SpriteShader>   shader;
     std::shared_ptr<Resource>       textureResource;
 
     GLuint          glVertexArray;
