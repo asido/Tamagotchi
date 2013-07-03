@@ -18,7 +18,7 @@ void ZipFileTest::tearDown()
 
 void ZipFileTest::GetNumFilesTest()
 {
-    CPPUNIT_ASSERT(this->zipFile->GetNumFiles() == 9);
+    CPPUNIT_ASSERT(this->zipFile->GetNumFiles() == 11);
 }
 
 void ZipFileTest::GetFilenameTest()
