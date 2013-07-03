@@ -22,12 +22,15 @@
     <ClCompile Include="..\Engine\GameLogic.cpp" />
     <ClCompile Include="..\Engine\Geometry.cpp" />
     <ClCompile Include="..\Engine\Rendering\Camera.cpp" />
+    <ClCompile Include="..\Engine\Rendering\Font.cpp" />
+    <ClCompile Include="..\Engine\Rendering\FontManager.cpp" />
     <ClCompile Include="..\Engine\Rendering\Renderer.cpp" />
     <ClCompile Include="..\Engine\Rendering\Scene.cpp" />
     <ClCompile Include="..\Engine\Rendering\SceneNode.cpp" />
     <ClCompile Include="..\Engine\Rendering\Shader.cpp" />
     <ClCompile Include="..\Engine\Rendering\ShaderManager.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\Filesystem.cpp" />
+    <ClCompile Include="..\Engine\ResourceManager\FontResource.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\ShaderResource.cpp" />
     <ClCompile Include="..\Engine\ResourceManager\TextureResource.cpp" />
@@ -55,6 +58,8 @@
     <ClInclude Include="..\Engine\Geometry.h" />
     <ClInclude Include="..\Engine\ObjectFactory.h" />
     <ClInclude Include="..\Engine\Rendering\Camera.h" />
+    <ClInclude Include="..\Engine\Rendering\Font.h" />
+    <ClInclude Include="..\Engine\Rendering\FontManager.h" />
     <ClInclude Include="..\Engine\Rendering\GLES.h" />
     <ClInclude Include="..\Engine\Rendering\Renderer.h" />
     <ClInclude Include="..\Engine\Rendering\Scene.h" />
@@ -62,6 +67,7 @@
     <ClInclude Include="..\Engine\Rendering\Shader.h" />
     <ClInclude Include="..\Engine\Rendering\ShaderManager.h" />
     <ClInclude Include="..\Engine\ResourceManager\Filesystem.h" />
+    <ClInclude Include="..\Engine\ResourceManager\FontResource.h" />
     <ClInclude Include="..\Engine\ResourceManager\ResourceManager.h" />
     <ClInclude Include="..\Engine\ResourceManager\ShaderResource.h" />
     <ClInclude Include="..\Engine\ResourceManager\TextureResource.h" />

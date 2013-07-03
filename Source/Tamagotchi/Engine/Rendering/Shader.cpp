@@ -25,6 +25,7 @@ Shader::~Shader()
             glDetachShader(this->program, this->vertexShader);
         }
         glDeleteShader(this->vertexShader);
+        this->vertexShader = 0;
     }
     if (this->fragmentShader)
     {
@@ -33,11 +34,13 @@ Shader::~Shader()
             glDetachShader(this->program, this->fragmentShader);
         }
         glDeleteShader(this->fragmentShader);
+        this->fragmentShader = 0;
     }
     if (this->program)
     {
         LogSpam("Shader program destroyed: %d", this->program);
         glDeleteProgram(this->program);
+        this->program = 0;
     }
 
     GL_CHECK_ERROR();
@@ -194,6 +197,9 @@ bool SpriteShader::Init(GLuint vertexShader, GLuint fragmentShader)
     LoadUniformLocation(DEFAULT_SHADER_UNIFORM_TEXTURE, "u_sampler");
 
     GL_CHECK_ERROR();
+
+    this->vertexShader   = vertexShader;
+    this->fragmentShader = fragmentShader;
 
     return true;
 }

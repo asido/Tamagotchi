@@ -74,12 +74,13 @@ class IResourceExtraData
 class ResourceHandle
 {
     friend class ResourceManager;
+    friend class FontResourceLoader; // FontResourceLoader attached rawBuffer to private handle buffer. It's ugly I guess, but works for now.
 
 public:
     ResourceHandle(const Resource &resource, char *buffer, unsigned int size, ResourceManager *resourceMgr);
     ~ResourceHandle();
 
-    const Resource &                    GetResource() const { return this->resource; }
+    const Resource&                     GetResource() const { return this->resource; }
     std::shared_ptr<IResourceExtraData> GetExtra() const { return this->extra; }
     void                                SetExtra(std::shared_ptr<IResourceExtraData> extra) { this->extra = extra; }
 
@@ -109,10 +110,11 @@ public:
     ~ResourceManager();
 
     bool                            Init();
-    void                            RegisterLoader(std::shared_ptr<IResourceLoader> loader);
     std::shared_ptr<ResourceHandle> GetHandle(const Resource &r);
 
 private:
+    void                            RegisterLoader(std::shared_ptr<IResourceLoader> loader);
+
     bool                            MakeRoom(unsigned int size);
     char*                           Allocate(unsigned int size);
     void                            Free(std::shared_ptr<ResourceHandle> gonner);

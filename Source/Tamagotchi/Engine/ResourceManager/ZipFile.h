@@ -12,7 +12,7 @@
 class ResourceZipFile : public IResourceFile
 {
 public:
-    ResourceZipFile(const std::string resFileName);
+    ResourceZipFile(const std::string &resFileName);
 
     virtual bool        Open() override;
     virtual int         GetRawResourceSize(const Resource &r) override;

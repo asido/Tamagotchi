@@ -1,12 +1,10 @@
 #include <cassert>
 #include "TamagotchiEngine.h"
-#include "ResourceManager/ResourceManager.h"
 #include "ResourceManager/ZipFile.h"
 #include "Rendering/Renderer.h"
 #include "Rendering/ShaderManager.h"
 #include "Logger.h"
 #include "Clock.h"
-#include "EngineConfig.h"
 
 TamagotchiEngine *g_engine = NULL;
 
@@ -101,43 +99,4 @@ void TamagotchiEngine::HandleScreenEvent(const ScreenEvent &event)
         std::shared_ptr<GameView> gameView = *it;
         gameView->HandleScreenEvent(event);
     }
-}
-
-//-----------------------------------------------
-// Private
-//-----------------------------------------------
-
-GLuint TamagotchiEngine::LoadShader(GLenum type, const char *shaderSrc)
-{
-    GLuint  shader;
-    GLint   compiled;
-
-    shader = glCreateShader(type);
-
-    if (!shader)
-    {
-        return 0;
-    }
-
-    glShaderSource(shader, 1, &shaderSrc, NULL);
-    glCompileShader(shader);
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-    if (!compiled)
-    {
-        GLint infoLen = 0;
-        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-
-        if (infoLen > 1)
-        {
-            char *infoLog = (char*)malloc(sizeof(char) * infoLen);
-            glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
-            //OutputDebugString(L"Failed to compile shader");
-            free(infoLog);
-        }
-
-        glDeleteShader(shader);
-        return 0;
-    }
-
-    return shader;
 }

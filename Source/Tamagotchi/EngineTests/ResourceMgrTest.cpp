@@ -5,6 +5,7 @@
 #include "ResourceManager/TextureResource.h"
 #include "ResourceManager/XMLResource.h"
 #include "ResourceManager/ShaderResource.h"
+#include "ResourceManager/FontResource.h"
 #include "defines.h"
 #include "TestMain.h"
 
@@ -61,4 +62,10 @@ void ResourceMgrTest::GetHandleTest()
     CPPUNIT_ASSERT(handle);
     std::shared_ptr<ShaderResourceExtraData> fragmentExtra = std::static_pointer_cast<ShaderResourceExtraData>(handle->GetExtra());
     CPPUNIT_ASSERT(fragmentExtra->GetGlShader() > 0);
+
+    const Resource r8("Fonts/Arial.ttf");
+    handle = this->resourceMgr->GetHandle(r8);
+    CPPUNIT_ASSERT(handle);
+    std::shared_ptr<FontResourceExtraData> fontExtra = std::static_pointer_cast<FontResourceExtraData>(handle->GetExtra());
+    CPPUNIT_ASSERT(fontExtra->GetFtFace() != NULL);
 }

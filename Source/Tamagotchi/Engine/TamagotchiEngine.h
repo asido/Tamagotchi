@@ -5,8 +5,10 @@
 #include "defines.h"
 #include "Rendering/GLES.h"
 #include "GameLogic.h"
+#include "EngineConfig.h"
 #include "UI/GameView.h"
 #include "UI/ScreenElement.h"
+#include "ResourceManager/ResourceManager.h"
 
 //-----------------------------------------------------------------------------------------------------------
 //  class TamagotchiEngine
@@ -42,8 +44,6 @@ protected:
     virtual std::shared_ptr<GameView>   CreateFirstView() = 0;
 
 private:
-    GLuint LoadShader(GLenum type, const char *shaderSrc);
-
     GLint width;
     GLint height;
 

@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;EIGEN_DONT_VECTORIZE;EIGEN_DISABLE_UNALIGNED_ARRAY_ASSERT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile />
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\ARM\Mali Developer Tools\Mali OpenGL ES Emulator v1.2.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\ARM\Mali Developer Tools\Mali OpenGL ES Emulator v1.2.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;$(ProjectDir)..\..\3rdParty\freetype-2.5.0.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,7 +108,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\ARM\Mali Developer Tools\Mali OpenGL ES Emulator v1.2.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\ARM\Mali Developer Tools\Mali OpenGL ES Emulator v1.2.0\include;$(ProjectDir)..\Engine;$(ProjectDir)..\..\3rdParty\libpng-1.6.2\include;$(ProjectDir)..\..\3rdParty\cppunit\include;$(ProjectDir)..\..\3rdParty\eigen-3.1.3\include;$(ProjectDir)..\..\3rdParty\FastDelegate\include;$(ProjectDir)..\..\3rdParty\tinyxml2\include;$(ProjectDir)..\..\3rdParty\freetype-2.5.0.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

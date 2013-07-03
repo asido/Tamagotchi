@@ -48,8 +48,10 @@ std::shared_ptr<Shader> ShaderManager::GetShader(const std::string &shaderName)
 std::shared_ptr<Shader> ShaderManager::LoadShader(const std::string &shaderName)
 {
     const std::string shadersPath = g_engine->GetEngineConfig()->GetAssetPathShaders();
-    std::shared_ptr<ResourceHandle> vShaderHandle = g_engine->GetResourceManager()->GetHandle(shadersPath + shaderName + ".vsh");
-    std::shared_ptr<ResourceHandle> fShaderHandle = g_engine->GetResourceManager()->GetHandle(shadersPath + shaderName + ".fsh");
+    const Resource vertexResource(shadersPath + shaderName + ".vsh");
+    const Resource fragmentResource(shadersPath + shaderName + ".fsh");
+    std::shared_ptr<ResourceHandle> vShaderHandle = g_engine->GetResourceManager()->GetHandle(vertexResource);
+    std::shared_ptr<ResourceHandle> fShaderHandle = g_engine->GetResourceManager()->GetHandle(fragmentResource);
 
     if (!vShaderHandle || !fShaderHandle)
     {
@@ -73,7 +75,12 @@ std::shared_ptr<Shader> ShaderManager::LoadShader(const std::string &shaderName)
         return std::shared_ptr<Shader>();
     }
 
-    this->shaders[shaderName] = shader;
+    std::pair<ShaderMap::iterator, bool> status = this->shaders.insert(std::make_pair(shaderName, shader));
+    if (!status.second)
+    {
+        LogError("Failure registering shadder: %s", shaderName.c_str());
+        return std::shared_ptr<Shader>();
+    }
 
     return shader;
 }

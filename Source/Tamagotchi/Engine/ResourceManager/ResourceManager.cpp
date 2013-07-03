@@ -3,6 +3,7 @@
 #include "XMLResource.h"
 #include "TextureResource.h"
 #include "ShaderResource.h"
+#include "FontResource.h"
 #include "StringUtilities.h"
 #include "defines.h"
 #include "Logger.h"
@@ -43,6 +44,8 @@ ResourceManager::~ResourceManager()
     {
         FreeOneResource();
     }
+
+    this->resources.clear();
 }
 
 bool ResourceManager::Init()
@@ -62,13 +65,9 @@ bool ResourceManager::Init()
     RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW TextureResourceLoader));
     RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW VertexShaderResourceLoader));
     RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW FragmentShaderResourceLoader));
+    RegisterLoader(std::shared_ptr<IResourceLoader>(TG_NEW FontResourceLoader));
 
     return true;
-}
-
-void ResourceManager::RegisterLoader(std::shared_ptr<IResourceLoader> loader)
-{
-    this->resourceLoaders.push_front(loader);
 }
 
 std::shared_ptr<ResourceHandle> ResourceManager::GetHandle(const Resource &r)
@@ -94,6 +93,11 @@ std::shared_ptr<ResourceHandle> ResourceManager::GetHandle(const Resource &r)
 //-----------------------------------------------
 // Private
 //-----------------------------------------------
+
+void ResourceManager::RegisterLoader(std::shared_ptr<IResourceLoader> loader)
+{
+    this->resourceLoaders.push_front(loader);
+}
 
 bool ResourceManager::MakeRoom(unsigned int size)
 {

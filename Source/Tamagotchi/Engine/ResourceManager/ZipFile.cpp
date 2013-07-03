@@ -17,7 +17,7 @@
 //  class ResourceZipFile
 //-----------------------------------------------------------------------------------------------------------
 
-ResourceZipFile::ResourceZipFile(const std::string resFileName)
+ResourceZipFile::ResourceZipFile(const std::string &resFileName)
     : resFilename(resFileName), zipFile(NULL)
 {
 

@@ -128,6 +128,15 @@
     <ClInclude Include="..\Engine\UI\HudFactory.h">
       <Filter>Source Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\FontManager.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Rendering\Font.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ResourceManager\FontResource.h">
+      <Filter>Source Files\ResourceManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">
@@ -216,6 +225,15 @@
     </ClCompile>
     <ClCompile Include="..\Engine\UI\HudFactory.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Rendering\FontManager.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Rendering\Font.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ResourceManager\FontResource.cpp">
+      <Filter>Source Files\ResourceManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

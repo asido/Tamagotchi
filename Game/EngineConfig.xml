@@ -8,6 +8,12 @@
     <AssetPathLevels>Levels/</AssetPathLevels>
     <AssetPathShaders>Shaders/</AssetPathShaders>
     <AssetPathTextures>Textures/</AssetPathTextures>
+    <AssetPathFonts>Fonts/</AssetPathFonts>
+
+    <!-- Font DPI. -->
+    <FontDPI>72</FontDPI>
+    <!-- Symbols which engine will load from font files. -->
+    <FontSymbols> !\"#&amp;'()*,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ\\_abcdefghijklmnopqrstuvwxyz</FontSymbols>
 
     <!-- Resource cache size in MB. -->
     <ResourceCacheSize>50.0</ResourceCacheSize>
