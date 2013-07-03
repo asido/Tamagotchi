@@ -4,6 +4,9 @@ Source/Temp/
 
 Junk/
 
+# Shader compiler output
+output.binshader
+
 ########################
 # Visual Studio junk
 ########################
