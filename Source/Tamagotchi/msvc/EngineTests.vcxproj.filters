@@ -38,6 +38,9 @@
     <ClCompile Include="..\EngineTests\GeometryTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\EngineTests\FontManagerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\EngineTests\StringUtilitiesTest.h">
@@ -62,6 +65,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\EngineTests\GeometryTest.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EngineTests\FontManagerTest.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

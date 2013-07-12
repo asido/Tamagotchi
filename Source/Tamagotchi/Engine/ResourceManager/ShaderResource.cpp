@@ -62,13 +62,12 @@ GLuint ShaderResourceLoader::CompileShader(const char *source) const
     GLuint s = glCreateShader(this->GetShaderType());
     if (!s)
     {
-        GLenum err = glGetError();
+        GL_CHECK_ERROR();
         LogError("glCreateShader() has failed.");
         return s;
     }
 
     glShaderSource(s, 1, &source, NULL);
-    GLint e = glGetError();
     glCompileShader(s);
 
     GLint compiled;

@@ -1,6 +1,8 @@
 #ifndef __Renderer_H__
 #define __Renderer_H__
 
+#include <string>
+
 typedef struct {
     unsigned int width;
     unsigned int height;

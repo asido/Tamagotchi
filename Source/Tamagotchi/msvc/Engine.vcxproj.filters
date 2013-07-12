@@ -137,6 +137,9 @@
     <ClInclude Include="..\Engine\ResourceManager\FontResource.h">
       <Filter>Source Files\ResourceManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\Engine\Allocator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine\StringUtilities.cpp">

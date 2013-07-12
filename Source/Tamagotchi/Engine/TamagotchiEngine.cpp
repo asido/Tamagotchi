@@ -59,6 +59,13 @@ bool TamagotchiEngine::Init(GLint width, GLint height)
 
     this->shaderMgr = std::shared_ptr<ShaderManager>(TG_NEW ShaderManager);
 
+    this->fontMgr = std::shared_ptr<FontManager>(TG_NEW FontManager);
+    if (!this->fontMgr->Init())
+    {
+        LogError("FontManager::Init() has failed.");
+        return false;
+    }
+
     this->gameLogic = CreateGameLogic();
     if (!this->gameLogic)
     {

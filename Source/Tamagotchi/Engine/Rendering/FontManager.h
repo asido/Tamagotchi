@@ -18,7 +18,7 @@ class FontManager
 {
 public:
     bool                    Init();
-    std::shared_ptr<Font>   GetFont(const std::string &fontName, unsigned int fontSize);
+    std::shared_ptr<Font>   FindFont(const std::string &fontName, unsigned int fontSize);
 
 private:
     const std::string       FontNameSizeToIdentifier(const std::string &fontName, unsigned int fontSize) const;

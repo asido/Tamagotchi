@@ -17,11 +17,10 @@
 
 bool FontManager::Init()
 {
-    LogError("Implement me!");
-    return false;
+    return true;
 }
 
-std::shared_ptr<Font> FontManager::GetFont(const std::string &fontName, unsigned int fontSize)
+std::shared_ptr<Font> FontManager::FindFont(const std::string &fontName, unsigned int fontSize)
 {
     const std::string fontIdentifier = FontNameSizeToIdentifier(fontName, fontSize);
     std::shared_ptr<Font> font;
@@ -56,6 +55,8 @@ const std::string FontManager::FontNameSizeToIdentifier(const std::string &fontN
 
 std::shared_ptr<Font> FontManager::LoadFont(const std::string &fontName, unsigned int fontSize, const std::string &fontIdentifier)
 {
+    LogInfo("Loading font: %s-%d", fontName.c_str(), fontSize);
+
     const std::string fontsPath = g_engine->GetEngineConfig()->GetAssetPathFonts();
     const Resource fontResource(fontsPath + fontName + ".ttf");
     std::shared_ptr<ResourceHandle> fontHandle = g_engine->GetResourceManager()->GetHandle(fontResource);
@@ -116,21 +117,20 @@ std::shared_ptr<Font> FontManager::LoadFont(const std::string &fontName, unsigne
         fontChar->SetSize(width, height);
 
         unsigned int xAdvance = fontFace->glyph->metrics.horiAdvance / 64;
-        fontChar->setXAdvance(xAdvance);
+        fontChar->SetXAdvance(xAdvance);
 
         if (!font->AddSymbol(c, fontChar))
         {
-            LogError("Failed to add symbol '%c' to font '%s'.", c, fontName.c_str());
-            return std::shared_ptr<Font>();
+            LogWarning("Failed to add symbol '%c' to font '%s'.", c, fontName.c_str());
         }
     }
-
+    
     if (!font->CreateAtlas())
     {
         LogError("Failed to create atlas for font: %s", fontName.c_str());
         return std::shared_ptr<Font>();
     }
-
+    
     if (!RegisterFont(font, fontIdentifier))
     {
         LogError("Failed to register font.");

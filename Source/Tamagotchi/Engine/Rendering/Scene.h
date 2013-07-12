@@ -44,10 +44,10 @@ public:
     std::shared_ptr<Camera>     GetCamera() const { return this->camera; }
 
 private:
-    std::shared_ptr<SceneNode>          rootNode;
-    SceneActorMap                       actorMap;
-    std::shared_ptr<Camera>             camera;
-    std::shared_ptr<MatrixStack>        matrixStack;
+    std::shared_ptr<SceneNode>      rootNode;
+    SceneActorMap                   actorMap;
+    std::shared_ptr<Camera>         camera;
+    std::shared_ptr<MatrixStack>    matrixStack;
 };
 
 #endif // __SCENE_H__

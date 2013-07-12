@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EngineTests\EventManagerTest.cpp" />
+    <ClCompile Include="..\EngineTests\FontManagerTest.cpp" />
     <ClCompile Include="..\EngineTests\GeometryTest.cpp" />
     <ClCompile Include="..\EngineTests\main_win32.cpp" />
     <ClCompile Include="..\EngineTests\ResourceMgrTest.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\EngineTests\EventManagerTest.h" />
+    <ClInclude Include="..\EngineTests\FontManagerTest.h" />
     <ClInclude Include="..\EngineTests\GeometryTest.h" />
     <ClInclude Include="..\EngineTests\ResourceMgrTest.h" />
     <ClInclude Include="..\EngineTests\ShaderManagerTest.h" />

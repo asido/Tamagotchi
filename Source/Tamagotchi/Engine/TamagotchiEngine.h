@@ -4,6 +4,7 @@
 #include <memory>
 #include "defines.h"
 #include "Rendering/GLES.h"
+#include "Rendering/FontManager.h"
 #include "GameLogic.h"
 #include "EngineConfig.h"
 #include "UI/GameView.h"
@@ -33,6 +34,7 @@ public:
     void HandleScreenEvent(const ScreenEvent &event);
 
     std::shared_ptr<ResourceManager>    GetResourceManager() const { return this->resourceMgr; }
+    std::shared_ptr<FontManager>        GetFontManager() const { return this->fontMgr; }
     std::shared_ptr<IRenderer>          GetRenderer() const { return this->renderer; }
     std::shared_ptr<ShaderManager>      GetShaderManager() const { return this->shaderMgr; }
     std::shared_ptr<GameLogic>          GetGameLogic() const { return this->gameLogic; }
@@ -50,6 +52,7 @@ private:
     GLint shaderProgram;
 
     std::shared_ptr<ResourceManager>    resourceMgr;
+    std::shared_ptr<FontManager>        fontMgr;
     std::shared_ptr<IRenderer>          renderer;
     std::shared_ptr<ShaderManager>      shaderMgr;
     std::shared_ptr<GameLogic>          gameLogic;

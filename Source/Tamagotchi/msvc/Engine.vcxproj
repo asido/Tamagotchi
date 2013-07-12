@@ -50,6 +50,7 @@
     <ClInclude Include="..\Engine\Actors\ActorFactory.h" />
     <ClInclude Include="..\Engine\Actors\RenderComponent.h" />
     <ClInclude Include="..\Engine\Actors\TransformComponent.h" />
+    <ClInclude Include="..\Engine\Allocator.h" />
     <ClInclude Include="..\Engine\Clock.h" />
     <ClInclude Include="..\Engine\EngineConfig.h" />
     <ClInclude Include="..\Engine\EventManager\Event.h" />
